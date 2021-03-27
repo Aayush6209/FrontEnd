@@ -1,11 +1,14 @@
+/* navbar */
 .ESNavbar{
     background-color: white;
     position: fixed;
-    top: 0px;
-    width: 100%;
+    top: 4px;
+    left: 2.5%;
+    width: 95%;
     z-index: 999;
     height: fit-content;
-    border-radius : 10px;
+    border-radius: 50px;
+    box-shadow: 1px 0.5px 10px #1d3557;
 }
 
 .ESNavbarHeader{
@@ -20,14 +23,18 @@
 }
 
 .ESNavbarIconsDiv{
+    top : -8px;
+    position: relative;
     display: inline-block;
-    top:8px;
-    right : 10px;
-    position: fixed;
-
+    margin-left: 50%;
+    height: fit-content;
+    text-align: center;
+    margin: 0 ,10px ,10px, 0;
+    padding-left: 20px;
 }
 .ESNavbarIcons{
     color: #e63946;
+    display: inline-block;
     transition: transform .2s;
     margin: 3px 15px ;
 }
