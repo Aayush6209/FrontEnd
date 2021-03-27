@@ -1,3 +1,40 @@
+.ESNavbar{
+    background-color: white;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    z-index: 999;
+    height: fit-content;
+    border-radius : 10px;
+}
+
+.ESNavbarHeader{
+    display: inline-block;
+    height: fit-content;
+    text-align: center;
+    font-size: 40px;
+    margin: 0 ,10px ,10px, 0;
+    font-weight: 500;
+    color: #1d3557;
+    padding-left: 20px;
+}
+
+.ESNavbarIconsDiv{
+    display: inline-block;
+    top:8px;
+    right : 10px;
+    position: fixed;
+
+}
+.ESNavbarIcons{
+    color: #e63946;
+    transition: transform .2s;
+    margin: 3px 15px ;
+}
+.ESNavbarIcons:hover{
+    color: #1d3557;
+    transform: scale(1.15);
+}
 /* login page */
 
 .LoginHeader{
@@ -17,5 +54,16 @@
 }
 
 .SignUpForm{
+    margin: 0 10% 10% ;
+}
+
+/* Event form */
+
+.EventFormHeader{
+    margin-left: 10%;
+    margin-bottom: 2%;
+}
+
+.EventForm{
     margin: 0 10% 10% ;
 }

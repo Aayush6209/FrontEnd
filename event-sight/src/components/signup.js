@@ -45,7 +45,7 @@ const SignUp = ()=>{
             <Input type="password" name="password" id="password" placeholder="Set Your Password" />
           </FormGroup>
       </Col></Row>
-      <Button>Sign in</Button>
+      <Button>Sign Up</Button>
     </div>
     </div>
 }
