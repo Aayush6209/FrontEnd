@@ -2,6 +2,7 @@ import React from "react";
 import {Row, Col} from "reactstrap";
 
 import EventCard from "../components/EventCard";
+import ClubCard from "../components/ClubCard";
 import Sidebar from "../components/sidebar";
 
 const Homepage = ()=>{
@@ -15,6 +16,7 @@ const Homepage = ()=>{
         foo.map(k=><Col key={k} ><EventCard/></Col>)
     }
     </Row>
+    <ClubCard />
     </>
 
 }
