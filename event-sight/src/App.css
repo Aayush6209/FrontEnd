@@ -72,7 +72,6 @@
     margin: 0 10% 10% ;
 }
 
-<<<<<<< HEAD
 /* sidebar */
 
 .Sidebar{
@@ -104,12 +103,4 @@
 
 .Content{
     margin-left: 18%;
-}
-
-/* event card */
-
-=======
->>>>>>> 97a1e3bb2f73211bf53b53af2283dba8bae0f875
-.ESEventCard{
-    width: 50%;
 }
