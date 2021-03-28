@@ -1,24 +1,26 @@
 import React from "react";
-import {Card, CardTitle} from "reactstrap";
+import { Row, Col} from "reactstrap";
+
 
 //just for testing sidebar
-import {OCnames} from "../assets/OCname";
+import {OCLogos} from "../assets/OClogo";
+
+let logos = [];
+for(let key in OCLogos){
+    logos.push(<Col key={key} xs="12"><div>
+        <img className="SidebarCard" src = "https://images.jdmagicbox.com/comp/chandigarh/c4/0172p1762.1762.110201201416.l1c4/catalogue/punjab-engineering-college-sector-12-chandigarh-placement-services-candidate--3er9sw3.jpg?clr=#006600" alt="pec"/>
+    </div></Col>)
+}
 
 
 const Sidebar = ()=>{
     return <div className="Sidebar">
-        <h3  className="SidebarHeading">Member At</h3>
-        {OCnames.slice(2,6).map((oc, index)=>{
-            return <Card key={index}  className="SidebarCard">
-                <CardTitle tag="h6">{oc}</CardTitle>
-            </Card>
-        })}
-       <h3 className="SidebarHeading">Following</h3>
-       {OCnames.slice(5,18).map((oc, index)=>{
-            return <Card key={index} className="SidebarCard">
-                <CardTitle tag="h6">{oc}</CardTitle>
-            </Card>
-        })}
+        <center>
+        <Row> 
+        {logos.map((logo)=>logo)} 
+        <Col xs="12" style={{height : "80px"}}> <div> </div></Col>
+        </Row>
+        </center>
     </div>
 }
 

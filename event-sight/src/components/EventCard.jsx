@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button, Container, Row, Col 
+  Card,CardText, CardBody,
+  CardTitle, CardSubtitle, Container, Row, Col 
 } from 'reactstrap';
 import {MdEvent} from "react-icons/md";
 import {HiSaveAs} from "react-icons/hi";
@@ -11,10 +11,10 @@ const EventCard = (props) => {
   return (
     <div className="ESEventCard">
       <Card>
-        <div className="overflow"><img className="CardImage" top width="100%" src="https://www.w3schools.com/w3css/img_lights.jpg" alt="Card image cap" /></div>
+        <div className="overflow"><img className="CardImage" src="https://www.w3schools.com/w3css/img_lights.jpg" alt="Card cap" /></div>
         <CardBody>
           <CardTitle tag="h5">Event Name</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">Date & Time</CardSubtitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">Date and Time</CardSubtitle>
           <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
           <Container>
             <Row>

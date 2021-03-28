@@ -21,8 +21,8 @@ const Login = ()=>{
   }
 
     return <div>
-        <h1 className="LoginHeader">Login</h1>
-    <div className="LoginForm">
+        <h1>Login</h1>
+    <div>
     <Row>
         <Col>
         <FormGroup>

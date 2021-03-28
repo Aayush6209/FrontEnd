@@ -23,8 +23,8 @@ const SignUp = ()=>{
   }
 
     return <div>
-    <h1 className="SignUpHeader">Sign Up</h1>
-    <div className="SignUpForm">
+    <h1 >Sign Up</h1>
+    <div>
       <Row form>
         <Col md={6}>
           <FormGroup>

@@ -1,82 +1,32 @@
+/* 
+font-family: 'Lato', sans-serif;
+font-family: 'Lobster', cursive;
+font-family: 'Niconne', cursive;
+font-family: 'Pacifico', cursive;
+ */
+
 /* navbar */
 .ESNavbar{
-    background-color: white;
     position: fixed;
     width: 100%;
     z-index: 999;
-    height: fit-content;
-    box-shadow: 1px 0.5px 10px #1d3557;
 }
 
-.ESNavbarHeader{
-    display: inline-block;
-    height: fit-content;
-    text-align: center;
-    font-size: 40px;
-    margin: 0 ,10px ,10px, 0;
-    font-weight: 500;
-    color: #ee6c4d;
-    padding-left: 20px;
-}
-
-.ESNavbarIconsDiv{
-    top : -8px;
-    position: relative;
-    display: inline-block;
-    margin-left: 50%;
-    height: fit-content;
-    text-align: center;
-    margin: 0 ,10px ,10px, 0;
-    padding-left: 20px;
-}
-.ESNavbarIcons{
-    color: #3d5a80;
-    display: inline-block;
+.ESNavbarIcon{
+    color: white;
     transition: transform .2s;
-    margin: 3px 15px ;
 }
-.ESNavbarIcons:hover{
-    color: #293241;
+.ESNavbarIcon:hover{
     transform: scale(1.15);
 }
-/* login page */
 
-.LoginHeader{
-    margin-left: 10%;
-    margin-bottom: 2%;
-}
-
-.LoginForm{
-    margin: 0 10% 10% ;
-}
-
-/* Sign Up Page */
-
-.SignUpHeader{
-    margin-left: 10%;
-    margin-bottom: 2%;
-}
-
-.SignUpForm{
-    margin: 0 10% 10% ;
-}
-
-/* Event form */
-
-.EventFormHeader{
-    margin-left: 10%;
-    margin-bottom: 2%;
-}
-
-.EventForm{
-    margin: 0 10% 10% ;
-}
 
 
 /* EventCards */
 
 .ESEventCard{
-    width: 250px;
+    width: 300px;
+    margin: 3% 2% 2% 2%;
 }
 
 .ESEventCard:hover{
@@ -117,32 +67,28 @@
 /* sidebar */
 
 .Sidebar{
-    background-color: black;
-    width: 18%;
-    left : 0;
+    background-color: rgba(192, 190, 189, 0.384);
+    width: 10%;
+    right : 0;
+    top : 62px;
     height: 100%;
     position: fixed;
-    top : 65px;
     overflow: scroll;
+    padding-top: 1%;
 }
-
 
 .SidebarCard{
-    width: 90%;
-    left: 4%;
-    margin: 0 10px 10px 0;
-    padding-bottom: 2px;
-    box-shadow: 0.5px 0.5px 1px black;
-    border-radius: 5px;
-    text-align: center;
+    width: 75px;
+    border-radius: 75px;
+    height: 75px;
+    margin: 5px;
+    box-shadow: 0px 0px 3px red;
 }
 
-.SidebarHeading{
-    text-align: center;
-    padding: 2%;
-    color: white;
-}
 
-.Content{
-    margin-left: 18%;
+.mainContent{
+    margin-right: 10%;
+    padding-top: 8%;
+    margin-left: 5%;
+    padding-bottom: 5%;
 }

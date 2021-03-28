@@ -1,30 +1,23 @@
 import React from "react";
-import {Jumbotron} from "reactstrap";
 import "./App.css";
-import SignUp from "./components/signup";
-import Login from "./components/login";
-import EventForm from "./components/eventForm"
+import { Route, Switch } from "react-router-dom";
 import ESNavbar from "./components/esNavbar";
-import EventCard from "./components/EventCard";
-import Sidebar from "./components/sidebar";
+import Homepage from "./container/homepage";
+import EventForm from "./components/eventForm";
+import AuthUser from "./container/authUser"
+
 
 const App = ()=>{
-  return <div>
-  <ESNavbar/>
-  <Sidebar/>
-  <div className="Content">
-  <Jumbotron style={{
-    display : "block"
-  }}>
-  <h1 className="display-3">Event-Sight</h1>
-  <p>Welcome to frontend</p>
-  </Jumbotron>
-  <SignUp/>
-  <Login/>
-  <EventForm/>
-  <EventCard />
+  return <>
+  <div><ESNavbar/></div>
+  <div className="mainContent">
+    <Switch>
+      <Route path="/create-event" exact component={EventForm}/>
+      <Route path="/" exact component={Homepage} />
+      <Route path="/auth-user" exact component={AuthUser} />
+      </Switch>
   </div>
-  </div>;
+  </>;
 }
 
 export default App;

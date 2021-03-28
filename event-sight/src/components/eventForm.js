@@ -2,8 +2,8 @@ import React from "react";
 import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 
 const EventForm = ()=>{
-    return <div><h1 className="EventFormHeader">Event Form</h1>
-     <div className="EventForm">
+    return <div><h1 >Event Form</h1>
+     <div >
      <FormGroup>
          <Row>
          <Col>
