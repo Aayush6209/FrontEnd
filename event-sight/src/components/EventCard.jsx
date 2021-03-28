@@ -1,23 +1,33 @@
 import React from 'react';
 import {
   Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Button
+  CardTitle, CardSubtitle, Button, Container, Row, Col 
 } from 'reactstrap';
+import {MdEvent} from "react-icons/md";
+import {HiSaveAs} from "react-icons/hi";
+import {BsInfoCircle} from "react-icons/bs";
 
-const Example = (props) => {
+const EventCard = (props) => {
   return (
     <div className="ESEventCard">
       <Card>
-        <CardImg top width="100%" src="/assets/318x180.svg" alt="Card image cap" />
+        <div className="overflow"><img className="CardImage" top width="100%" src="https://www.w3schools.com/w3css/img_lights.jpg" alt="Card image cap" /></div>
         <CardBody>
-          <CardTitle tag="h5">Card title</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">Card subtitle</CardSubtitle>
+          <CardTitle tag="h5">Event Name</CardTitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">Date & Time</CardSubtitle>
           <CardText>Some quick example text to build on the card title and make up the bulk of the card's content.</CardText>
-          <Button>Button</Button>
+          <Container>
+            <Row>
+              <Col><div style={{display:"inline-block"}}><HiSaveAs size="32px" className="CardIcons"/></div></Col>
+              <Col><div style={{display:"inline-block"}}><MdEvent size="32px" className="CardIcons"/></div></Col>
+              <Col><div style={{display:"inline-block"}}><BsInfoCircle size="32px" className="CardIcons"/></div></Col>
+            </Row>
+          </Container>
         </CardBody>
       </Card>
     </div>
+    
   );
 };
 
-export default Example;
+export default EventCard;

@@ -5,7 +5,7 @@ import SignUp from "./components/signup";
 import Login from "./components/login";
 import EventForm from "./components/eventForm"
 import ESNavbar from "./components/esNavbar";
-import Example from "./components/EventCard";
+import EventCard from "./components/EventCard";
 
 const App = ()=>{
   return <>
@@ -19,7 +19,7 @@ const App = ()=>{
   <SignUp/>
   <Login/>
   <EventForm/>
-  <Example />
+  <EventCard />
   </>;
 }
 
