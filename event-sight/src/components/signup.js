@@ -1,4 +1,5 @@
 import React from "react";
+import {Branches} from "../assets/Branches";
 import { Col, Row, Button, FormGroup, Label, Input } from 'reactstrap';
 
 const SignUp = ()=>{
@@ -27,9 +28,12 @@ const SignUp = ()=>{
           </FormGroup>
         </Col>
         <Col md={6}>
-          <FormGroup>
-            <Label for="branch">Branch</Label>
-            <Input type="text" name="branch" id="branch" placeholder="Your Branch" />
+        <FormGroup>
+            <Label for="branch">Select Branch</Label>
+            <Input type="select" name="branch">
+            {Branches.map((branch, index)=>{
+              return <option key={index} >{branch}</option>
+          })}</Input>
           </FormGroup>
         </Col>
       </Row>
