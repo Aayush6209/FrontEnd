@@ -6,10 +6,13 @@ import Login from "./components/login";
 import EventForm from "./components/eventForm"
 import ESNavbar from "./components/esNavbar";
 import EventCard from "./components/EventCard";
+import Sidebar from "./components/sidebar";
 
 const App = ()=>{
-  return <>
+  return <div>
   <ESNavbar/>
+  <Sidebar/>
+  <div className="Content">
   <Jumbotron style={{
     display : "block"
   }}>
@@ -20,7 +23,8 @@ const App = ()=>{
   <Login/>
   <EventForm/>
   <EventCard />
-  </>;
+  </div>
+  </div>;
 }
 
 export default App;

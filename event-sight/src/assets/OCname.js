@@ -1,4 +1,4 @@
-export const OCnames = ["--Select--","Aerospace Technical Society" ,
+export const OCnames = ["Aerospace Technical Society" ,
 "American Society of Civil Engineers" ,
 "Indian Institute of Metals" ,
 "Astronomy and Space Physics Society ",

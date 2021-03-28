@@ -2,12 +2,9 @@
 .ESNavbar{
     background-color: white;
     position: fixed;
-    top: 4px;
-    left: 2.5%;
-    width: 95%;
+    width: 100%;
     z-index: 999;
     height: fit-content;
-    border-radius: 50px;
     box-shadow: 1px 0.5px 10px #1d3557;
 }
 
@@ -18,7 +15,7 @@
     font-size: 40px;
     margin: 0 ,10px ,10px, 0;
     font-weight: 500;
-    color: #1d3557;
+    color: #ee6c4d;
     padding-left: 20px;
 }
 
@@ -33,13 +30,13 @@
     padding-left: 20px;
 }
 .ESNavbarIcons{
-    color: #e63946;
+    color: #3d5a80;
     display: inline-block;
     transition: transform .2s;
     margin: 3px 15px ;
 }
 .ESNavbarIcons:hover{
-    color: #1d3557;
+    color: #293241;
     transform: scale(1.15);
 }
 /* login page */
@@ -116,4 +113,36 @@
 .CardIcons:hover{
     color: #ff0000;
     transform: scale(1.15);
+}
+/* sidebar */
+
+.Sidebar{
+    background-color: black;
+    width: 18%;
+    left : 0;
+    height: 100%;
+    position: fixed;
+    top : 65px;
+    overflow: scroll;
+}
+
+
+.SidebarCard{
+    width: 90%;
+    left: 4%;
+    margin: 0 10px 10px 0;
+    padding-bottom: 2px;
+    box-shadow: 0.5px 0.5px 1px black;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.SidebarHeading{
+    text-align: center;
+    padding: 2%;
+    color: white;
+}
+
+.Content{
+    margin-left: 18%;
 }
