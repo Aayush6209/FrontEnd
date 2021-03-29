@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Branches} from "../assets/Branches";
 import { Col, Row, Button, FormGroup, Label, Input } from 'reactstrap';
-
+import axios from "../axios";
 const SignUp = ()=>{
 
   const [user, onUserChange] = useState({
@@ -69,7 +69,18 @@ const SignUp = ()=>{
           </FormGroup>
       </Col></Row>
       <Button onClick={()=>{
-        console.log(user);
+        axios.post("/register/",
+          {
+            "password": "user2@123",
+            "username": "19103002",
+            "first_name": "Person",
+            "last_name": "2",
+            "email": "person2@gmail.com"
+        }
+        )
+        .then((res)=>{
+          console.log(res)
+        })
       }}>Sign Up</Button>
     </div>
     </div>

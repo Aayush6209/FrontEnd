@@ -5,6 +5,14 @@ font-family: 'Niconne', cursive;
 font-family: 'Pacifico', cursive;
  */
 
+.logo{
+    font-family: 'Niconne', cursive;
+    font-size : 46px;
+    margin : 0;
+    font-weight : 500;
+    color : white;
+  }
+
 /* navbar */
 .ESNavbar{
     position: fixed;
@@ -91,6 +99,7 @@ font-family: 'Pacifico', cursive;
     margin : 1%;
     margin-top: 3%;
     margin-right: 5%;
+    font-size: 2.2rem;
 }
 
 /* sidebar */
@@ -181,3 +190,25 @@ font-family: 'Pacifico', cursive;
 }
 
 /* Auth Page */
+
+.AuthPageTitle{
+    font-family: 'Niconne', cursive;
+    font-size: 7rem;
+    margin: 15% 5% 5% 0;
+}
+
+.AuthLoginDiv{
+    box-shadow: 0 0 3px black;
+    border-radius: 5px;
+    padding : 5%;
+    width: 100%;
+    margin-top : 5%;
+}
+
+.AuthSignUpOption{
+    box-shadow: 0 0 3px black;
+    border-radius: 5px;
+    padding : 5%;
+    margin-top : 5%;
+    width: 100%;
+}

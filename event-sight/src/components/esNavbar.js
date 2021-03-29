@@ -11,7 +11,6 @@ import {
   Collapse,
   Navbar,
   NavbarToggler,
-  NavbarBrand,
   Nav,
   NavItem,
   NavLink,
@@ -43,12 +42,8 @@ const Example = () => {
   
     return (
       <div>
-        <Navbar className="ESNavbar" color="dark" light expand="md">
-          <NavbarBrand style={{
-              color : "white",
-              fontWeight: "100",
-fontFamily: "'Niconne', cursive"
-          }}>Event Sight</NavbarBrand> 
+        <Navbar style={{height:"60px"}} className="ESNavbar" color="dark" light expand="md">
+          <h1 className="logo">Event Sight</h1>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
