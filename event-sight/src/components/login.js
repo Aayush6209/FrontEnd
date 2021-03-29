@@ -20,9 +20,7 @@ const Login = ()=>{
       })
   }
 
-    return <div>
-        <h1>Login</h1>
-    <div>
+    return  <div>
     <Row>
         <Col>
         <FormGroup>
@@ -61,8 +59,7 @@ const Login = ()=>{
       <Button onClick={()=>{
         console.log(user)
       }}>Login</Button>
-     </div>
-    </div>
+     </div>;
 }
 
 export default Login;
