@@ -7,9 +7,11 @@ import EventForm from "./components/eventForm";
 import AuthUser from "./container/authUser"
 import OCList from "./container/ocList";
 import OCPage from "./container/OCPage";
+import SignUp from "./components/signup";
+import EventPage from "./container/eventPage";
 
 const App = ()=>{
-  return <>
+  return <div>
   <div><ESNavbar/></div>
   <div className="mainContent">
     <Switch>
@@ -17,11 +19,13 @@ const App = ()=>{
       <Route path="/" exact component={Homepage} />
       <Route path="/auth-user" exact component={AuthUser} />
       <Route path="/oc-list" exact component={OCList}/>
-      <Route Path="/oc-page" exact component={OCPage}/>
+      <Route path="/oc-page" exact component={OCPage}/>
+      <Route path="/signup" exact component={SignUp}/>
+      <Route path="/event" exact component={EventPage}/>
       <Redirect to="/"/>
       </Switch>
   </div>
-  </>;
+  </div>;
 }
 
 export default App;

@@ -22,9 +22,9 @@ const SignUp = ()=>{
       })
   }
 
-    return <div>
-    <h1 >Sign Up</h1>
-    <div>
+    return <div className="SignupDiv">
+      <h1 className="Signupheader">Sign Up</h1>
+      <div className="SignupForm">
       <Row form>
         <Col md={6}>
           <FormGroup>
@@ -82,8 +82,7 @@ const SignUp = ()=>{
           console.log(res)
         })
       }}>Sign Up</Button>
-    </div>
-    </div>
+    </div></div>;
 }
 
 export default SignUp;

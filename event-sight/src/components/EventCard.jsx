@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import {
   Card,CardText, CardBody,
   CardTitle, CardSubtitle, Container, Row, Col 
@@ -20,7 +21,7 @@ const EventCard = (props) => {
             <Row>
               <Col><div style={{display:"inline-block"}}><HiSaveAs size="32px" className="CardIcons"/></div></Col>
               <Col><div style={{display:"inline-block"}}><MdEvent size="32px" className="CardIcons"/></div></Col>
-              <Col><div style={{display:"inline-block"}}><BsInfoCircle size="32px" className="CardIcons"/></div></Col>
+              <Col><div style={{display:"inline-block"}}><Link to="/event"><BsInfoCircle size="32px" className="CardIcons"/></Link></div></Col>
             </Row>
           </Container>
         </CardBody>

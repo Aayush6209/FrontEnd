@@ -49,7 +49,7 @@ const Login = ()=>{
      
      { user.role === "Admin" && <Row><Col>
       <FormGroup>
-            <Label for="OC">Select Society/Club/Ed-Board</Label>
+            <Label for="OC">Select Society / Club / Ed-Board</Label>
             <Input type="select" name="OC" value={user.oc} onChange={changeHandler}>
             {OCnames.map((oc, index)=>{
               return <option key={index} >{oc}</option>
