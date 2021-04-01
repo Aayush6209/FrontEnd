@@ -6,7 +6,7 @@ import { InputGroup, InputGroupAddon, Button, Input ,Tooltip} from 'reactstrap';
 const CommentSection = ()=>{
     //just for testing
     var foo = [];
-    for (var i = 1; i <= 10; i++) {foo.push(i);}
+    for (var i = 1; i <= 13; i++) {foo.push(i);}
 
     //for tooltip
     const [tooltipOpen, setTooltipOpen] = useState(false);

@@ -10,7 +10,7 @@ const Homepage = ()=>{
     for (var i = 1; i <= 20; i++) {foo.push(i);}
     return <>
     <Sidebar/>
-    <Row lg="3" md="2" sm="2" xs="1">
+    <Row lg="4" md="2" sm="2" xs="1">
     {
         foo.map(k=><Col key={k} ><EventCard/></Col>)
     }

@@ -1,14 +1,17 @@
-
 import React from "react";
+import {Row, Col} from "reactstrap";
+import EventInfo from "../components/eventInfo";
 import CommentSection from "../components/commentSection";
 
 const EventPage = ()=>{
     return <div style={{
         width : "100%"
     }}>
-    <h1>Event Page</h1>
-    <h2>Info Div</h2>
-    <CommentSection/>
+        <Row>
+            <Col lg="8"><EventInfo/></Col>
+            <Col lg="4"><CommentSection/></Col>
+        </Row>
+    
     </div>;
 }
 
