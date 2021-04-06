@@ -244,18 +244,39 @@ font-family: 'Pacifico', cursive;
 .SignupForm{
     padding: 6%;
 }
+/* ---------------------------EVENT PAGE-------------------------------- */
+
+.EventPageButtonsDiv{
+    width: 100%;
+    box-shadow: 0 0 3px black;
+    border-radius: 10px;
+    height: 100px;
+    margin-bottom: 10px;
+    margin-left: 2%;
+}
+
+.EventPageButtonsUpper{
+    margin: 2% 5% 1% 5%;
+    width: 90%;
+}
+
+.EventPageButtonsLower{
+    width: 91%;
+    margin-left: 4.5%;
+}
 
 /* comment section */
 .CommentSectionDiv{
     width: 100%;
     box-shadow: 0 0 3px black;
-    height: 650px;
+    height: 540px;
     border-radius: 10px;
+    margin-left: 2%;
 }
 
 .CommentsDiv{
     width: 100%;
-    height: 590px;
+    height: 480px;
     overflow: scroll;
 }
 
@@ -309,4 +330,66 @@ font-family: 'Pacifico', cursive;
     height: 900px;
     background-size: contain;
     background-repeat: no-repeat;
+}
+.EventInfo{
+    width: 90%;
+    display: flex;  
+  flex-wrap: wrap;
+  margin: 0% 5% 0% 5%;
+  word-wrap: wrap;
+  word-break: break-all;
+  font-family: 'Lato', sans-serif;
+  font-size: 19px;
+}
+
+/* --------------------------------Member Requests------------------------- */
+
+.MemberRequestDiv{
+    height: 400px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+    width: 270px;
+    overflow-x: hidden;
+}
+
+.MemberRequest{
+    width: 264px;
+    height: 50px;
+    box-shadow : 0 0 2px rgb(75, 73, 73);
+    margin: 3px;
+    border-radius: 5px;
+}
+
+
+.MemberRequestDiv::-webkit-scrollbar {
+    display: none;
+  }
+  
+.MemberRequestButton{
+    width: 30px;
+    height: 30px;
+    display: inline-block ;
+    border-radius: 30px;
+    margin-top: 10px;
+    padding-top: 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.Left{
+    margin-right: 3px;
+}
+
+.Right{margin-right: 3px;}
+
+.MRUpperText{
+    color: rgb(66,139,202);
+    font-size: 15px;
+    margin-top: 2px;
+    font-weight: 550;
+}
+
+.MRLowerText{
+    font-size: 15px;
+    font-weight: 500;
 }

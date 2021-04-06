@@ -39,14 +39,16 @@ const EventInfo = ()=>{
         <TabPane tabId="2">
             {/* Second Tab Content */}
             <h1 className="EventTitle">{SampleEvent.eventTitle}</h1>
-            <p>{SampleEvent.eventDescription}</p>
+            <div className="EventInfo">
+            <p  className="EventInfoElement">{SampleEvent.eventDescription}</p>
             <Row>
-                <Col>Date : {SampleEvent.eventDate}</Col>
-                <Col>Time : {SampleEvent.eventTime}</Col>
+                <Col lg="6" className="EventInfoElement">Date : {SampleEvent.eventDate}</Col>
+                <Col lg="6" className="EventInfoElement">Time : {SampleEvent.eventTime}</Col>
             </Row>
             {SampleEvent.eventDetails.map((detail, index)=>{
-                return <p key={index}>{detail}</p>
+                return <p key={index} className="EventInfoElement">{detail}</p>
             })}
+            </div>
         </TabPane>
 
        </TabContent> 

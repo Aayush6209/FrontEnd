@@ -1,10 +1,10 @@
 
 import {AiFillHome, AiOutlineLogout} from "react-icons/ai"
 import {MdEvent} from "react-icons/md";
-import {HiSaveAs} from "react-icons/hi";
+import {HiSaveAs, HiUserAdd} from "react-icons/hi";
 import {IoMdCreate} from "react-icons/io";
 import {RiBuilding2Line} from "react-icons/ri";
-
+import MemberRequests from "./MemberRequests";
 
 import React, { useState } from 'react';
 import {
@@ -39,6 +39,9 @@ const Example = () => {
 
     const [tooltipOpen6, setTooltipOpen6] = useState(false);
     const toggle6 = () => setTooltipOpen6(!tooltipOpen6);
+
+    const [tooltipOpen7, setTooltipOpen7] = useState(false);
+    const toggle7 = () => setTooltipOpen7(!tooltipOpen7);
   
     return (
       <div>
@@ -68,6 +71,16 @@ const Example = () => {
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen4} target="interestedEvents" toggle={toggle4}>
         Interested Events</Tooltip>
+        
+        {/*  */}
+        <NavItem id="MemberRequests">
+                <NavLink id="showMemberRequests"><HiUserAdd className="ESNavbarIcon" size="30px"/></NavLink>
+              </NavItem>
+              <MemberRequests/>
+              <Tooltip placement="bottom" isOpen={tooltipOpen7} target="MemberRequests" toggle={toggle7}>
+        Member Requests</Tooltip>
+        {/*  */}
+
               <NavItem id="oclist">
                 <NavLink href="/oc-list"><RiBuilding2Line className="ESNavbarIcon" size="30px"/></NavLink>
               </NavItem>
