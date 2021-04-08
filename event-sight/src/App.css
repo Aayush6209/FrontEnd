@@ -33,12 +33,13 @@ font-family: 'Acme', sans-serif;
 /* EventCards */
 
 .ESEventCard {
-  width: 300px;
-  margin: 3% 2% 2% 2%;
+  max-width: 70%;
+  margin: auto;
+  margin-bottom: 100px;
 }
 
 .ESEventCard:hover {
-  box-shadow: 5px 10px 20px 1px rgba(0, 0, 0, 0.253) !important;
+  box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.253) !important;
 }
 
 .CardImage {
@@ -50,27 +51,34 @@ font-family: 'Acme', sans-serif;
 }
 
 .overflow {
-  height: 290px;
   overflow: hidden;
 }
 
 .CardImage:hover {
-  transform: scale(1.2);
+  transform: scale(1.02);
 }
 
 .CardIconsDiv {
-  align-items: center;
+  text-align: center;
+  margin-top: 10px;
 }
 
-.CardIcons {
+.CardIcon {
   color: #000000;
   display: inline-block;
   transition: transform 0.2s;
 }
 
-.CardIcons:hover {
+.CardIcon:hover {
   color: #ff0000;
   transform: scale(1.15);
+}
+.CardTitle{
+  font-family: "Acme", sans-serif;
+  font-size: 2rem;
+}
+.CardContent{
+  font-family: "Ubuntu", sans-serif;
 }
 
 /* OC Card */

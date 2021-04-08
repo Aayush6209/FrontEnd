@@ -33,7 +33,7 @@ const OCPage = ()=>{
         </Row>    
     </div>
     <div className="OCPageBody">
-        <Row lg="2" md="1" sm="1" xs="1">
+        <Row lg="1" md="1" sm="1" xs="1">
     {
         foo.map(k=><Col key={k} ><EventCard/></Col>)
     }

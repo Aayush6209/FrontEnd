@@ -1,0 +1,1 @@
+export const Img = {img: "https://venngage-wordpress.s3.amazonaws.com/uploads/2018/11/Blue-Conservation-Creative-Poster-Example-Template.jpg"};
