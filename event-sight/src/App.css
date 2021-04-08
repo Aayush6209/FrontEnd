@@ -33,7 +33,7 @@ font-family: 'Acme', sans-serif;
 /* EventCards */
 
 .ESEventCard {
-  max-width: 70%;
+  max-width: 600px;
   margin: auto;
   margin-bottom: 100px;
 }
@@ -295,7 +295,7 @@ font-family: 'Acme', sans-serif;
 
 .CommentUser {
   font-size: 20px;
-  color: rgb(0, 0, 0);
+  color: rgba(0, 37, 201, 0.726);
   font-weight: 500;
 }
 
@@ -349,7 +349,7 @@ font-family: 'Acme', sans-serif;
 }
 .EventInfoIntro {
   font-weight: 500;
-  color: rgb(0, 0, 0);
+  color: rgb(85, 85, 85)
 }
 .EventInfoDate {
   font-weight: 500;
@@ -363,7 +363,7 @@ font-family: 'Acme', sans-serif;
 }
 .EventInfoDetail{
     font-weight: 500;
-    color: rgb(85, 85, 85)
+    color: rgb(0, 0, 0);
 }
 
 /* --------------------------------Member Requests------------------------- */
@@ -408,7 +408,7 @@ font-family: 'Acme', sans-serif;
 }
 
 .MRUpperText {
-  color: rgb(66, 139, 202);
+  color: rgba(0, 37, 201, 0.726);
   font-size: 15px;
   margin-top: 2px;
   font-weight: 550;

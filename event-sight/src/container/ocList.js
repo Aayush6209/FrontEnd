@@ -10,7 +10,7 @@ const OCList = ()=>{
     for (var i = 1; i <= 5; i++) {foo.push(i);}
 
     return <>
-    <Row lg="2">
+    <Row lg="2" md="1" sm="1" xs="1">
         {
         foo.map((a)=><Col key={a}><Link to="/oc-page" className="OCListLink"><OCCard/></Link></Col>)
         }
