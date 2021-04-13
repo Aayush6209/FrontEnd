@@ -22,6 +22,7 @@ const App = ()=>{
       <Route path="/oc-page" exact component={OCPage}/>
       <Route path="/signup" exact component={SignUp}/>
       <Route path="/event" exact component={EventPage}/>
+      
       <Redirect to="/"/>
       </Switch>
   </div>

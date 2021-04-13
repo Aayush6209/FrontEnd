@@ -45,7 +45,7 @@ const Example = () => {
   
     return (
       <div>
-        <Navbar style={{height:"60px"}} className="ESNavbar" color="dark" light expand="md">
+        <Navbar className="ESNavbar" color="dark" light expand="md">
           <h1 className="logo">Event Sight</h1>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>

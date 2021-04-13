@@ -3,7 +3,7 @@ import {Row, Col} from "reactstrap";
 
 import EventCard from "../components/EventCard";
 import Sidebar from "../components/sidebar";
-import {Img} from "../assets/URLImages"
+import {Img} from "../assets/URLImages";
 
 const Homepage = ()=>{
     //testing
