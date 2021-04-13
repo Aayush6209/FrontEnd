@@ -33,9 +33,10 @@ font-family: 'Acme', sans-serif;
 /* EventCards */
 
 .ESEventCard {
-  max-width: 600px;
+  min-width: 150px;
+  max-width: 400px;
   margin: auto;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 }
 
 .ESEventCard:hover {
@@ -43,7 +44,6 @@ font-family: 'Acme', sans-serif;
 }
 
 .CardImage {
-  height: 100%;
   width: 100%;
   background-size: 100%;
   transform: scale(1);
@@ -167,30 +167,40 @@ font-family: 'Acme', sans-serif;
 /* oc page */
 
 .OCPageHeader {
-  background-color: rgba(230, 230, 230, 0.384);
-  height: 250px;
+  background-color: rgb(255, 255, 255);
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  font-family: "Ubuntu", sans-serif;
   width: 100%;
 }
 
 .OCPageHeaderImg {
-  height: 150px;
   width: 150px;
+  max-width: 80%;
   border-radius: 150px;
-  margin-top: 17%;
+  margin-top: 10%;
   margin-left: 20%;
 }
 
 .OCPageHeaderR1 {
   padding-top: 3%;
-  height: 50%;
+  size: 2rem;
 }
 .OCPageHeaderR2 {
-  height: 25%;
   padding-top: 3%;
 }
+
+.Followers{
+  color:rgb(30, 106, 247);
+}
+
+.Members{
+  color:rgb(255, 0, 0);
+}
+
 .OCPageHeaderR3 {
-  height: 25%;
+  color:rgb(75, 75, 75);
   padding-top: 3%;
+  padding-left: 2.5%;
 }
 
 .OCPageBody {
@@ -198,7 +208,12 @@ font-family: 'Acme', sans-serif;
 }
 
 .OCPageButtons {
-  width: 70%;
+  width: 85%;
+}
+
+.Follow{
+  padding-top: 5%;
+  margin-bottom: 3%;
 }
 
 .OCListLink {
