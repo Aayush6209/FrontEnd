@@ -1,1 +1,1 @@
-export const Img = {img: "https://content3.jdmagicbox.com/comp/chandigarh/c4/0172p1762.1762.110201201416.l1c4/catalogue/punjab-engineering-college-sector-12-chandigarh-colleges-9xhdnwx78q.jpg"};
+export const Img = {img: "https://pec.acm.org/wp-content/uploads/2020/11/podcast2.jpeg"};
