@@ -33,7 +33,7 @@ font-family: 'Acme', sans-serif;
 /* EventCards */
 
 .ESEventCard {
-  max-width: 70%;
+  max-width: 60%;
   margin: auto;
   margin-bottom: 100px;
 }
@@ -44,7 +44,9 @@ font-family: 'Acme', sans-serif;
 
 .CardImage {
   height: 100%;
-  width: 100%;
+  margin-left: 10%;
+  width: 80%;
+  margin-right: 10%;
   background-size: 100%;
   transform: scale(1);
   transition: transform 0.2s;
