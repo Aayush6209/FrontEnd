@@ -1,6 +1,8 @@
 import React, {useState} from "react";
 import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 
+import ESAlert from "../UI/ESAlert";
+
 const EventForm = ()=>{
   const [event, setEvent] = useState({
     eventTitle : "",
@@ -80,7 +82,8 @@ const EventForm = ()=>{
       <Button onClick={()=>{
         console.log(event)
       }}>Add Event</Button>
-    </div></div>
+    </div>
+    </div>
 }
 
 export default EventForm;

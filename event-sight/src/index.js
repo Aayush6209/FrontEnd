@@ -10,9 +10,11 @@ import thunk from "redux-thunk";
 
 //importing reducers
 import userReducer from "./store/reducers/userReducer";
+import EventReducer from "./store/reducers/userReducer";
 
 const rootReducer = combineReducers({
   user : userReducer,
+  event : EventReducer
 });
 const store = createStore(rootReducer, applyMiddleware(thunk));
 

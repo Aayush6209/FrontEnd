@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Branches} from "../assets/Branches";
 import { Col, Row, Button, FormGroup, Label, Input } from 'reactstrap';
-import axios from "../axios";
+
 const SignUp = ()=>{
 
   const [user, onUserChange] = useState({

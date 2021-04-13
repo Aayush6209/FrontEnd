@@ -13,6 +13,8 @@ const CommentSection = ()=>{
 
   const toggle = () => setTooltipOpen(!tooltipOpen);
 
+  const [comment, setComment] = useState("");
+
 
     return <div className="CommentSectionDiv">
         <div className="CommentsDiv">
@@ -23,9 +25,13 @@ const CommentSection = ()=>{
         </div>
         <div className="CommentAdd">
     <InputGroup>
-       <Input placeholder="Type your comment"/>
+       <Input placeholder="Type your comment" name="comment" value={comment} onChange = {(event)=>{
+           setComment(event.target.value)
+       }} />
         <InputGroupAddon addonType="append">
-            <Button color="danger" id="postButton"><AiOutlineSend size="20px"/></Button>
+            <Button color="danger" id="postButton" onClick={()=>{
+                console.log(comment)
+            }}><AiOutlineSend size="20px"/></Button>
             <Tooltip placement="bottom" isOpen={tooltipOpen} target="postButton" toggle={toggle}>Post Comment</Tooltip>
         </InputGroupAddon>
         </InputGroup>
