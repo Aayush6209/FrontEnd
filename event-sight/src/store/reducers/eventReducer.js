@@ -6,6 +6,7 @@ const initialState = {
 
 const EventReducer = (state = initialState, action) => {
   switch (action.type) {
+    
     //EVENT REGISTRATION
     case actionTypes.EVENT_REGISTRATION_REQ:
       return {
@@ -35,6 +36,23 @@ const EventReducer = (state = initialState, action) => {
         showAlert: true,
       };
     case actionTypes.DISPLAY_REGISTERED_EVENTS_FAILURE:
+      return {
+        ...state,
+        showAlert: true,
+      };
+
+    //ADD EVENT TO INTERESTED
+    case actionTypes.EVENT_INTERESTED_REQ:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.EVENT_INTERESTED_SUCCESS:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.EVENT_INTERESTED_FAILURE:
       return {
         ...state,
         showAlert: true,

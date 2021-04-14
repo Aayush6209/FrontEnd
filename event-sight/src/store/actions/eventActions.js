@@ -17,7 +17,7 @@ export const createNewEvent = (event)=>{
 // EVENT REGISTRATION
 export const registerEvent = (event)=>{
     return dispatch =>{
-        dispatch(registerEvent)
+        dispatch(registerEventReq)
         axios
         .post("", event)
         .then(res => {
@@ -82,6 +82,41 @@ export const displayRegisteredEventsSuccess = events=>{
 export const displayRegisteredEventsFailure = error=>{
     return {
         type: actionTypes.DISPLAY_REGISTERED_EVENTS_FAILURE,
+        payload: error
+    }
+}
+
+// ADD EVENT TO INTERESTED
+export const interested = (event)=>{
+    return dispatch =>{
+        dispatch(interestedReq)
+        axios
+        .post("", event)
+        .then(res => {
+            dispatch(interestedSuccess(res))
+        })
+        .catch(error => {
+            dispatch(interestedFailure(error))
+        })
+    }
+}
+
+export const interestedReq = ()=>{
+    return {
+        type: actionTypes.EVENT_INTERESTED_REQ,
+    }
+}
+
+export const interestedSuccess = events=>{
+    return {
+        type: actionTypes.EVENT_INTERESTED_SUCCESS,
+        payload: events
+    }
+}
+
+export const interestedFailure = error=>{
+    return {
+        type: actionTypes.EVENT_INTERESTED_FAILURE,
         payload: error
     }
 }
