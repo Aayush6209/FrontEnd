@@ -14,6 +14,7 @@ export const createNewEvent = (event)=>{
     }
 }
 
+// DISPLAY REGISTERED EVENTS
 export const displayRegisteredEvents = ()=>{
     return dispatch =>{
         dispatch(displayRegisteredEventsReq)
@@ -45,6 +46,42 @@ export const displayRegisteredEventsSuccess = events=>{
 export const displayRegisteredEventsFailure = error=>{
     return {
         type: actionTypes.DISPLAY_REGISTERED_EVENTS_FAILURE,
+        payload: error
+    }
+}
+
+//DISPLAY INTERESTED EVENTS
+export const displayInterestedEvents = ()=>{
+    return dispatch =>{
+        dispatch(displayInterestedEventsReq)
+        axios
+        .get('')
+        .then(res => {
+            const events = res.data
+            dispatch(displayInterestedEventsSuccess(events))
+        })
+        .catch(error => {
+            dispatch(displayInterestedEventsFailure(error))
+        })
+    }
+}
+
+export const displayInterestedEventsReq = ()=>{
+    return {
+        type: actionTypes.DISPLAY_INTERESTED_EVENTS_REQ,
+    }
+}
+
+export const displayInterestedEventsSuccess = events=>{
+    return {
+        type: actionTypes.DISPLAY_INTERESTED_EVENTS_SUCCESS,
+        payload: events
+    }
+}
+
+export const displayInterestedEventsFailure = error=>{
+    return {
+        type: actionTypes.DISPLAY_INTERESTED_EVENTS_FAILURE,
         payload: error
     }
 }
