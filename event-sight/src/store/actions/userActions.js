@@ -43,6 +43,44 @@ export const loginInit = (user)=>{
         axios.post(requestURL, data)
         .then((res)=>{
             console.log(res)
+            const userData = {
+                firstName :  res.data.credentials.first_name,
+                lastName :  res.data.credentials.last_name,
+                sid :  res.data.credentials.student_id,
+                branch : res.data.credentials.branch,
+                email : res.data.credentials.email,
+                password :  res.data.credentials.password,
+                token : res.data.token,
+                role : user.role,
+                OCName : user.OC 
+            }
+            dispatch({
+                type : actionTypes.LOGIN_SUCCESS,
+                userInfo : userData
+            })
+        })
+        .catch((err)=>{
+            console.log(err)
+            dispatch({
+                type : actionTypes.LOGIN_FAILED
+            })
+        })
+    }
+}
+
+export const logout = (sid, token)=>{
+    return (dispatch)=>{
+        const requestURL = "http://127.0.0.1:8000/logout/";
+        const data = {
+            "student_id" : sid,
+            "token" : token
+        }
+        axios.post(requestURL, data)
+        .then((res)=>{
+            console.log(res)
+            dispatch({
+                type : actionTypes.LOGOUT
+            })
         })
         .catch((err)=>{
             console.log(err)

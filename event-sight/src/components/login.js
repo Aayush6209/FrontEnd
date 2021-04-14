@@ -2,9 +2,13 @@ import React, {useState} from "react";
 import {OCnames} from "../assets/OCname";
 import { Col, Row, Button, FormGroup, Label, Input } from 'reactstrap';
 
-import axios from "axios";
+import * as  userActions from "../store/actions/userActions";
+import * as actionTypes from "../store/actions/actionTypes";
+import {connect} from "react-redux";
 
-const Login = ()=>{
+import ESAlert from "../UI/ESAlert";
+
+const Login = (props)=>{
 
   const [user, onUserChange] = useState({
     sid : "",
@@ -20,6 +24,12 @@ const Login = ()=>{
           [event.target.name] : event.target.value
         }
       })
+  }
+
+  if(props.showAlert){
+    setTimeout(()=>{
+      props.hideAlert();
+    },5000)
   }
 
     return  <div>
@@ -60,23 +70,26 @@ const Login = ()=>{
       </Col></Row>}
       <Button onClick={()=>{
         console.log(user)
-        const requestURL = "http://127.0.0.1:8000/login/";
-        const data = {
-            "password" : user.password,
-            "student_id" : user.sid,
-            "role" : user.role,
-            "club" : user.OC
-        }
-        console.log(data)
-        axios.post(requestURL, data)
-        .then((res)=>{
-            console.log(res)
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+        props.loginInit(user);
       }}>Login</Button>
+
+    {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}
      </div>;
 }
 
-export default Login;
+const mapStateToProps = (state)=>{
+  return{
+    showAlert : state.user.showAlert,
+    AlertText : state.user.AlertText,
+    AlertColor : state.user.AlertColor
+  }
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    hideAlert : ()=>dispatch({type : actionTypes.HIDE_ALERT}),
+    loginInit : (user)=>dispatch(userActions.loginInit(user))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -11,7 +11,8 @@ const initialState = {
         showAlert : false,
         AlertColor : null,
         AlertText : null,
-        role : null
+        role : null,
+        OCName : null
 }
 
 const userReducer = (state = initialState, action)=>{
@@ -38,6 +39,36 @@ const userReducer = (state = initialState, action)=>{
                 showAlert : true,
                 AlertColor : "danger",
                 AlertText : "Invalid Credentials or User Already Exists"
+            }
+        case actionTypes.LOGOUT :
+            return {
+                firstName :  null,
+                lastName :  null,
+                sid :  null,
+                branch : null,
+                email : null,
+                password :  null,
+                token : null,
+                showAlert : false,
+                AlertColor : null,
+                AlertText : null,
+                role : null,
+                OCName : null
+            }
+        case actionTypes.LOGIN_SUCCESS :
+            return {
+                ...state,
+                ...action.userInfo,
+                showAlert : true,
+                AlertColor : "success",
+                AlertText : "Welcome " + action.userInfo.firstName
+            }
+        case actionTypes.LOGIN_FAILED :
+            return {
+                ...state,
+                showAlert : true,
+                AlertColor : "danger",
+                AlertText : "Invalid Login Credentials"
             }
         default : return state;
     }

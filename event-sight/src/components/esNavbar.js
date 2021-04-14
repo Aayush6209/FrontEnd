@@ -17,7 +17,10 @@ import {
   Tooltip
 } from 'reactstrap';
 
-const Example = () => {
+import {connect} from "react-redux";
+import * as userActions from "../store/actions/userActions";
+
+const ESNavbar = (props) => {
     const [isOpen, setIsOpen] = useState(false);
   
     const toggle = () => setIsOpen(!isOpen);
@@ -86,8 +89,10 @@ const Example = () => {
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen5} target="oclist" toggle={toggle5}>
         Organisers</Tooltip>
-              <NavItem id="logout">
-                <NavLink href="/auth-user"><AiOutlineLogout className="ESNavbarIcon" size="30px"/></NavLink>
+              <NavItem id="logout" onClick={()=>{
+                props.logout(props.sid, props.token);
+              }}>
+                <NavLink><AiOutlineLogout className="ESNavbarIcon" size="30px"/></NavLink>
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen6} target="logout" toggle={toggle6}>
         Logout</Tooltip>
@@ -97,5 +102,18 @@ const Example = () => {
       </div>
     );
   }
+
+  const mapStateToProps = (state)=>{
+    return {
+      sid : state.user.sid,
+      token : state.user.token
+    }
+  }
+
+  const mapDispatchToProps = (dispatch)=>{
+    return {
+      logout : (sid, token)=>dispatch(userActions.logout(sid, token))
+    }
+  }
   
-  export default Example;
+  export default connect( mapStateToProps, mapDispatchToProps )(ESNavbar);
