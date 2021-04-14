@@ -14,6 +14,42 @@ export const createNewEvent = (event)=>{
     }
 }
 
+// EVENT REGISTRATION
+export const registerEvent = (event)=>{
+    return dispatch =>{
+        dispatch(registerEvent)
+        axios
+        .post("", event)
+        .then(res => {
+            dispatch(registerEventSuccess(res))
+        })
+        .catch(error => {
+            dispatch(registerEventFailure(error))
+        })
+    }
+}
+
+export const registerEventReq = ()=>{
+    return {
+        type: actionTypes.EVENT_REGISTRATION_REQ,
+    }
+}
+
+export const registerEventSuccess = events=>{
+    return {
+        type: actionTypes.EVENT_REGISTRATION_SUCCESS,
+        payload: events
+    }
+}
+
+export const registerEventFailure = error=>{
+    return {
+        type: actionTypes.EVENT_REGISTRATION_FAILURE,
+        payload: error
+    }
+}
+
+
 // DISPLAY REGISTERED EVENTS
 export const displayRegisteredEvents = ()=>{
     return dispatch =>{
