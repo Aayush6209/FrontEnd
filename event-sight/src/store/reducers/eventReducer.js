@@ -6,6 +6,24 @@ const initialState = {
 
 const EventReducer = (state = initialState, action) => {
   switch (action.type) {
+
+    //EVENT REGISTRATION
+    case actionTypes.EVENT_REGISTRATION_REQ:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.EVENT_REGISTRATION_SUCCESS:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.EVENT_REGISTRATION_FAILURE:
+      return {
+        ...state,
+        showAlert: true,
+      };
+
     //DISPLAY REGISTERED EVENTS
     case actionTypes.DISPLAY_REGISTERED_EVENTS_REQ:
       return {
@@ -23,6 +41,23 @@ const EventReducer = (state = initialState, action) => {
         showAlert: true,
       };
 
+    //ADD EVENT TO INTERESTED
+    case actionTypes.EVENT_INTERESTED_REQ:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.EVENT_INTERESTED_SUCCESS:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.EVENT_INTERESTED_FAILURE:
+      return {
+        ...state,
+        showAlert: true,
+      };
+
     //DISPLAY INTERESTED EVENTS
     case actionTypes.DISPLAY_INTERESTED_EVENTS_REQ:
       return {
@@ -35,6 +70,40 @@ const EventReducer = (state = initialState, action) => {
         showAlert: true,
       };
     case actionTypes.DISPLAY_INTERESTED_EVENTS_FAILURE:
+      return {
+        ...state,
+        showAlert: true,
+      };
+
+    // POST COMMENT
+    case actionTypes.POST_COMMENT_REQ:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.POST_COMMENT_SUCCESS:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.POST_COMMENT_FAILURE:
+      return {
+        ...state,
+        showAlert: true,
+      };
+
+    // DISPLAY COMMENTS
+    case actionTypes.DISPLAY_COMMENTS_REQ:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.DISPLAY_COMMENTS_SUCCESS:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.DISPLAY_COMMENTS_FAILURE:
       return {
         ...state,
         showAlert: true,
