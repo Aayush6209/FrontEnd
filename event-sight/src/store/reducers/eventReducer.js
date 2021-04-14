@@ -2,10 +2,14 @@ import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
   showAlert: false,
+  AlertText : null,
+  AlertColor : null
 };
 
 const EventReducer = (state = initialState, action) => {
   switch (action.type) {
+
+
 
     //EVENT REGISTRATION
     case actionTypes.EVENT_REGISTRATION_REQ:

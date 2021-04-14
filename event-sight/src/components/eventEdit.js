@@ -1,31 +1,45 @@
 import React, {useState} from "react";
-import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
+import {FiEdit} from "react-icons/fi";
+import { Tooltip, Modal, ModalHeader, ModalBody, ModalFooter, 
+Row, Col, Input, Label, FormGroup, Button } from 'reactstrap';
 
-import {connect} from "react-redux";
-import * as eventActions from "../store/actions/eventActions";
 
-const EventForm = (props)=>{
-  const [event, setEvent] = useState({
-    eventTitle : "",
-    eventDescription : "",
-    eventDate : "",
-    eventTime : "",
-    eventDetails : "",
-    eventType : "",
-    eventImgURL : ""
-  })
+const EventEdit = (props)=>{
 
-  const changeHandler = (changeEvent)=>{
-    setEvent((prev)=>{
-      return {
-        ...prev,
-        [changeEvent.target.name] : changeEvent.target.value
+    const [event, setEvent] = useState({
+        eventTitle : "",
+        eventDescription : "",
+        eventDate : "",
+        eventTime : "",
+        eventDetails : "",
+        eventType : "",
+        eventImgURL : ""
+      })
+    
+      const changeHandler = (changeEvent)=>{
+        setEvent((prev)=>{
+          return {
+            ...prev,
+            [changeEvent.target.name] : changeEvent.target.value
+          }
+        })
       }
-    })
-  }
 
-    return <div><h1 >Event Form</h1>
-     <div >
+    const [tooltipOpen, setTooltipOpen] = useState(false);
+    const toggle = () => setTooltipOpen(!tooltipOpen);
+
+    const [modal, setModal] = useState(false);
+    const modelToggle = () => setModal(!modal);
+
+    return <>
+    <div className="eventEditButton" id="eventEdit" onClick={modelToggle}><FiEdit size="32px"/></div>
+    <Tooltip placement="bottom" isOpen={tooltipOpen} target="eventEdit" toggle={toggle}>
+        Edit Event
+      </Tooltip>
+      <Modal isOpen={modal} toggle={modelToggle}>
+          <ModalHeader></ModalHeader>
+          <ModalBody>
+          <div >
      <FormGroup>
          <Row>
          <Col>
@@ -81,21 +95,13 @@ const EventForm = (props)=>{
           </Row>
       </FormGroup>
       <Button onClick={()=>{
-        console.log(event)
-        props.createNewEvent(event)
-      }}>Add Event</Button>
+          console.log(event)
+      }}>Update Event</Button>
     </div>
-    </div>
+          </ModalBody>
+          <ModalFooter></ModalFooter>
+      </Modal>
+    </>;
 }
 
-const mapStateToProps = (state)=>{
-  return {}
-}
-
-const mapDispatchToProps = (dispatch)=>{
-  return {
-    createNewEvent : (event)=>dispatch(eventActions.createNewEvent(event)),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(EventForm);
+export default EventEdit;

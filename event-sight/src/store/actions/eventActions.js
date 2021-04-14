@@ -1,18 +1,35 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
 
+// export const createNewEvent = (event, sid, token)=>{
 export const createNewEvent = (event)=>{
-    return dispatch =>{
-        axios.post("", event)
+    return (dispatch) =>{
+        const requestURL = "http://127.0.0.1:8000/create_event/";
+        const data = {
+            "title" : event.eventTitle,
+            "description" : event.eventDescription,
+            "details" : event.eventDetails,
+            "date_time" : event.eventDate + " " + event.eventTime + ":00",
+            "open_to_all" : event.eventType === "MemberSpecific" ? "False" : "True",
+            "image_url" : event.eventImgURL,
+            // "student_id" : sid,
+            // "token" : token
+            "student_id" : "19103007",
+            "token" : "CtqbsteIyuHm20jpLAEh87Oyl6CQ4J2w"
+        };
+        console.log(data)
+        axios.post(requestURL, data)
         .then((res)=>{
             console.log(res)
-            
         })
         .catch((err)=>{
             console.log(err)
         })
     }
 }
+
+
+
 
 // EVENT REGISTRATION
 export const registerEvent = (event)=>{

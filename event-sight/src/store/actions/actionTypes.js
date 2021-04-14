@@ -9,9 +9,16 @@ export const LOGOUT = "LOGOUT";
 export const HIDE_ALERT = "HIDE_ALERT";
 
 
-
 //EVENT ACTIONS
-export const EVENT_CREATED = "EVENT_CREATED";
+export const EVENT_CREATE_SUCCESS = "EVENT_CREATE_SUCCESS";
+export const EVENT_CREATE_FAILED = "EVENT_CREATE_FAILED";
+
+
+
+
+
+
+
 
 // -Register for Event
 export const EVENT_REGISTRATION_REQ ="EVENT_REGISTRATION_REQ";

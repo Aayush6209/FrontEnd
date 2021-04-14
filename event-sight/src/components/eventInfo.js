@@ -4,6 +4,8 @@ import classnames from 'classnames';
 
 import Sample from "../assets/sample.jpg";
 import {SampleEvent} from "../assets/sampleEvent";
+import EventEdit from "./eventEdit";
+
 
 const createDOMPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
@@ -37,6 +39,7 @@ const EventInfo = ()=>{
             <span style={{cursor : "pointer"}}>Detailed Info</span>
           </NavLink>
         </NavItem>
+        <NavItem><EventEdit /></NavItem>
       </Nav>
 
       <TabContent activeTab={activeTab}>

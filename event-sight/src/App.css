@@ -381,6 +381,25 @@ font-family: 'Acme', sans-serif;
     color: rgb(0, 0, 0);
 }
 
+.eventEditButton{
+  background-color: #FE5F55;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  color: white;
+  border-radius: 45px;
+  padding-top: 5px;
+  box-shadow: 0 0 3px #FE5F55;
+  cursor: pointer;
+  right: 40px;
+  position: absolute;
+  top : 10px;
+}
+.eventEditButton:hover{
+  box-shadow: 0 0 3px black;
+}
+
+
 /* --------------------------------Member Requests------------------------- */
 
 .MemberRequestDiv {
