@@ -156,3 +156,37 @@ export const displayInterestedEventsFailure = error=>{
         payload: error
     }
 }
+
+// POST COMMENT
+export const postComment = (comment)=>{
+    return dispatch =>{
+        dispatch(postCommentReq)
+        axios
+        .post("", comment)
+        .then(res => {
+            dispatch(postCommentSuccess(res))
+        })
+        .catch(error => {
+            dispatch(postCommentFailure(error))
+        })
+    }
+}
+export const postCommentReq = ()=>{
+    return {
+        type: actionTypes.POST_COMMENT_REQ,
+    }
+}
+
+export const postCommentSuccess = comment=>{
+    return {
+        type: actionTypes.POST_COMMENT_SUCCESS,
+        payload: comment
+    }
+}
+
+export const postCommentFailure = error=>{
+    return {
+        type: actionTypes.POST_COMMENT_FAILURE,
+        payload: error
+    }
+}
