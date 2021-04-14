@@ -92,6 +92,23 @@ const EventReducer = (state = initialState, action) => {
         showAlert: true,
       };
 
+    // DISPLAY COMMENTS
+    case actionTypes.DISPLAY_COMMENTS_REQ:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.DISPLAY_COMMENTS_SUCCESS:
+      return {
+        ...state,
+        showAlert: true,
+      };
+    case actionTypes.DISPLAY_COMMENTS_FAILURE:
+      return {
+        ...state,
+        showAlert: true,
+      };
+
     default:
       return state;
   }

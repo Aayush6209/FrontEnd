@@ -190,3 +190,39 @@ export const postCommentFailure = error=>{
         payload: error
     }
 }
+
+//DISPLAY COMMENTS
+export const displayComments = ()=>{
+    return dispatch =>{
+        dispatch(displayCommentsReq)
+        axios
+        .get('')
+        .then(res => {
+            const comments = res.data
+            dispatch(displayCommentsSuccess(comments))
+        })
+        .catch(error => {
+            dispatch(displayCommentsFailure(error))
+        })
+    }
+}
+
+export const displayCommentsReq = ()=>{
+    return {
+        type: actionTypes.DISPLAY_COMMENTS_REQ,
+    }
+}
+
+export const displayCommentsSuccess = comments=>{
+    return {
+        type: actionTypes.DISPLAY_COMMENTS_SUCCESS,
+        payload: comments
+    }
+}
+
+export const displayCommentsFailure = error=>{
+    return {
+        type: actionTypes.DISPLAY_COMMENTS_FAILURE,
+        payload: error
+    }
+}
