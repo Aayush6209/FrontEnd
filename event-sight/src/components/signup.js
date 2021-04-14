@@ -2,7 +2,12 @@ import React, {useState} from "react";
 import {Branches} from "../assets/Branches";
 import { Col, Row, Button, FormGroup, Label, Input } from 'reactstrap';
 
-const SignUp = ()=>{
+
+import * as actionTypes from "../store/actions/actionTypes";
+import * as userActions from "../store/actions/userActions";
+import {connect} from "react-redux";
+
+const SignUp = (props)=>{
 
   const [user, onUserChange] = useState({
     firstName : "",
@@ -69,8 +74,24 @@ const SignUp = ()=>{
           </FormGroup>
       </Col></Row>
       <Button onClick={()=>{
-        console.log(user)}}>Sign Up</Button>
+        console.log(user);
+        }}>Sign Up</Button>
     </div></div>;
+}
+
+const mapStateToProps = (state)=>{
+  return{
+    showAlert : state.user.showAlert,
+    AlertText : state.user.AlertText,
+    AlertColor : state.user.AlertColor
+  }
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return{
+    hideAlert : ()=>dispatch({type : actionTypes.HIDE_ALERT}),
+    signupInit : (user)=>dispatch()
+  }
 }
 
 export default SignUp;
