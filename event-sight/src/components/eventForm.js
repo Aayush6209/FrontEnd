@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 
-import ESAlert from "../UI/ESAlert";
 
 const EventForm = ()=>{
   const [event, setEvent] = useState({

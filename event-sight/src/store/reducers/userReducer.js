@@ -10,7 +10,8 @@ const initialState = {
         token : null,
         showAlert : false,
         AlertColor : null,
-        AlertText : null
+        AlertText : null,
+        role : null
 }
 
 const userReducer = (state = initialState, action)=>{
@@ -19,9 +20,10 @@ const userReducer = (state = initialState, action)=>{
             return {
                 ...state,
                 ...action.userInfo,
+                role : "Student",
                 showAlert : true,
                 AlertColor : "success",
-                AlertText : "Welcome" + action.userInfo.firstName
+                AlertText : "Welcome " + action.userInfo.firstName
             }
         case actionTypes.HIDE_ALERT :
             return {
@@ -29,6 +31,13 @@ const userReducer = (state = initialState, action)=>{
                 showAlert : false,
                 AlertText : null,
                 AlertColor : null
+            }
+        case actionTypes.SIGNUP_FAILED :
+            return {
+                ...state,
+                showAlert : true,
+                AlertColor : "danger",
+                AlertText : "Invalid Credentials or User Already Exists"
             }
         default : return state;
     }

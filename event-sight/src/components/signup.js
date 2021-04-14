@@ -7,6 +7,8 @@ import * as actionTypes from "../store/actions/actionTypes";
 import * as userActions from "../store/actions/userActions";
 import {connect} from "react-redux";
 
+import ESAlert from "../UI/ESAlert";
+
 const SignUp = (props)=>{
 
   const [user, onUserChange] = useState({
@@ -25,6 +27,12 @@ const SignUp = (props)=>{
           [event.target.name] : event.target.value
         }
       })
+  }
+
+  if(props.showAlert){
+    setTimeout(()=>{
+      props.hideAlert();
+    }, 5000);
   }
 
     return <div className="SignupDiv">
@@ -75,8 +83,11 @@ const SignUp = (props)=>{
       </Col></Row>
       <Button onClick={()=>{
         console.log(user);
+        props.signupInit(user);
         }}>Sign Up</Button>
-    </div></div>;
+    </div>
+    {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}
+    </div>;
 }
 
 const mapStateToProps = (state)=>{
@@ -90,8 +101,8 @@ const mapStateToProps = (state)=>{
 const mapDispatchToProps = (dispatch)=>{
   return{
     hideAlert : ()=>dispatch({type : actionTypes.HIDE_ALERT}),
-    signupInit : (user)=>dispatch()
+    signupInit : (user)=>dispatch(userActions.signupInit(user))
   }
 }
 
-export default SignUp;
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

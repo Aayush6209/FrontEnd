@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import {OCnames} from "../assets/OCname";
 import { Col, Row, Button, FormGroup, Label, Input } from 'reactstrap';
 
+import axios from "axios";
+
 const Login = ()=>{
 
   const [user, onUserChange] = useState({
@@ -58,6 +60,21 @@ const Login = ()=>{
       </Col></Row>}
       <Button onClick={()=>{
         console.log(user)
+        const requestURL = "http://127.0.0.1:8000/login/";
+        const data = {
+            "password" : user.password,
+            "student_id" : user.sid,
+            "role" : user.role,
+            "club" : user.OC
+        }
+        console.log(data)
+        axios.post(requestURL, data)
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
       }}>Login</Button>
      </div>;
 }

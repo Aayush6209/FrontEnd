@@ -1,5 +1,12 @@
 //USER ACTIONS
 export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
+export const SIGNUP_FAILED = "SIGNUP_FAILED";
+export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
+export const LOGIN_FAILED = "LOGIN_FAILED";
+export const LOGOUT = "LOGOUT";
+
+//general
+export const HIDE_ALERT = "HIDE_ALERT";
 
 
 
@@ -33,8 +40,7 @@ export const POST_COMMENT_FAILURE="POST_COMMENT_FAILURE";
 
 
 
-//general
-export const HIDE_ALERT = "HIDE_ALERT";
+
 // -DISPLAY COMMENTS
 export const DISPLAY_COMMENTS_REQ="DISPLAY_COMMENTS_REQ";
 export const DISPLAY_COMMENTS_SUCCESS="DISPLAY_COMMENTS_SUCCESS";

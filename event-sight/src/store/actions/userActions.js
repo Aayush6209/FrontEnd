@@ -23,6 +23,29 @@ export const signupInit = (user)=>{
           })
         }).catch((err)=>{
           console.log(err)
+          dispatch({
+              type : actionTypes.SIGNUP_FAILED
+          })
         });
+    }
+}
+
+export const loginInit = (user)=>{
+    return (dispatch)=>{
+        const requestURL = "http://127.0.0.1:8000/login/";
+        const data = {
+            "password" : user.password,
+            "student_id" : user.sid,
+            "role" : user.role,
+            "club" : user.OC
+        }
+        console.log(data)
+        axios.post(requestURL, data)
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
     }
 }
