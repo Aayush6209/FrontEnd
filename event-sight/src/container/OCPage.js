@@ -4,10 +4,14 @@ import EventCard from "../components/EventCard";
 import { MdCardMembership } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import {Img} from "../assets/URLImages";
+import {RiUserUnfollowLine} from "react-icons/ri";
+import {IoBan} from "react-icons/io5";
 
 import {connect} from "react-redux";
 import * as OCActions from "../store/actions/OCActions";
 import * as actionTypes from "../store/actions/actionTypes";
+
+import ESAlert from "../UI/ESAlert";
 
 const OCPage = (props) => {
   const imgURL =
@@ -18,7 +22,25 @@ const OCPage = (props) => {
     foo.push(i);
   }
 
+  if(props.showAlert){
+    setTimeout(()=>{
+      props.hideAlert()
+    }, 3500)
+  }
   console.log(props.OC)
+
+  let MemberButton = null;
+  // if(){}else if(){} else{}
+  MemberButton = <><Button outline color="success" className="OCPageButtons">
+  Request Membership <MdCardMembership size="25px" />
+</Button>
+<Button outline color="danger" className="OCPageButtons">
+  Cancel Membership <IoBan size="25px" />
+</Button>
+<Button outline color="success" className="OCPageButtons" disabled>
+  Membership Requested <MdCardMembership size="25px" />
+</Button>
+</>;
 
   return (
     <div>
@@ -47,15 +69,17 @@ const OCPage = (props) => {
           </Col>
           <Col lg="3" md="3" sm="3">
             <div className="Follow">
-              <Button outline color="primary" className="OCPageButtons" onClick={()=>{
+              { !props.OC.followers.includes("19103007") ? <Button outline color="primary" className="OCPageButtons" onClick={()=>{
                 props.followRequestInit(props.OC.name)
               }}>
                 Follow <AiOutlineUserAdd size="25px" />
-              </Button>
+              </Button> : <Button outline color="info" className="OCPageButtons" onClick={()=>{
+                props.unfollowRequestInit(props.OC.name)
+              }}>
+                Unfollow <RiUserUnfollowLine size="25px" />
+              </Button> }
             </div>
-            <Button outline color="danger" className="OCPageButtons">
-              Request Membership <MdCardMembership size="25px" />
-            </Button>
+            {MemberButton}
           </Col>
         </Row>
       </div>
@@ -68,19 +92,25 @@ const OCPage = (props) => {
           ))}
         </Row>
       </div> </> }
+      {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
     </div>
   );
 };
 
 const mapStateToProps = (state)=>{
   return {
-    OC : state.OC.selectedOC
+    OC : state.OC.selectedOC,
+    showAlert : state.OC.showAlert,
+    AlertText : state.OC.AlertText,
+    AlertColor : state.OC.AlertColor
   }
 }
 
 const mapDispatchToProps = (dispatch)=>{
   return {
     followRequestInit : (OCName)=>dispatch(OCActions.followRequestInit(OCName)),
+    unfollowRequestInit : (OCName)=>dispatch(OCActions.unfollowRequestInit(OCName)),
+    hideAlert : ()=>dispatch({type : actionTypes.HIDE_OC_ALERT})
   }
 }
 

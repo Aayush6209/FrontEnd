@@ -6,6 +6,7 @@ Row, Col, Input, Label, FormGroup, Button } from 'reactstrap';
 
 const EventEdit = (props)=>{
 
+
     const [event, setEvent] = useState({
         eventTitle : "",
         eventDescription : "",
