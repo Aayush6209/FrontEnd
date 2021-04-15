@@ -112,7 +112,7 @@ const ESNavbar = (props) => {
 
   const mapDispatchToProps = (dispatch)=>{
     return {
-      logout : (sid, token)=>dispatch(userActions.logout(sid, token))
+      logout : (sid, token)=>dispatch(userActions.logout(sid, token)),
     }
   }
   

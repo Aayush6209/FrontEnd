@@ -4,12 +4,7 @@ import {Spinner} from "reactstrap";
 import "./ESUI.css";
 
 const ESSpinner = ()=>{
-    return <div className="ESSpinner">
-        <Spinner color="danger" style={{
-            height : "80px",
-            width : "80px",
-        }}/>
-    </div>
+    return <div className="loader">Loading...</div>
 }
 
 export default ESSpinner;
