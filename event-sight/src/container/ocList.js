@@ -6,23 +6,27 @@ import ESSpinner from "../UI/ESSpinner";
 
 import {connect} from "react-redux";
 import * as OCActions from "../store/actions/OCActions";
+import * as actionTypes from "../store/actions/actionTypes";
 
 const OCList = (props)=>{
 
     useEffect(()=>{
         props.fetchAllOC()
-    }, [])
+    },[])
 
     let OCrender = null;
     if(props.loading){
         OCrender = <ESSpinner />
     }
     else{
-        OCrender = <Row lg="2" md="1" sm="1" xs="1">
+        if(OCList !== null){
+        OCrender =  props.OCList && <Row lg="2" md="1" sm="1" xs="1">
         {
-        props.OCList.map((a)=><Col key={a}><Link to="/oc-page" className="OCListLink"><OCCard/></Link></Col>)
+        props.OCList.map((OC, index)=><Col key={index}><Link to={"/oc-page/" + OC.name.replaceAll(/\s/g,'')} className="OCListLink" onClick={()=>{
+            props.selectOC(OC)
+        }}><OCCard OCName={OC.name}/></Link></Col>)
         }
-        </Row>
+        </Row>}
     }
     
     return <>
@@ -39,7 +43,11 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch)=>{
     return {
-        fetchAllOC : ()=>dispatch(OCActions.fetchAllOC())
+        fetchAllOC : ()=>dispatch(OCActions.fetchAllOC()),
+        selectOC : (oc)=>dispatch({
+            type : actionTypes.SELECT_OC,
+            OC : oc
+        }),
     }
 }
 

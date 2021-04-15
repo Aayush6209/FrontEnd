@@ -19,7 +19,7 @@ const App = ()=>{
       <Route path="/" exact component={Homepage} />
       <Route path="/auth-user" exact component={AuthUser} />
       <Route path="/oc-list" exact component={OCList}/>
-      <Route path="/oc-page" exact component={OCPage}/>
+      <Route path="/oc-page/:name" exact component={OCPage}/>
       <Route path="/signup" exact component={SignUp}/>
       <Route path="/event" exact component={EventPage}/>
       
