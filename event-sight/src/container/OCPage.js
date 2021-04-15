@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Row, Col, Button } from "reactstrap";
 import EventCard from "../components/EventCard";
 import { MdCardMembership } from "react-icons/md";
@@ -22,6 +22,12 @@ const OCPage = (props) => {
     foo.push(i);
   }
 
+
+  if(props.OC === null){
+    console.log(props.match.params.name)
+    props.fetchOC(props.match.params.name)
+  }
+
   if(props.showAlert){
     setTimeout(()=>{
       props.hideAlert()
@@ -30,17 +36,28 @@ const OCPage = (props) => {
   console.log(props.OC)
 
   let MemberButton = null;
-  // if(){}else if(){} else{}
-  MemberButton = <><Button outline color="success" className="OCPageButtons">
+  if(props.OC !== null){
+    props.checkMemberRequest(props.OC.name)
+    if(props.OC.members.includes("19103007")){
+      MemberButton = <Button outline color="danger" className="OCPageButtons">
+      Cancel Membership <IoBan size="25px" />
+    </Button>
+    }
+    else if(props.membershipRequested){
+      MemberButton = <Button outline color="success" className="OCPageButtons" disabled>
+      Membership Requested <MdCardMembership size="25px" />
+    </Button>
+    }
+    else {
+      MemberButton =<Button outline color="success" className="OCPageButtons" onClick = {()=>{
+        props.sendMemberRequest(props.OC.name)
+      }}>
   Request Membership <MdCardMembership size="25px" />
 </Button>
-<Button outline color="danger" className="OCPageButtons">
-  Cancel Membership <IoBan size="25px" />
-</Button>
-<Button outline color="success" className="OCPageButtons" disabled>
-  Membership Requested <MdCardMembership size="25px" />
-</Button>
-</>;
+    }
+    
+  }
+  
 
   return (
     <div>
@@ -69,7 +86,8 @@ const OCPage = (props) => {
           </Col>
           <Col lg="3" md="3" sm="3">
             <div className="Follow">
-              { !props.OC.followers.includes("19103007") ? <Button outline color="primary" className="OCPageButtons" onClick={()=>{
+              {/* Not rendering the follow button if the student is the member */}
+              { !props.OC.members.includes("19103007") && (!props.OC.followers.includes("19103007") ? <Button outline color="primary" className="OCPageButtons" onClick={()=>{
                 props.followRequestInit(props.OC.name)
               }}>
                 Follow <AiOutlineUserAdd size="25px" />
@@ -77,7 +95,7 @@ const OCPage = (props) => {
                 props.unfollowRequestInit(props.OC.name)
               }}>
                 Unfollow <RiUserUnfollowLine size="25px" />
-              </Button> }
+              </Button>) }
             </div>
             {MemberButton}
           </Col>
@@ -102,7 +120,8 @@ const mapStateToProps = (state)=>{
     OC : state.OC.selectedOC,
     showAlert : state.OC.showAlert,
     AlertText : state.OC.AlertText,
-    AlertColor : state.OC.AlertColor
+    AlertColor : state.OC.AlertColor,
+    membershipRequested : state.OC.membershipRequested
   }
 }
 
@@ -110,7 +129,10 @@ const mapDispatchToProps = (dispatch)=>{
   return {
     followRequestInit : (OCName)=>dispatch(OCActions.followRequestInit(OCName)),
     unfollowRequestInit : (OCName)=>dispatch(OCActions.unfollowRequestInit(OCName)),
-    hideAlert : ()=>dispatch({type : actionTypes.HIDE_OC_ALERT})
+    hideAlert : ()=>dispatch({type : actionTypes.HIDE_OC_ALERT}),
+    fetchOC : (OCName)=>dispatch(OCActions.fetchOC(OCName)),
+    sendMemberRequest : (OCName)=>dispatch(OCActions.sendMemberRequest(OCName)),
+    checkMemberRequest : (OCName)=>dispatch(OCActions.checkMemberRequest(OCName))
   }
 }
 

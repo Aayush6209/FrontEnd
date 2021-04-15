@@ -6,7 +6,8 @@ const initialState = {
     selectedOC : null,
     showAlert : false,
     AlertText : null,
-    AlertColor : null
+    AlertColor : null,
+    membershipRequested : false
 };
 
 const OCReducer = (state = initialState, action)=>{
@@ -63,6 +64,28 @@ const OCReducer = (state = initialState, action)=>{
                 showAlert : true,
                 AlertText : "Unfollow Request Denied",
                 AlertColor : "danger",
+            }
+        case actionTypes.FETCHED_OC :
+            return {
+                ...state,
+                selectedOC : action.OC
+            }
+        case actionTypes.MEMBER_REQUEST_SENT :
+            return {
+                ...state,
+                showAlert : true,
+                AlertText : "Member Request Sent",
+                AlertColor : "success"
+            }
+        case actionTypes.MEMBER_REQUEST_EXISTS :
+            return {
+                ...state,
+                membershipRequested : true
+            }
+        case actionTypes.MEMBER_REQUEST_NOT_EXISTS :
+            return {
+                ...state,
+                membershipRequested : false
             }
         default : return state;
     }

@@ -22,7 +22,7 @@ const OCList = (props)=>{
         if(OCList !== null){
         OCrender =  props.OCList && <Row lg="2" md="1" sm="1" xs="1">
         {
-        props.OCList.map((OC, index)=><Col key={index}><Link to={"/oc-page/" + OC.name.replaceAll(/\s/g,'')} className="OCListLink" onClick={()=>{
+        props.OCList.map((OC, index)=><Col key={index}><Link to={"/oc-page/" + OC.name} className="OCListLink" onClick={()=>{
             props.selectOC(OC)
         }}><OCCard OCName={OC.name}/></Link></Col>)
         }
