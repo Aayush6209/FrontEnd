@@ -46,6 +46,17 @@ RETURNS
 
 -------------------------------------------------------
 
+4# club_display
+GET-RETURNS
+{
+    "name": "club_name",
+    "admin": "id",
+    ...
+}
+
+5# 
+
+
 # create_event, update_event/pk
 '''
 {
