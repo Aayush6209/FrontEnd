@@ -87,6 +87,14 @@ const OCReducer = (state = initialState, action)=>{
                 ...state,
                 membershipRequested : false
             }
+        case actionTypes.MEMBER_REMOVED :
+            return {
+                ...state,
+                selectedOC : action.OC,
+                showAlert : true,
+                AlertText : "You are NOT a member now",
+                AlertColor : "danger"
+            }
         default : return state;
     }
     

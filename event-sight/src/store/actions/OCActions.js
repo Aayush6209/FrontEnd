@@ -139,6 +139,34 @@ export const checkMemberRequest = (OCName)=>{
     }
 }
 
+
+// export const sendMemberRemoveRequest = (sid, token, OCName)=>{
+export const sendMemberRemoveRequest = (OCName)=>{
+    return (dispatch)=>{
+        const requestURL = "http://127.0.0.1:8000/remove_member/";
+        const data = {
+            "name" : OCName,
+            "student_id" : "19103007",
+            "token" : "CtqbsteIyuHm20jpLAEh87Oyl6CQ4J2w"
+        };
+        console.log(data)
+        axios.post(requestURL, data)
+        .then((res)=>{
+            console.log(res)
+            dispatch({
+                type : actionTypes.MEMBER_REMOVED,
+                OC : res.data
+            })
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+    }
+}
+
+
+//---------------------------------ADMIN ACTIONS---------------------------
+
 // export const fetchMemberRequests = (sid, token)=>{
 export const fetchMemberRequests = ()=>{
     return (dispatch)=>{
@@ -158,3 +186,4 @@ export const fetchMemberRequests = ()=>{
         })
     }   
 }
+

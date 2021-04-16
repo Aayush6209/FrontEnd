@@ -34,28 +34,29 @@ const OCPage = (props) => {
     }, 3500)
   }
   console.log(props.OC)
-
   let MemberButton = null;
-  if(props.OC !== null){
-    props.checkMemberRequest(props.OC.name)
-    if(props.OC.members.includes("19103007")){
-      MemberButton = <Button outline color="danger" className="OCPageButtons">
-      Cancel Membership <IoBan size="25px" />
-    </Button>
-    }
-    else if(props.membershipRequested){
-      MemberButton = <Button outline color="success" className="OCPageButtons" disabled>
-      Membership Requested <MdCardMembership size="25px" />
-    </Button>
-    }
-    else {
-      MemberButton =<Button outline color="success" className="OCPageButtons" onClick = {()=>{
-        props.sendMemberRequest(props.OC.name)
-      }}>
-  Request Membership <MdCardMembership size="25px" />
-</Button>
-    }
-    
+    if(props.OC !== null){
+      props.checkMemberRequest(props.OC.name)
+      if(props.OC.members.includes("19103007")){
+        MemberButton = <Button outline color="danger" className="OCPageButtons" onClick={()=>{
+          props.sendMemberRemoveRequest(props.OC.name)
+        }}>
+        Cancel Membership <IoBan size="25px" />
+      </Button>
+      }
+      else if(props.membershipRequested){
+        MemberButton = <Button outline color="success" className="OCPageButtons" disabled>
+        Membership Requested <MdCardMembership size="25px" />
+      </Button>
+      }
+      else {
+        MemberButton =<Button outline color="success" className="OCPageButtons" onClick = {()=>{
+          props.sendMemberRequest(props.OC.name)
+        }}>
+    Request Membership <MdCardMembership size="25px" />
+  </Button>
+      }
+      
   }
   
 
@@ -98,6 +99,7 @@ const OCPage = (props) => {
               </Button>) }
             </div>
             {MemberButton}
+            
           </Col>
         </Row>
       </div>
@@ -132,7 +134,8 @@ const mapDispatchToProps = (dispatch)=>{
     hideAlert : ()=>dispatch({type : actionTypes.HIDE_OC_ALERT}),
     fetchOC : (OCName)=>dispatch(OCActions.fetchOC(OCName)),
     sendMemberRequest : (OCName)=>dispatch(OCActions.sendMemberRequest(OCName)),
-    checkMemberRequest : (OCName)=>dispatch(OCActions.checkMemberRequest(OCName))
+    checkMemberRequest : (OCName)=>dispatch(OCActions.checkMemberRequest(OCName)),
+    sendMemberRemoveRequest : (OCName)=>dispatch(OCActions.sendMemberRemoveRequest(OCName))
   }
 }
 
