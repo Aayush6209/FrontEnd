@@ -1,6 +1,13 @@
 import * as actionTypes from "./actionTypes";
 import axios from "axios";
 
+
+export const eventLoading = ()=>{
+    return {
+        type: actionTypes.EVENT_LOADING,
+    }
+}
+
 // export const createNewEvent = (event, sid, token)=>{
 export const createNewEvent = (event)=>{
     return (dispatch) =>{
@@ -28,13 +35,48 @@ export const createNewEvent = (event)=>{
     }
 }
 
+// EVENT DISPLAY
+//export const displayEvents = (sid, token)=>{
+export const displayEvents = (event)=>{
+    return dispatch =>{
+        dispatch(eventLoading)
+        const requestURL = "http://127.0.0.1:8000/event_display/"
+        const data = {
+            "student_id" : "19103028",
+            "token" : "Zmkqa4h0xZMAqtgMCTEir751j9gxDMtF",
+        };
+        axios
+        .get(requestURL, data)
+        .then((res)=>{
+            console.log(res);
+            dispatch(displayEventsSuccess(res.data));
+        })
+        .catch((err)=>{
+            console.log(err);
+            dispatch(displayEventsFailure(err));
+        })
+    }
+}
 
+export const displayEventsSuccess = data=>{
+    return {
+        type: actionTypes.EVENTS_DISPLAY_SUCCESS,
+        events: data,
+    }
+}
+
+export const displayEventsFailure = error=>{
+    return {
+        type: actionTypes.EVENTS_DISPLAY_FAILURE,
+        payload: error
+    }
+}
 
 
 // EVENT REGISTRATION
 export const registerEvent = (event)=>{
     return dispatch =>{
-        dispatch(registerEventReq)
+        dispatch(eventLoading)
         axios
         .post("", event)
         .then(res => {
@@ -43,12 +85,6 @@ export const registerEvent = (event)=>{
         .catch(error => {
             dispatch(registerEventFailure(error))
         })
-    }
-}
-
-export const registerEventReq = ()=>{
-    return {
-        type: actionTypes.EVENT_REGISTRATION_REQ,
     }
 }
 
@@ -70,7 +106,7 @@ export const registerEventFailure = error=>{
 // DISPLAY REGISTERED EVENTS
 export const displayRegisteredEvents = ()=>{
     return dispatch =>{
-        dispatch(displayRegisteredEventsReq)
+        dispatch(eventLoading)
         axios
         .get('')
         .then(res => {
@@ -80,12 +116,6 @@ export const displayRegisteredEvents = ()=>{
         .catch(error => {
             dispatch(displayRegisteredEventsFailure(error))
         })
-    }
-}
-
-export const displayRegisteredEventsReq = ()=>{
-    return {
-        type: actionTypes.DISPLAY_REGISTERED_EVENTS_REQ,
     }
 }
 
@@ -106,7 +136,7 @@ export const displayRegisteredEventsFailure = error=>{
 // ADD EVENT TO INTERESTED
 export const interested = (event)=>{
     return dispatch =>{
-        dispatch(interestedReq)
+        dispatch(eventLoading)
         axios
         .post("", event)
         .then(res => {
@@ -115,12 +145,6 @@ export const interested = (event)=>{
         .catch(error => {
             dispatch(interestedFailure(error))
         })
-    }
-}
-
-export const interestedReq = ()=>{
-    return {
-        type: actionTypes.EVENT_INTERESTED_REQ,
     }
 }
 
@@ -141,7 +165,7 @@ export const interestedFailure = error=>{
 //DISPLAY INTERESTED EVENTS
 export const displayInterestedEvents = ()=>{
     return dispatch =>{
-        dispatch(displayInterestedEventsReq)
+        dispatch(eventLoading)
         axios
         .get('')
         .then(res => {
@@ -151,12 +175,6 @@ export const displayInterestedEvents = ()=>{
         .catch(error => {
             dispatch(displayInterestedEventsFailure(error))
         })
-    }
-}
-
-export const displayInterestedEventsReq = ()=>{
-    return {
-        type: actionTypes.DISPLAY_INTERESTED_EVENTS_REQ,
     }
 }
 
@@ -177,7 +195,7 @@ export const displayInterestedEventsFailure = error=>{
 // POST COMMENT
 export const postComment = (comment)=>{
     return dispatch =>{
-        dispatch(postCommentReq)
+        dispatch(eventLoading)
         axios
         .post("", comment)
         .then(res => {
@@ -186,11 +204,6 @@ export const postComment = (comment)=>{
         .catch(error => {
             dispatch(postCommentFailure(error))
         })
-    }
-}
-export const postCommentReq = ()=>{
-    return {
-        type: actionTypes.POST_COMMENT_REQ,
     }
 }
 
@@ -211,7 +224,7 @@ export const postCommentFailure = error=>{
 //DISPLAY COMMENTS
 export const displayComments = ()=>{
     return dispatch =>{
-        dispatch(displayCommentsReq)
+        dispatch(eventLoading)
         axios
         .get('')
         .then(res => {
@@ -221,12 +234,6 @@ export const displayComments = ()=>{
         .catch(error => {
             dispatch(displayCommentsFailure(error))
         })
-    }
-}
-
-export const displayCommentsReq = ()=>{
-    return {
-        type: actionTypes.DISPLAY_COMMENTS_REQ,
     }
 }
 

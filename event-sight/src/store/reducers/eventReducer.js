@@ -1,6 +1,8 @@
 import * as actionTypes from "../actions/actionTypes";
 
 const initialState = {
+  loading: false,
+  events: null,
   showAlert: false,
   AlertText : null,
   AlertColor : null
@@ -8,15 +10,29 @@ const initialState = {
 
 const EventReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.EVENT_LOADING:
+      return{
+        ...state,
+        loading: true,
+      }
 
-
-
-    //EVENT REGISTRATION
-    case actionTypes.EVENT_REGISTRATION_REQ:
+    //EVENTS DISPLAY
+    case actionTypes.EVENTS_DISPLAY_SUCCESS:
       return {
         ...state,
-        showAlert: true,
+        loading: false,
+        events: action.events,
       };
+    case actionTypes.EVENTS_DISPLAY_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        showAlert: true,
+        AlertText: "Unable to Load Events",
+        AlertColor: "danger",
+      };
+
+    //EVENT REGISTRATION
     case actionTypes.EVENT_REGISTRATION_SUCCESS:
       return {
         ...state,
@@ -29,11 +45,6 @@ const EventReducer = (state = initialState, action) => {
       };
 
     //DISPLAY REGISTERED EVENTS
-    case actionTypes.DISPLAY_REGISTERED_EVENTS_REQ:
-      return {
-        ...state,
-        showAlert: true,
-      };
     case actionTypes.DISPLAY_REGISTERED_EVENTS_SUCCESS:
       return {
         ...state,
@@ -46,11 +57,6 @@ const EventReducer = (state = initialState, action) => {
       };
 
     //ADD EVENT TO INTERESTED
-    case actionTypes.EVENT_INTERESTED_REQ:
-      return {
-        ...state,
-        showAlert: true,
-      };
     case actionTypes.EVENT_INTERESTED_SUCCESS:
       return {
         ...state,
@@ -63,11 +69,6 @@ const EventReducer = (state = initialState, action) => {
       };
 
     //DISPLAY INTERESTED EVENTS
-    case actionTypes.DISPLAY_INTERESTED_EVENTS_REQ:
-      return {
-        ...state,
-        showAlert: true,
-      };
     case actionTypes.DISPLAY_INTERESTED_EVENTS_SUCCESS:
       return {
         ...state,
@@ -80,11 +81,6 @@ const EventReducer = (state = initialState, action) => {
       };
 
     // POST COMMENT
-    case actionTypes.POST_COMMENT_REQ:
-      return {
-        ...state,
-        showAlert: true,
-      };
     case actionTypes.POST_COMMENT_SUCCESS:
       return {
         ...state,
@@ -97,11 +93,6 @@ const EventReducer = (state = initialState, action) => {
       };
 
     // DISPLAY COMMENTS
-    case actionTypes.DISPLAY_COMMENTS_REQ:
-      return {
-        ...state,
-        showAlert: true,
-      };
     case actionTypes.DISPLAY_COMMENTS_SUCCESS:
       return {
         ...state,
