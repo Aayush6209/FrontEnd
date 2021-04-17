@@ -21,8 +21,8 @@ export const createNewEvent = (event)=>{
             "image_url" : event.eventImgURL,
             // "student_id" : sid,
             // "token" : token
-            "student_id" : "19103007",
-            "token" : "CtqbsteIyuHm20jpLAEh87Oyl6CQ4J2w"
+            "student_id" : "191030049",
+            "token" : "jw2b4PW9UsdRGir5lkFxdjUXwYftcWPD"
         };
         console.log(data)
         axios.post(requestURL, data)
@@ -37,18 +37,18 @@ export const createNewEvent = (event)=>{
 
 // EVENT DISPLAY
 //export const displayEvents = (sid, token)=>{
-export const displayEvents = (event)=>{
+export const displayEvents = ()=>{
     return dispatch =>{
         dispatch(eventLoading)
-        const requestURL = "http://127.0.0.1:8000/event_display/"
+        const requestURL = "http://127.0.0.1:8000/event_display/";
         const data = {
-            "student_id" : "19103028",
-            "token" : "Zmkqa4h0xZMAqtgMCTEir751j9gxDMtF",
+            "student_id" : "19103049",
+            "token" : "tXhVHviip4Gzg3ekVGb8jGmgkg4Jaslx",
         };
         axios
-        .get(requestURL, data)
+        .post(requestURL, data)
         .then((res)=>{
-            console.log(res);
+            console.log(res.data);
             dispatch(displayEventsSuccess(res.data));
         })
         .catch((err)=>{
