@@ -7,7 +7,8 @@ const initialState = {
     showAlert : false,
     AlertText : null,
     AlertColor : null,
-    membershipRequested : false
+    membershipRequested : false,
+    fetchedMemberRequests : null
 };
 
 const OCReducer = (state = initialState, action)=>{
@@ -94,6 +95,11 @@ const OCReducer = (state = initialState, action)=>{
                 showAlert : true,
                 AlertText : "You are NOT a member now",
                 AlertColor : "danger"
+            }
+        case actionTypes.FETCHED_MEMBER_REQUESTS :
+            return {
+                ...state,
+                fetchedMemberRequests : action.fetchedMemberRequests
             }
         default : return state;
     }
