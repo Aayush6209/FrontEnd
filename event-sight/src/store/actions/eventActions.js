@@ -21,8 +21,8 @@ export const createNewEvent = (event)=>{
             "image_url" : event.eventImgURL,
             // "student_id" : sid,
             // "token" : token
-            "student_id" : "191030049",
-            "token" : "jw2b4PW9UsdRGir5lkFxdjUXwYftcWPD"
+            "student_id" : "19103007",
+            "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi"
         };
         console.log(data)
         axios.post(requestURL, data)
