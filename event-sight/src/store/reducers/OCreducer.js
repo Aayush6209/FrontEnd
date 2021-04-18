@@ -101,6 +101,20 @@ const OCReducer = (state = initialState, action)=>{
                 ...state,
                 fetchedMemberRequests : action.fetchedMemberRequests
             }
+        case actionTypes.MEMBER_REQUEST_ACCEPTED :
+            return {
+                ...state,
+                showAlert : true,
+                AlertColor : "success",
+                AlertText : "Membership Accepted"
+            }
+        case actionTypes.MEMBER_REQUEST_REJECTED :
+            return {
+                ...state,
+                showAlert : true,
+                AlertColor : "danger",
+                AlertText : "Membership Rejected"
+            }
         default : return state;
     }
     

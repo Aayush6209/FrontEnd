@@ -22,11 +22,9 @@ const OCPage = (props) => {
     foo.push(i);
   }
 
-
-  if(props.OC === null){
-    console.log(props.match.params.name)
-    props.fetchOC(props.match.params.name)
-  }
+useEffect(()=>{
+  props.fetchOC(props.match.params.name)
+},[props.showAlert])
 
   if(props.showAlert){
     setTimeout(()=>{

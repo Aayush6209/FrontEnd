@@ -189,7 +189,7 @@ export const fetchMemberRequests = ()=>{
     }   
 }
 
-// export const respondMemberRequests = (sid, token, OCName, response)=>{
+// export const respondMemberRequests = (sid, token, OCName, response, adminSID)=>{
 export const respondMemberRequests = (sid, response)=>{
     return (dispatch)=>{
         const requestURL = "http://127.0.0.1:8000/member_request_verify/";
@@ -197,11 +197,17 @@ export const respondMemberRequests = (sid, response)=>{
             "student_id" : sid,
             "club" : "Hindi Editorial Board",
             "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi",
-            "accepted" : response
+            "accepted" : response,
+            "admin_id" : "19103007"
         };
         axios.post(requestURL, data)
         .then((res)=>{
             console.log(res)
+            if(response){
+                dispatch({type : actionTypes.MEMBER_REQUEST_ACCEPTED})
+            }else{
+                dispatch({type : actionTypes.MEMBER_REQUEST_REJECTED})
+            }
         })
         .catch((err)=>{
             console.log(err)

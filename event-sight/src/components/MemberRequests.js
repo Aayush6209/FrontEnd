@@ -6,18 +6,29 @@ import {ImCross} from "react-icons/im"
 
 import {connect} from "react-redux";
 import * as OCActions from "../store/actions/OCActions";
+import * as actionTypes from "../store/actions/actionTypes";
+import ESAlert from "../UI/ESAlert";
 
 const MemberRequests = (props)=>{
 
     const [popoverOpen, setPopoverOpen] = useState(false);
     const toggle = () => setPopoverOpen(!popoverOpen);
 
-    const [flag, setFlag] = useState(true)
     useEffect(()=>{
         props.fetchMemberRequests()
-    },[flag])
+    },[props.showAlert])
 
-    return <Popover placement="bottom" isOpen={popoverOpen} target="showMemberRequests" toggle={toggle}>
+
+  if(props.showAlert){
+    setTimeout(()=>{
+      props.hideAlert()
+    }, 3500)
+  }
+
+    return <><Popover placement="bottom" isOpen={popoverOpen} target="showMemberRequests" toggle={()=>{
+        toggle()
+        props.fetchMemberRequests()
+        }}>
             <div className="MemberRequestDiv">
                 { props.fetchedMemberRequests && props.fetchedMemberRequests.map((request, index)=>{
                     return <div key={index} className="MemberRequest">
@@ -28,28 +39,34 @@ const MemberRequests = (props)=>{
                                 </Col>
                             <Col lg="4">
                                 <Button color="success" outline className="MemberRequestButton Left" onClick={()=>{
-                                    props.respondMemberRequests(request.student_id, "True")
-                                    setFlag(!flag)
+                                    props.respondMemberRequests(request.student_id, true)
                                 }}><FiCheck size="18px"/></Button>
-                                <Button color="danger" outline className="MemberRequestButton Right"><ImCross size="13px"/></Button>
+                                <Button color="danger" outline className="MemberRequestButton Right" onClick={()=>{
+                                    props.respondMemberRequests(request.student_id, false)
+                                }}><ImCross size="13px"/></Button>
                             </Col>
                         </Row>
                     </div>
                 })}
             </div>
     </Popover>
+    {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}</>
 }
 
 const mapStateToProps = (state)=>{
     return {
-        fetchedMemberRequests : state.OC.fetchedMemberRequests
+        fetchedMemberRequests : state.OC.fetchedMemberRequests,
+        showAlert : state.OC.showAlert,
+        AlertText : state.OC.AlertText,
+        AlertColor : state.OC.AlertColor,
     }
 }
 
 const mapDispatchToProps = (dispatch)=>{
     return {
         fetchMemberRequests : ()=>dispatch(OCActions.fetchMemberRequests()),
-        respondMemberRequests : (sid,response)=>dispatch(OCActions.respondMemberRequests(sid, response))
+        respondMemberRequests : (sid,response)=>dispatch(OCActions.respondMemberRequests(sid, response)),
+        hideAlert : ()=>dispatch({type : actionTypes.HIDE_OC_ALERT}),
     }
 }
 

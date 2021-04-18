@@ -1,9 +1,9 @@
 import * as actionTypes from "./actionTypes";
-import axios from "axios";
+import axios from "../../axios";
 
 export const signupInit = (user)=>{
     return (dispatch)=>{
-        const requestURl = "http://127.0.0.1:8000/register/";
+        const requestURl = "register/";
         const data = {
           "password": user.password,
           "student_id": user.sid,
@@ -14,11 +14,21 @@ export const signupInit = (user)=>{
         };
         axios.post(requestURl, data).then((res)=>{
           console.log(res)
+        localStorage.setItem("firstName", user.firstName)
+        localStorage.setItem("lastName", user.lastName)
+        localStorage.setItem("sid", user.sid)
+        localStorage.setItem("branch", user.branch)
+        localStorage.setItem("password", user.password)
+        localStorage.setItem("email", user.email)
+        localStorage.setItem("token", res.data.token)
+        localStorage.setItem("role", "Student")
+        localStorage.setItem("OCName", "")
           dispatch({
               type : actionTypes.SIGNUP_SUCCESS,
               userInfo : {
                   ...user,
-                  token : res.data.token
+                  token : res.data.token,
+                  role : "Student",
               }
           })
         }).catch((err)=>{
@@ -32,7 +42,7 @@ export const signupInit = (user)=>{
 
 export const loginInit = (user)=>{
     return (dispatch)=>{
-        const requestURL = "http://127.0.0.1:8000/login/";
+        const requestURL = "login/";
         const data = {
             "password" : user.password,
             "student_id" : user.sid,
@@ -70,13 +80,22 @@ export const loginInit = (user)=>{
 
 export const logout = (sid, token)=>{
     return (dispatch)=>{
-        const requestURL = "http://127.0.0.1:8000/logout/";
+        const requestURL = "logout/";
         const data = {
             "student_id" : sid,
             "token" : token
         }
         axios.post(requestURL, data)
         .then((res)=>{
+            localStorage.removeItem("firstName")
+            localStorage.removeItem("lastName")
+            localStorage.removeItem("sid")
+            localStorage.removeItem("branch")
+            localStorage.removeItem("password")
+            localStorage.removeItem("email")
+            localStorage.removeItem("token")
+            localStorage.removeItem("role")
+            localStorage.removeItem("OCName")
             console.log(res)
             dispatch({
                 type : actionTypes.LOGOUT

@@ -32,7 +32,7 @@ const SignUp = (props)=>{
   if(props.showAlert){
     setTimeout(()=>{
       props.hideAlert();
-    }, 5000);
+    }, 3500);
   }
 
     return <div className="SignupDiv">
