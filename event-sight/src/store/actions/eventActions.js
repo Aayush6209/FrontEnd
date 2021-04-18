@@ -37,18 +37,18 @@ export const createNewEvent = (event)=>{
 
 // EVENT DISPLAY
 //export const displayEvents = (sid, token)=>{
-export const displayEvents = (event)=>{
+export const displayEvents = ()=>{
     return dispatch =>{
         dispatch(eventLoading)
-        const requestURL = "http://127.0.0.1:8000/event_display/"
+        const requestURL = "http://127.0.0.1:8000/event_display/";
         const data = {
             "student_id" : "19103007",
             "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi",
         };
         axios
-        .get(requestURL, data)
+        .post(requestURL, data)
         .then((res)=>{
-            console.log(res);
+            console.log(res.data);
             dispatch(displayEventsSuccess(res.data));
         })
         .catch((err)=>{

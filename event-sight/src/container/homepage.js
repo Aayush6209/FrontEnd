@@ -3,7 +3,6 @@ import {Row, Col} from "reactstrap";
 import EventCard from "../components/EventCard";
 import Sidebar from "../components/sidebar";
 import {Img} from "../assets/URLImages";
-import {Link} from "react-router-dom";
 import ESSpinner from "../UI/ESSpinner";
 import {connect} from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
@@ -15,15 +14,27 @@ const Homepage = (props)=>{
         props.displayEvents()
     }, [])
     let eventsrender = null;
-    var i=0;
     if(props.loading){
         eventsrender = <ESSpinner />
     }
     else{
         if(Homepage !== null){
-            eventsrender=props.events && <Row lg="2" md="2" sm="1" xs="1">
-            {
-                props.events.map((event, index)=><Col key={index}><EventCard img={Img.img}/></Col>)
+            let allEvents=[];
+            if(props.events !==null){
+                let memberEvents=props.events.member_club_events.filter((event)=>{
+                    if(event.open_to_all == false){
+                        return event;
+                    }
+                })
+                let followedEvents=props.events.followed_club_events.filter((event)=>{
+                    if(event.open_to_all == true){
+                        return event;
+                    }
+                })
+                allEvents = [...allEvents, ...memberEvents, ...followedEvents];
+            }
+            eventsrender=allEvents && <Row lg="2" md="2" sm="1" xs="1">{
+                allEvents.map((event, index)=><Col key={index}><EventCard img={Img.img}/></Col>)
             }
             </Row>}
     }
