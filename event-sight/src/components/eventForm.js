@@ -3,6 +3,8 @@ import { Button, FormGroup, Label, Input, Row, Col } from 'reactstrap';
 
 import {connect} from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
+import * as actionTypes from "../store/actions/actionTypes";
+import ESAlert from "../UI/ESAlert";
 
 const EventForm = (props)=>{
   const [event, setEvent] = useState({
@@ -14,6 +16,13 @@ const EventForm = (props)=>{
     eventType : "",
     eventImgURL : ""
   })
+
+  if(props.showAlert){
+    setTimeout(()=>{
+      props.hideAlert()
+    },3500)
+  }
+
 
   const changeHandler = (changeEvent)=>{
     setEvent((prev)=>{
@@ -82,19 +91,27 @@ const EventForm = (props)=>{
       </FormGroup>
       <Button onClick={()=>{
         console.log(event)
-        props.createNewEvent(event)
+        props.createNewEvent(props.sid, props.token, event)
       }}>Add Event</Button>
     </div>
+    {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}
     </div>
 }
 
 const mapStateToProps = (state)=>{
-  return {}
+  return {
+    sid : state.user.sid,
+    token : state.user.token,
+    showAlert : state.event.showAlert,
+    AlertText : state.event.AlertText,
+    AlertColor : state.event.AlertColor
+  }
 }
 
 const mapDispatchToProps = (dispatch)=>{
   return {
-    createNewEvent : (event)=>dispatch(eventActions.createNewEvent(event)),
+    createNewEvent : (sid, token, event)=>dispatch(eventActions.createNewEvent(sid, token, event)),
+    hideAlert : ()=>dispatch({type : actionTypes.HIDE_EVENT_ALERT})
   }
 }
 

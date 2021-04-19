@@ -11,6 +11,30 @@ const initialState = {
 
 const EventReducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.HIDE_EVENT_ALERT : 
+      return {
+        ...state,
+        showAlert : false,
+        AlertText : null,
+        AlertColor : null
+      }
+
+    case actionTypes.EVENT_CREATE_SUCCESS : 
+      return {
+        ...state,
+        showAlert : true,
+        AlertText : "Event Created Successfully",
+        AlertColor : "success"
+      }
+
+    case actionTypes.EVENT_CREATE_FAILED : 
+      return {
+        ...state,
+        showAlert : true,
+        AlertText : "Event Creation Failed",
+        AlertColor : "danger"
+      }
+
     case actionTypes.EVENT_LOADING:
       return{
         ...state,
