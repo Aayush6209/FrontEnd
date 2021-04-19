@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import axios from "axios";
+import axios from "../../axios";
 
 
 export const eventLoading = ()=>{
@@ -8,10 +8,9 @@ export const eventLoading = ()=>{
     }
 }
 
-// export const createNewEvent = (event, sid, token)=>{
-export const createNewEvent = (event)=>{
+export const createNewEvent = (sid, token, event)=>{
     return (dispatch) =>{
-        const requestURL = "http://127.0.0.1:8000/create_event/";
+        const requestURL = "create_event/";
         const data = {
             "title" : event.eventTitle,
             "description" : event.eventDescription,
@@ -19,18 +18,18 @@ export const createNewEvent = (event)=>{
             "date_time" : event.eventDate + " " + event.eventTime + ":00",
             "open_to_all" : event.eventType === "MemberSpecific" ? "False" : "True",
             "image_url" : event.eventImgURL,
-            // "student_id" : sid,
-            // "token" : token
-            "student_id" : "19103007",
-            "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi"
+            "student_id" : sid,
+            "token" : token
         };
         console.log(data)
         axios.post(requestURL, data)
         .then((res)=>{
             console.log(res)
+            dispatch({type : actionTypes.EVENT_CREATE_SUCCESS})
         })
         .catch((err)=>{
             console.log(err)
+            dispatch({type : actionTypes.EVENT_CREATE_FAILED})
         })
     }
 }
