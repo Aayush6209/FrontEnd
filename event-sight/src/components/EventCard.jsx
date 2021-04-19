@@ -14,10 +14,10 @@ const EventCard = (props) => {
       <Card>
         <div className="overflow"><img className="CardImage" src={props.img} alt="Card cap" /></div>
         <CardBody>
-          <CardTitle tag="h5"><span className="CardTitle">{props.title}</span></CardTitle>
+          <CardTitle tag="h5"><span className="CardTitle">{props.event.title}</span></CardTitle>
           <div className="CardContent">
-          <CardSubtitle tag="h6" className="mb-2 text-muted"><strong>Date: </strong>{props.dateTime.substring(0, 10)}<br /><strong>Time: </strong>{props.dateTime.substring(11, 19)}</CardSubtitle>
-          <CardText>{(props.details.length>99)?(props.details.substring(0, 100)+"..."):props.details}</CardText>
+          <CardSubtitle tag="h6" className="mb-2 text-muted"><strong>Date: </strong>{props.event.date_time.substring(0, 10)}<br /><strong>Time: </strong>{props.event.date_time.substring(11, 19)}</CardSubtitle>
+          <CardText>{(props.event.details.length>99)?(props.event.details.substring(0, 100)+"..."):props.event.details}</CardText>
           </div>
           <div className="CardIconsDiv">
           <Container>

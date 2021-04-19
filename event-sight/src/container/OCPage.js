@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { Row, Col, Button } from "reactstrap";
-import EventCard from "../components/EventCard";
+// import EventCard from "../components/EventCard";
 import { MdCardMembership } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import {Img} from "../assets/URLImages";
@@ -72,10 +72,10 @@ useEffect(()=>{
             </Row>
             <Row className="OCPageHeaderR2">
               <Col lg="6" md="6" sm="6">
-                <div className="Followers">{props.OC.followers.length} Followers</div>
+                <div className="Followers"><strong>{props.OC.followers.length} Followers</strong></div>
               </Col>
               <Col lg="6" md="6" sm="6">
-                <div className="Members">{props.OC.members.length} Members</div>
+                <div className="Members"><strong>{props.OC.members.length} Members</strong></div>
               </Col>
             </Row>
             <Row className="OCPageHeaderR3">
@@ -101,13 +101,13 @@ useEffect(()=>{
         </Row>
       </div>
       <div className="OCPageBody">
-        <Row lg="2" md="2" sm="1" xs="1">
+        {/* <Row lg="2" md="2" sm="1" xs="1">
           {foo.map((k) => (
             <Col key={k}>
               <EventCard img={Img.img} />
             </Col>
           ))}
-        </Row>
+        </Row> */}
       </div> </> }
       {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
     </div>

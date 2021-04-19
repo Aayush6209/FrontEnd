@@ -11,7 +11,7 @@ import * as actionTypes from "../store/actions/actionTypes";
 const Homepage = (props) => {
 
   useEffect(() => {
-    props.displayEvents();
+    props.displayEvents(props.sid, props.token);
   }, []);
 
   let eventsrender = null;
@@ -43,7 +43,7 @@ const Homepage = (props) => {
     eventsrender =<Row lg="2" md="2" sm="1" xs="1">{
         allEvents.map((event, index) => (
           <Col key={index}>
-            <EventCard id={event.id} img={Img.img} title={event.title} dateTime={event.date_time} details={event.details} />
+            <EventCard id={event.id} img={Img.img} event={event}/>
           </Col>
         ))}
       </Row>;
@@ -60,12 +60,14 @@ const mapStateToProps = (state) => {
   return {
     loading: state.event.loading,
     events: state.event.events,
+    sid : state.user.sid,
+    token : state.user.token,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    displayEvents: () => dispatch(eventActions.displayEvents()),
+    displayEvents: (sid, token) => dispatch(eventActions.displayEvents(sid, token)),
   };
 };
 

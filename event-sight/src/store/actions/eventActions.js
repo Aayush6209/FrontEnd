@@ -1,5 +1,5 @@
 import * as actionTypes from "./actionTypes";
-import axios from "axios";
+import axios from "../../axios";
 
 
 export const eventLoading = ()=>{
@@ -11,7 +11,7 @@ export const eventLoading = ()=>{
 // export const createNewEvent = (event, sid, token)=>{
 export const createNewEvent = (event)=>{
     return (dispatch) =>{
-        const requestURL = "http://127.0.0.1:8000/create_event/";
+        const requestURL = "create_event/";
         const data = {
             "title" : event.eventTitle,
             "description" : event.eventDescription,
@@ -36,14 +36,13 @@ export const createNewEvent = (event)=>{
 }
 
 // EVENT DISPLAY
-//export const displayEvents = (sid, token)=>{
-export const displayEvents = ()=>{
+export const displayEvents = (sid, token)=>{
     return dispatch =>{
         dispatch(eventLoading)
-        const requestURL = "http://127.0.0.1:8000/event_display/";
+        const requestURL = "event_display/";
         const data = {
-            "student_id" : "19103049",
-            "token" : "tXhVHviip4Gzg3ekVGb8jGmgkg4Jaslx",
+            "student_id" : sid,
+            "token" : token,
         };
         axios
         .post(requestURL, data)
