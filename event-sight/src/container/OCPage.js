@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import { Row, Col, Button } from "reactstrap";
-import EventCard from "../components/EventCard";
+// import EventCard from "../components/EventCard";
 import { MdCardMembership } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import {Img} from "../assets/URLImages";
@@ -101,13 +101,13 @@ useEffect(()=>{
         </Row>
       </div>
       <div className="OCPageBody">
-        <Row lg="2" md="2" sm="1" xs="1">
+        {/* <Row lg="2" md="2" sm="1" xs="1">
           {foo.map((k) => (
             <Col key={k}>
               <EventCard img={Img.img} />
             </Col>
           ))}
-        </Row>
+        </Row> */}
       </div> </> }
       {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
     </div>

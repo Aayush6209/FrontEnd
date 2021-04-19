@@ -9,6 +9,8 @@ import OCList from "./container/ocList";
 import OCPage from "./container/OCPage";
 import SignUp from "./components/signup";
 import EventPage from "./container/eventPage";
+import RegisteredEvents from "./components/registeredEvents";
+import InterestedEvents from "./components/interestedEvents";
 
 import {connect} from "react-redux";
 
@@ -30,6 +32,8 @@ const App = (props)=>{
   }else{
     routes = <Switch>
       <Route path="/" exact component={Homepage} />
+      <Route path="/registered-events" exact component={RegisteredEvents} />
+      <Route path="/interested-events" exact component={InterestedEvents} />
       <Route path="/oc-list" exact component={OCList}/>
       <Route path="/oc-page/:name" exact component={OCPage}/>
       <Route path="/event" exact component={EventPage}/>
