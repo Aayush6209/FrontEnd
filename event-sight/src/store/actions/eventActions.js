@@ -103,14 +103,20 @@ export const registerEventFailure = error=>{
 
 
 // DISPLAY REGISTERED EVENTS
-export const displayRegisteredEvents = ()=>{
+export const displayRegisteredEvents = (sid, token)=>{
     return dispatch =>{
         dispatch(eventLoading)
+        const requestURL="interested_participated_events/";
+        const data={
+            student_id: sid,
+            interested: false,
+            token: token,
+        }
         axios
-        .get('')
+        .post(requestURL, data)
         .then(res => {
-            const events = res.data
-            dispatch(displayRegisteredEventsSuccess(events))
+            console.log(res.data);
+            dispatch(displayRegisteredEventsSuccess(res.data));
         })
         .catch(error => {
             dispatch(displayRegisteredEventsFailure(error))
@@ -118,10 +124,10 @@ export const displayRegisteredEvents = ()=>{
     }
 }
 
-export const displayRegisteredEventsSuccess = events=>{
+export const displayRegisteredEventsSuccess = data=>{
     return {
         type: actionTypes.DISPLAY_REGISTERED_EVENTS_SUCCESS,
-        payload: events
+        events: data
     }
 }
 

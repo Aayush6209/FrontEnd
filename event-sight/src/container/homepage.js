@@ -6,7 +6,6 @@ import { Img } from "../assets/URLImages";
 import ESSpinner from "../UI/ESSpinner";
 import { connect } from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
-import * as actionTypes from "../store/actions/actionTypes";
 
 const Homepage = (props) => {
 

@@ -3,6 +3,7 @@ import * as actionTypes from "../actions/actionTypes";
 const initialState = {
   loading: false,
   events: null,
+  selectedEvent: null,
   showAlert: false,
   AlertText : null,
   AlertColor : null
@@ -32,6 +33,12 @@ const EventReducer = (state = initialState, action) => {
         AlertColor: "danger",
       };
 
+    case actionTypes.SELECT_EVENT:
+      return{
+        ...state,
+        selectedEvent: action.selectedEvent,
+      }
+
     //EVENT REGISTRATION
     case actionTypes.EVENT_REGISTRATION_SUCCESS:
       return {
@@ -48,12 +55,16 @@ const EventReducer = (state = initialState, action) => {
     case actionTypes.DISPLAY_REGISTERED_EVENTS_SUCCESS:
       return {
         ...state,
-        showAlert: true,
+        loading: false,
+        events: action.events,
       };
     case actionTypes.DISPLAY_REGISTERED_EVENTS_FAILURE:
       return {
         ...state,
+        loading: false,
         showAlert: true,
+        AlertText: "Unable to Load Registered Events",
+        AlertColor: "danger",
       };
 
     //ADD EVENT TO INTERESTED

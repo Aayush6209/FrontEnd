@@ -58,7 +58,6 @@ GET-RETURNS
 POST
 {
     "student_id": "19103004",
-    "password": "user4@123",
     "interested": true/false,
     "token": "cdAqqfiwdBYNUvkudmslsQJqW66LUsAo"
 }

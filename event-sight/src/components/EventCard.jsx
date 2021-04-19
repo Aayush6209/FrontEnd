@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Link} from "react-router-dom";
 import {
   Card,CardText, CardBody,
   CardTitle, CardSubtitle, Container, Row, Col 
 } from 'reactstrap';
+import { connect } from "react-redux";
+import * as eventActions from "../store/actions/eventActions";
+import * as actionTypes from "../store/actions/actionTypes";
 import {MdEvent} from "react-icons/md";
 import {HiSaveAs} from "react-icons/hi";
 import {BsInfoCircle} from "react-icons/bs";
@@ -24,15 +27,30 @@ const EventCard = (props) => {
             <Row>
               <Col><div style={{display:"inline-block"}}><HiSaveAs size="36px" className="CardIcon"/></div></Col>
               <Col><div style={{display:"inline-block"}}><MdEvent size="36px" className="CardIcon"/></div></Col>
-              <Col><div style={{display:"inline-block"}}><Link to="/event"><BsInfoCircle size="32px" className="CardIcon"/></Link></div></Col>
+              <Col><div style={{display:"inline-block"}}><Link to={"/event/" + props.event.title} onClick={()=>{props.selectEvent(props.Event)}}><BsInfoCircle size="32px" className="CardIcon"/></Link></div></Col>
             </Row>
           </Container>
           </div>
         </CardBody>
       </Card>
     </div>
-    
   );
 };
 
-export default EventCard;
+const mapStateToProps = (state) => {
+  return {
+    sid : state.user.sid,
+    token : state.user.token,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    selectEvent : (event)=>dispatch({
+      type : actionTypes.SELECT_EVENT,
+      selectedEvent : event
+  }),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventCard);
