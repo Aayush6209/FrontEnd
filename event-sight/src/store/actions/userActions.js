@@ -52,6 +52,15 @@ export const loginInit = (user)=>{
         console.log(data)
         axios.post(requestURL, data)
         .then((res)=>{
+            localStorage.setItem("firstName", res.data.credentials.first_name)
+            localStorage.setItem("lastName", res.data.credentials.last_name)
+            localStorage.setItem("sid", res.data.credentials.student_id)
+            localStorage.setItem("branch", res.data.credentials.branch)
+            localStorage.setItem("password", res.data.credentials.password)
+            localStorage.setItem("email", res.data.credentials.email)
+            localStorage.setItem("token", res.data.token)
+            localStorage.setItem("role", user.role)
+            localStorage.setItem("OCName", user.OC)
             console.log(res)
             const userData = {
                 firstName :  res.data.credentials.first_name,

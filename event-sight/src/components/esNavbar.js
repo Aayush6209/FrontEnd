@@ -40,30 +40,53 @@ const ESNavbar = (props) => {
     const [tooltipOpen5, setTooltipOpen5] = useState(false);
     const toggle5 = () => setTooltipOpen5(!tooltipOpen5);
 
-    const [tooltipOpen6, setTooltipOpen6] = useState(false);
-    const toggle6 = () => setTooltipOpen6(!tooltipOpen6);
+    // const [tooltipOpen6, setTooltipOpen6] = useState(false);
+    // const toggle6 = () => setTooltipOpen6(!tooltipOpen6);
 
     const [tooltipOpen7, setTooltipOpen7] = useState(false);
     const toggle7 = () => setTooltipOpen7(!tooltipOpen7);
-  
-    return (
-      <div>
-        <Navbar className="ESNavbar" color="dark" light expand="md">
-          <h1 className="logo">Event Sight</h1>
-          <NavbarToggler onClick={toggle} />
-          <Collapse isOpen={isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem id="Home" >
+
+    // const [tooltipOpen8, setTooltipOpen8] = useState(false);
+    // const toggle8 = () => setTooltipOpen8(!tooltipOpen8);
+
+    let navItems = null;
+    if(props.role===null){navItems = null;}
+    else if(props.role === "Admin"){
+      navItems = <>
+      <NavItem id="Home" >
                 <NavLink href="/"><AiFillHome  className="ESNavbarIcon" size="30px"/></NavLink>
                 
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen1} target="Home" toggle={toggle1}>
         Home</Tooltip>
-              <NavItem id="CreateEvent" >
+        <NavItem id="CreateEvent" >
                 <NavLink href="/create-event"><IoMdCreate className="ESNavbarIcon" size="30px"/></NavLink>
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen2} target="CreateEvent" toggle={toggle2}>
         Create Event</Tooltip>
+        <NavItem id="MemberRequests">
+                <NavLink id="showMemberRequests"><HiUserAdd className="ESNavbarIcon" size="30px"/></NavLink>
+              </NavItem>
+              <MemberRequests/>
+              <Tooltip placement="bottom" isOpen={tooltipOpen7} target="MemberRequests" toggle={toggle7}>
+        Member Requests</Tooltip>
+        <NavItem id="logout" onClick={()=>{
+                props.logout(props.sid, props.token);
+              }}>
+                <NavLink><AiOutlineLogout className="ESNavbarIcon" size="30px"/></NavLink>
+              </NavItem>
+              {/* <Tooltip placement="bottom" isOpen={tooltipOpen6} target="logout" toggle={toggle6}>
+        Logout</Tooltip> */}
+      </>
+    }
+    else {
+      navItems = <>
+      <NavItem id="Home" >
+                <NavLink href="/"><AiFillHome  className="ESNavbarIcon" size="30px"/></NavLink>
+                
+              </NavItem>
+              <Tooltip placement="bottom" isOpen={tooltipOpen1} target="Home" toggle={toggle1}>
+        Home</Tooltip>
               <NavItem id="registered">
                 <NavLink href="/"><MdEvent className="ESNavbarIcon" size="30px"/></NavLink>
               </NavItem>
@@ -74,28 +97,29 @@ const ESNavbar = (props) => {
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen4} target="interestedEvents" toggle={toggle4}>
         Interested Events</Tooltip>
-        
-        {/*  */}
-        <NavItem id="MemberRequests">
-                <NavLink id="showMemberRequests"><HiUserAdd className="ESNavbarIcon" size="30px"/></NavLink>
-              </NavItem>
-              <MemberRequests/>
-              <Tooltip placement="bottom" isOpen={tooltipOpen7} target="MemberRequests" toggle={toggle7}>
-        Member Requests</Tooltip>
-        {/*  */}
-
               <NavItem id="oclist">
                 <NavLink href="/oc-list"><RiBuilding2Line className="ESNavbarIcon" size="30px"/></NavLink>
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen5} target="oclist" toggle={toggle5}>
         Organisers</Tooltip>
-              <NavItem id="logout" onClick={()=>{
+        <NavItem id="logout2" onClick={()=>{
                 props.logout(props.sid, props.token);
               }}>
                 <NavLink><AiOutlineLogout className="ESNavbarIcon" size="30px"/></NavLink>
               </NavItem>
-              <Tooltip placement="bottom" isOpen={tooltipOpen6} target="logout" toggle={toggle6}>
-        Logout</Tooltip>
+              {/* <Tooltip placement="bottom" isOpen={tooltipOpen8} target="logout2" toggle={toggle8}>
+        Logout</Tooltip> */}
+      </>
+    }
+  
+    return (
+      <div>
+        <Navbar className="ESNavbar" color="dark" light expand="md">
+          <h1 className="logo">Event Sight</h1>
+          <NavbarToggler onClick={toggle} />
+          <Collapse isOpen={isOpen} navbar>
+            <Nav className="ml-auto" navbar>
+              {navItems}
             </Nav>
           </Collapse>
         </Navbar>
@@ -106,7 +130,8 @@ const ESNavbar = (props) => {
   const mapStateToProps = (state)=>{
     return {
       sid : state.user.sid,
-      token : state.user.token
+      token : state.user.token,
+      role : state.user.role
     }
   }
 

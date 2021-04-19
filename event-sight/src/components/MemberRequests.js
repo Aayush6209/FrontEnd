@@ -15,7 +15,7 @@ const MemberRequests = (props)=>{
     const toggle = () => setPopoverOpen(!popoverOpen);
 
     useEffect(()=>{
-        props.fetchMemberRequests()
+        props.fetchMemberRequests(props.sid, props.token)
     },[props.showAlert])
 
 
@@ -27,7 +27,7 @@ const MemberRequests = (props)=>{
 
     return <><Popover placement="bottom" isOpen={popoverOpen} target="showMemberRequests" toggle={()=>{
         toggle()
-        props.fetchMemberRequests()
+        props.fetchMemberRequests(props.sid, props.token)
         }}>
             <div className="MemberRequestDiv">
                 { props.fetchedMemberRequests && props.fetchedMemberRequests.map((request, index)=>{
@@ -39,10 +39,10 @@ const MemberRequests = (props)=>{
                                 </Col>
                             <Col lg="4">
                                 <Button color="success" outline className="MemberRequestButton Left" onClick={()=>{
-                                    props.respondMemberRequests(request.student_id, true)
+                                    props.respondMemberRequests(request.student_id, props.token, props.OCName , true, props.sid)
                                 }}><FiCheck size="18px"/></Button>
                                 <Button color="danger" outline className="MemberRequestButton Right" onClick={()=>{
-                                    props.respondMemberRequests(request.student_id, false)
+                                    props.respondMemberRequests(request.student_id, props.token, props.OCName , false, props.sid)
                                 }}><ImCross size="13px"/></Button>
                             </Col>
                         </Row>
@@ -59,13 +59,16 @@ const mapStateToProps = (state)=>{
         showAlert : state.OC.showAlert,
         AlertText : state.OC.AlertText,
         AlertColor : state.OC.AlertColor,
+        sid : state.user.sid,
+        token : state.user.token,
+        OCName : state.user.OCName
     }
 }
 
 const mapDispatchToProps = (dispatch)=>{
     return {
-        fetchMemberRequests : ()=>dispatch(OCActions.fetchMemberRequests()),
-        respondMemberRequests : (sid,response)=>dispatch(OCActions.respondMemberRequests(sid, response)),
+        fetchMemberRequests : (sid, token)=>dispatch(OCActions.fetchMemberRequests(sid, token)),
+        respondMemberRequests : (sid, token, OCName, response, adminSID)=>dispatch(OCActions.respondMemberRequests(sid, token, OCName, response, adminSID)),
         hideAlert : ()=>dispatch({type : actionTypes.HIDE_OC_ALERT}),
     }
 }

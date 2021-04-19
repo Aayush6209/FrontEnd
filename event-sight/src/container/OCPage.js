@@ -12,6 +12,7 @@ import * as OCActions from "../store/actions/OCActions";
 import * as actionTypes from "../store/actions/actionTypes";
 
 import ESAlert from "../UI/ESAlert";
+import { Redirect } from "react-router-dom";
 
 const OCPage = (props) => {
   const imgURL =
@@ -34,10 +35,10 @@ useEffect(()=>{
   console.log(props.OC)
   let MemberButton = null;
     if(props.OC !== null){
-      props.checkMemberRequest(props.OC.name)
-      if(props.OC.members.includes("19103007")){
+      props.checkMemberRequest(props.sid, props.token, props.OC.name)
+      if(props.OC.members.includes(props.sid)){
         MemberButton = <Button outline color="danger" className="OCPageButtons" onClick={()=>{
-          props.sendMemberRemoveRequest(props.OC.name)
+          props.sendMemberRemoveRequest(props.sid, props.token, props.OC.name)
         }}>
         Cancel Membership <IoBan size="25px" />
       </Button>
@@ -49,17 +50,15 @@ useEffect(()=>{
       }
       else {
         MemberButton =<Button outline color="success" className="OCPageButtons" onClick = {()=>{
-          props.sendMemberRequest(props.OC.name)
+          props.sendMemberRequest(props.sid, props.token, props.OC.name)
         }}>
     Request Membership <MdCardMembership size="25px" />
   </Button>
       }
-      
   }
   
 
-  return (
-    <div>
+  return ( <> { props.role === "Admin" && props.AdminOC !== props.match.params.name ? <Redirect to="/"/> : <><div>
      { props.OC && <><div className="OCPageHeader">
         <Row>
           <Col lg="3" md="3" sm="3">
@@ -81,24 +80,24 @@ useEffect(()=>{
             </Row>
             <Row className="OCPageHeaderR3">
               <h5>{props.OC.description}</h5>
-            </Row>
-          </Col>
+            </Row></Col>
+        { props.role !== "Admin" &&  
           <Col lg="3" md="3" sm="3">
             <div className="Follow">
               {/* Not rendering the follow button if the student is the member */}
-              { !props.OC.members.includes("19103007") && (!props.OC.followers.includes("19103007") ? <Button outline color="primary" className="OCPageButtons" onClick={()=>{
-                props.followRequestInit(props.OC.name)
+              { !props.OC.members.includes(props.sid) && (!props.OC.followers.includes(props.sid) ? <Button outline color="primary" className="OCPageButtons" onClick={()=>{
+                props.followRequestInit( props.sid, props.token,props.OC.name)
               }}>
                 Follow <AiOutlineUserAdd size="25px" />
               </Button> : <Button outline color="info" className="OCPageButtons" onClick={()=>{
-                props.unfollowRequestInit(props.OC.name)
+                props.unfollowRequestInit(props.sid, props.token , props.OC.name)
               }}>
                 Unfollow <RiUserUnfollowLine size="25px" />
               </Button>) }
             </div>
             {MemberButton}
-            
-          </Col>
+     
+          </Col>}
         </Row>
       </div>
       <div className="OCPageBody">
@@ -112,7 +111,7 @@ useEffect(()=>{
       </div> </> }
       {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
     </div>
-  );
+  </>  } </>);
 };
 
 const mapStateToProps = (state)=>{
@@ -121,19 +120,23 @@ const mapStateToProps = (state)=>{
     showAlert : state.OC.showAlert,
     AlertText : state.OC.AlertText,
     AlertColor : state.OC.AlertColor,
-    membershipRequested : state.OC.membershipRequested
+    membershipRequested : state.OC.membershipRequested,
+    sid : state.user.sid,
+    token : state.user.token,
+    role : state.user.role,
+    AdminOC : state.user.OCName
   }
 }
 
 const mapDispatchToProps = (dispatch)=>{
   return {
-    followRequestInit : (OCName)=>dispatch(OCActions.followRequestInit(OCName)),
-    unfollowRequestInit : (OCName)=>dispatch(OCActions.unfollowRequestInit(OCName)),
+    followRequestInit : (sid, token, OCName)=>dispatch(OCActions.followRequestInit(sid, token, OCName)),
+    unfollowRequestInit : (sid, token ,OCName)=>dispatch(OCActions.unfollowRequestInit(sid, token, OCName)),
     hideAlert : ()=>dispatch({type : actionTypes.HIDE_OC_ALERT}),
     fetchOC : (OCName)=>dispatch(OCActions.fetchOC(OCName)),
-    sendMemberRequest : (OCName)=>dispatch(OCActions.sendMemberRequest(OCName)),
-    checkMemberRequest : (OCName)=>dispatch(OCActions.checkMemberRequest(OCName)),
-    sendMemberRemoveRequest : (OCName)=>dispatch(OCActions.sendMemberRemoveRequest(OCName))
+    sendMemberRequest : (sid, token, OCName)=>dispatch(OCActions.sendMemberRequest(sid, token, OCName)),
+    checkMemberRequest : (sid, token, OCName)=>dispatch(OCActions.checkMemberRequest( sid, token, OCName)),
+    sendMemberRemoveRequest : (sid, token, OCName)=>dispatch(OCActions.sendMemberRemoveRequest(sid, token ,OCName))
   }
 }
 

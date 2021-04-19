@@ -16,7 +16,7 @@ export const OCnames = ["Aerospace Technical Society" ,
 "Projection and Design Club"
 ,"Rotaract Club"
 ,"Communication, Information & Media Cell"
-,"English Editorial board"
+,"English Editorial Board"
 ,"Entrepreneurship & Incubation Cell"
 ,"Hindi Editorial Board"
 ,"Punjabi Editorial Board"

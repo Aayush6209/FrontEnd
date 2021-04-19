@@ -1,11 +1,11 @@
 import * as actionTypes from "../actions/actionTypes";
-import axios from "axios";
+import axios from "../../axios";
 
-//export const fetchAllOC = (sid, token)=>{
+
 export const fetchAllOC = ()=>{
     return (dispatch)=>{
         dispatch({type : actionTypes.LOADING})
-        const requestURL = "http://127.0.0.1:8000/club_display/"
+        const requestURL = "club_display/"
         axios.get(requestURL)
         .then((res)=>{
             console.log(res)
@@ -20,13 +20,12 @@ export const fetchAllOC = ()=>{
     }
 }
 
-// export const followRequestInit = (sid, token, OCName)=>{
-export const followRequestInit = (OCName)=>{
+export const followRequestInit = (sid, token, OCName)=>{
     return (dispatch) => {
-        const requestURL = "http://127.0.0.1:8000/club_follow/";
+        const requestURL = "club_follow/";
         const data = {
-            "student_id" : "19103007",
-            "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi",
+            "student_id" : sid,
+            "token" : token,
             "name" : OCName
         };
         axios.post(requestURL, data)
@@ -46,13 +45,12 @@ export const followRequestInit = (OCName)=>{
     }
 }
 
-// export const unfollowRequestInit = (sid, token, OCName)=>{
-export const unfollowRequestInit = (OCName)=>{
+export const unfollowRequestInit = (sid, token, OCName)=>{
     return (dispatch) => {
-        const requestURL = "http://127.0.0.1:8000/club_unfollow/";
+        const requestURL = "club_unfollow/";
         const data = {
-            "student_id" : "19103007",
-            "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi",
+            "student_id" : sid,
+            "token" : token,
             "name" : OCName
         };
         axios.post(requestURL, data)
@@ -74,7 +72,7 @@ export const unfollowRequestInit = (OCName)=>{
 
 export const fetchOC = (OCName)=>{
     return (dispatch)=>{
-        const requestURL = "http://127.0.0.1:8000/fetch_club/";
+        const requestURL = "fetch_club/";
         const data = {
             "name" : OCName
         }
@@ -92,14 +90,13 @@ export const fetchOC = (OCName)=>{
     }
 }
 
-// export const sendMemberRequest = (sid, token, OCName)=>{
-export const sendMemberRequest = (OCName)=>{
+export const sendMemberRequest = (sid, token, OCName)=>{
     return (dispatch)=>{
-        const requestURL = "http://127.0.0.1:8000/member_request/";
+        const requestURL = "member_request/";
         const data = {
             "name" : OCName,
-            "student_id" : "19103007",
-            "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi"
+            "student_id" : sid,
+            "token" : token
         }
         axios.post(requestURL, data)
         .then((res)=>{
@@ -114,14 +111,13 @@ export const sendMemberRequest = (OCName)=>{
     }
 }
 
-// export const checkMemberRequest = (sid, token, OCName)=>{
-export const checkMemberRequest = (OCName)=>{
+export const checkMemberRequest = (sid, token, OCName)=>{
     return (dispatch)=>{
-        const requestURL = "http://127.0.0.1:8000/member_request_check/";
+        const requestURL = "member_request_check/";
         const data = {
             "name" : OCName,
-            "student_id" : "19103007",
-            "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi"
+            "student_id" : sid,
+            "token" : token
         }
         axios.post(requestURL, data)
         .then((res)=>{
@@ -140,14 +136,13 @@ export const checkMemberRequest = (OCName)=>{
 }
 
 
-// export const sendMemberRemoveRequest = (sid, token, OCName)=>{
-export const sendMemberRemoveRequest = (OCName)=>{
+export const sendMemberRemoveRequest = (sid, token, OCName)=>{
     return (dispatch)=>{
-        const requestURL = "http://127.0.0.1:8000/remove_member/";
+        const requestURL = "remove_member/";
         const data = {
             "name" : OCName,
-            "student_id" : "19103007",
-            "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi"
+            "student_id" : sid,
+            "token" : token
         };
         console.log(data)
         axios.post(requestURL, data)
@@ -167,13 +162,12 @@ export const sendMemberRemoveRequest = (OCName)=>{
 
 //---------------------------------ADMIN ACTIONS---------------------------
 
-// export const fetchMemberRequests = (sid, token)=>{
-export const fetchMemberRequests = ()=>{
+export const fetchMemberRequests = (sid, token)=>{
     return (dispatch)=>{
-        const requestURL = "http://127.0.0.1:8000/get_members_requested/";
+        const requestURL = "get_members_requested/";
         const data = {
-            "student_id" : "19103007",
-            "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi"
+            "student_id" : sid,
+            "token" : token
         }
         axios.post(requestURL, data)
         .then((res)=>{
@@ -189,16 +183,15 @@ export const fetchMemberRequests = ()=>{
     }   
 }
 
-// export const respondMemberRequests = (sid, token, OCName, response, adminSID)=>{
-export const respondMemberRequests = (sid, response)=>{
+export const respondMemberRequests = (sid, token, OCName, response, adminSID)=>{
     return (dispatch)=>{
-        const requestURL = "http://127.0.0.1:8000/member_request_verify/";
+        const requestURL = "member_request_verify/";
         const data = {
             "student_id" : sid,
-            "club" : "Hindi Editorial Board",
-            "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi",
+            "club" : OCName,
+            "token" : token,
             "accepted" : response,
-            "admin_id" : "19103007"
+            "admin_id" : adminSID
         };
         axios.post(requestURL, data)
         .then((res)=>{

@@ -19,8 +19,8 @@ const OCList = (props)=>{
         OCrender = <ESSpinner />
     }
     else{
-        if(OCList !== null){
-        OCrender =  props.OCList && <Row lg="2" md="1" sm="1" xs="1">
+        if(props.OCList !== null){
+        OCrender = <Row lg="2" md="1" sm="1" xs="1">
         {
         props.OCList.map((OC, index)=><Col key={index}><Link to={"/oc-page/" + OC.name} className="OCListLink" onClick={()=>{
             props.selectOC(OC)
