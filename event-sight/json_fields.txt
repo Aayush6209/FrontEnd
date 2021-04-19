@@ -54,7 +54,14 @@ GET-RETURNS
     ...
 }
 
-5# 
+5# interested_participated_events
+POST
+{
+    "student_id": "19103004",
+    "password": "user4@123",
+    "interested": true/false,
+    "token": "cdAqqfiwdBYNUvkudmslsQJqW66LUsAo"
+}
 
 
 # create_event, update_event/pk
