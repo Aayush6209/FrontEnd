@@ -88,12 +88,12 @@ const ESNavbar = (props) => {
               <Tooltip placement="bottom" isOpen={tooltipOpen1} target="Home" toggle={toggle1}>
         Home</Tooltip>
               <NavItem id="registered">
-                <NavLink href="/"><MdEvent className="ESNavbarIcon" size="30px"/></NavLink>
+                <NavLink href="/registered-events"><MdEvent className="ESNavbarIcon" size="30px"/></NavLink>
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen3} target="registered" toggle={toggle3}>
         Registered Events</Tooltip>
               <NavItem id="interestedEvents">
-                <NavLink href="/"><HiSaveAs className="ESNavbarIcon" size="30px"/></NavLink>
+                <NavLink href="/interested-events"><HiSaveAs className="ESNavbarIcon" size="30px"/></NavLink>
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen4} target="interestedEvents" toggle={toggle4}>
         Interested Events</Tooltip>
