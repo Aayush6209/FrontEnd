@@ -42,8 +42,8 @@ export const displayEvents = ()=>{
         dispatch(eventLoading)
         const requestURL = "http://127.0.0.1:8000/event_display/";
         const data = {
-            "student_id" : "19103007",
-            "token" : "1WmHEuta8nQI1dqbG5Wxuamus6ThIRYi",
+            "student_id" : "19103049",
+            "token" : "tXhVHviip4Gzg3ekVGb8jGmgkg4Jaslx",
         };
         axios
         .post(requestURL, data)
