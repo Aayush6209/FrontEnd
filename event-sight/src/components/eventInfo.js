@@ -12,6 +12,7 @@ const { JSDOM } = require('jsdom');
 
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
+import {connect} from "react-redux";
 
 const EventInfo = (props)=>{
     
@@ -74,6 +75,12 @@ const EventInfo = (props)=>{
        </TabContent> 
 
     </div>
+}
+
+const mapStateToProps = (state)=>{
+    return {
+        role : state.user.role
+    }
 }
 
 export default EventInfo;

@@ -3,10 +3,11 @@ import {FiEdit} from "react-icons/fi";
 import { Tooltip, Modal, ModalHeader, ModalBody, ModalFooter, 
 Row, Col, Input, Label, FormGroup, Button } from 'reactstrap';
 
+import {connect} from "react-redux";
+import * as actionTypes from "../store/actions/actionTypes";
+import * as eventActions from "../store/actions/eventActions";
 
 const EventEdit = (props)=>{
-
-
     const [event, setEvent] = useState({
         eventTitle : "",
         eventDescription : "",
@@ -105,4 +106,16 @@ const EventEdit = (props)=>{
     </>;
 }
 
-export default EventEdit;
+const mapStateToProps = (state)=>{
+  return {
+    sid : state.user.sid,
+    token : state.user.token,
+    selectedEvent : state.event.selectedEvent
+  }
+}
+
+const mapDispatchToProps = (dispatch)=>{
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(EventEdit);
