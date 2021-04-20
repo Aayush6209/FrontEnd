@@ -292,24 +292,32 @@ export const displayInterestedEventsFailure = error=>{
 }
 
 // POST COMMENT
-export const postComment = (comment)=>{
+export const postComment = (sid, token, comment, id)=>{
     return dispatch =>{
-        dispatch(eventLoading)
+        const requestURL = "create_comment/";
+        const data={
+            "student_id":sid,
+            "token": token,
+            "comment_text": comment,
+            "event_id": id,
+        }
         axios
-        .post("", comment)
+        .post(requestURL, data)
         .then(res => {
+            console.log(res);
             dispatch(postCommentSuccess(res))
         })
         .catch(error => {
+            console.log(error);
             dispatch(postCommentFailure(error))
         })
     }
 }
 
-export const postCommentSuccess = comment=>{
+export const postCommentSuccess = data=>{
     return {
         type: actionTypes.POST_COMMENT_SUCCESS,
-        payload: comment
+        payload: data
     }
 }
 

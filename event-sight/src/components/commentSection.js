@@ -6,6 +6,7 @@ import { InputGroup, InputGroupAddon, Button, Input ,Tooltip} from 'reactstrap';
 import {connect} from "react-redux";
 import ESSpinner from "../UI/ESSpinner";
 import * as eventActions from "../store/actions/eventActions";
+import * as actionTypes from "../store/actions/actionTypes";
 
 const CommentSection = (props) => {
   useEffect(() => {
@@ -63,7 +64,8 @@ const CommentSection = (props) => {
               color="danger"
               id="postButton"
               onClick={() => {
-                console.log(comment);
+                props.postComment(props.sid, props.token, comment, props.event.id);
+                setComment("");
               }}
             >
               <AiOutlineSend size="20px" />
@@ -98,6 +100,8 @@ const mapStateToProps = (state) => {
   const mapDispatchToProps = (dispatch) => {
     return {
       displayComments: (id)=>dispatch(eventActions.displayComments(id)),
+      postComment: (sid, token, comment, id)=>dispatch(eventActions.postComment(sid, token, comment, id)),
+      hideAlert : ()=>dispatch({type : actionTypes.HIDE_EVENT_ALERT})
     };
   };
   
