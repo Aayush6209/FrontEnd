@@ -20,14 +20,14 @@ const EventCard = (props) => {
           <CardTitle tag="h5"><span className="CardTitle">{props.event.title}</span></CardTitle>
           <div className="CardContent">
           <CardSubtitle tag="h6" className="mb-2 text-muted"><strong>Date: </strong>{props.event.date_time.substring(0, 10)}<br /><strong>Time: </strong>{props.event.date_time.substring(11, 19)}</CardSubtitle>
-          <CardText>{(props.event.details.length>99)?(props.event.details.substring(0, 100)+"..."):props.event.details}</CardText>
+          <CardText>{(props.event.description.length>99)?(props.event.description.substring(0, 100)+"..."):props.event.description}</CardText>
           </div>
           <div className="CardIconsDiv">
           <Container>
             <Row>
               <Col><div style={{display:"inline-block"}}><HiSaveAs size="36px" className="CardIcon"/></div></Col>
               <Col><div style={{display:"inline-block"}}><MdEvent size="36px" className="CardIcon"/></div></Col>
-              <Col><div style={{display:"inline-block"}}><Link to={"/event/" + props.event.title} onClick={()=>{props.selectEvent(props.Event)}}><BsInfoCircle size="32px" className="CardIcon"/></Link></div></Col>
+              <Col><div style={{display:"inline-block"}}><Link to={"/event/" + props.event.title} onClick={()=>{props.selectEvent(props.event)}}><BsInfoCircle size="32px" className="CardIcon"/></Link></div></Col>
             </Row>
           </Container>
           </div>
