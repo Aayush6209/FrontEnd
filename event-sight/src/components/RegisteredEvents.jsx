@@ -19,8 +19,9 @@ const RegisteredEvents = (props) => {
     eventsrender = <ESSpinner />;
 
   } else {
-
-    let allEvents = props.events;
+    let allEvents = [];
+    if(props.events!==null)
+    allEvents = props.events;
     eventsrender = <Row lg="2" md="2" sm="1" xs="1">{
         allEvents.map((event, index) => (
           <Col key={index}>

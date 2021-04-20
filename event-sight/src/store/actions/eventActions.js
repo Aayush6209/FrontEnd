@@ -167,14 +167,20 @@ export const interestedFailure = error=>{
 }
 
 //DISPLAY INTERESTED EVENTS
-export const displayInterestedEvents = ()=>{
+export const displayInterestedEvents = (sid, token)=>{
     return dispatch =>{
         dispatch(eventLoading)
+        const requestURL="interested_participated_events/";
+        const data={
+            student_id: sid,
+            interested: true,
+            token: token,
+        }
         axios
-        .get('')
+        .post(requestURL, data)
         .then(res => {
-            const events = res.data
-            dispatch(displayInterestedEventsSuccess(events))
+            console.log(res.data);
+            dispatch(displayInterestedEventsSuccess(res.data));
         })
         .catch(error => {
             dispatch(displayInterestedEventsFailure(error))
@@ -182,10 +188,10 @@ export const displayInterestedEvents = ()=>{
     }
 }
 
-export const displayInterestedEventsSuccess = events=>{
+export const displayInterestedEventsSuccess = data=>{
     return {
         type: actionTypes.DISPLAY_INTERESTED_EVENTS_SUCCESS,
-        payload: events
+        events: data
     }
 }
 

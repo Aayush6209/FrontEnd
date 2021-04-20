@@ -107,12 +107,16 @@ const EventReducer = (state = initialState, action) => {
     case actionTypes.DISPLAY_INTERESTED_EVENTS_SUCCESS:
       return {
         ...state,
-        showAlert: true,
+        loading: false,
+        events: action.events,
       };
     case actionTypes.DISPLAY_INTERESTED_EVENTS_FAILURE:
       return {
         ...state,
+        loading: false,
         showAlert: true,
+        AlertText: "Unable to Load Interested Events",
+        AlertColor: "danger",
       };
 
     // POST COMMENT
