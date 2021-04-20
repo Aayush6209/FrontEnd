@@ -27,7 +27,7 @@ const EventCard = (props) => {
             <Row>
               <Col><div style={{display:"inline-block"}}><HiSaveAs size="36px" className="CardIcon"/></div></Col>
               <Col><div style={{display:"inline-block"}}><MdEvent size="36px" className="CardIcon"/></div></Col>
-              <Col><div style={{display:"inline-block"}}><Link to={"/event/" + props.event.title} onClick={()=>{props.selectEvent(props.event)}}><BsInfoCircle size="32px" className="CardIcon"/></Link></div></Col>
+              <Col><div style={{display:"inline-block"}}><Link to={"/event/" + props.event.id +"/"+ props.event.title.replace(/ /g, '-')} onClick={()=>{props.selectEvent(props.event)}}><BsInfoCircle size="32px" className="CardIcon"/></Link></div></Col>
             </Row>
           </Container>
           </div>

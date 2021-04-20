@@ -29,7 +29,6 @@ const EventInfo = (props)=>{
     }
     
     let details = props.event.details.split("\n");
-    console.log(details);
 
     return <div className="EventInfoDiv">
         <Nav tabs>

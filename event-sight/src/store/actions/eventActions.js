@@ -99,6 +99,30 @@ export const displayEventsFailure = error=>{
     }
 }
 
+export const selectEvent=(id)=>{
+    return dispatch=>{
+        const requestURL = "get_event_via_id/";
+        const data={
+            "event_id": id
+        };
+        axios
+        .post(requestURL, data)
+        .then((res)=>{
+            console.log(res.data);
+            dispatch(selectEventSuccess(res.data));
+        })
+        .catch((err)=>{
+            console.log(err);
+        })
+    }
+}
+
+export const selectEventSuccess=data=>{
+    return {
+        type: actionTypes.SELECT_EVENT,
+        selectedEvent: data,
+    }
+}
 
 // EVENT REGISTRATION
 export const registerEvent = (event)=>{
