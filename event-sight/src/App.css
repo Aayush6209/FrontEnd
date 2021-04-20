@@ -121,7 +121,9 @@ font-family: 'Acme', sans-serif;
   white-space: nowrap;
   height: 100px;
   margin-bottom: 3%;
-  border-radius: 100px;
+  border-radius: 10px;
+  padding: 2px;
+  box-shadow: 0 0 5px grey;
 }
 
 /* To hide scroll bar */

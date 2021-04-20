@@ -5,6 +5,7 @@ import { Col, Row, Button, FormGroup, Label, Input } from 'reactstrap';
 import * as  userActions from "../store/actions/userActions";
 import * as actionTypes from "../store/actions/actionTypes";
 import {connect} from "react-redux";
+import {formValidation} from "../formValidation";
 
 import ESAlert from "../UI/ESAlert";
 
@@ -17,6 +18,11 @@ const Login = (props)=>{
     OC : "Aerospace Technical Society",
   });
 
+  const [validCRED, setValidCRED] = useState({
+    "sid" : {valid : false, invalid : false},
+    "password" : {valid : false, invalid : false}
+  })
+
   const changeHandler = (event)=>{
       onUserChange((prevUser)=>{
         return{
@@ -24,6 +30,16 @@ const Login = (props)=>{
           [event.target.name] : event.target.value
         }
       })
+      if(event.target.name === "sid" || event.target.name === "password" ){
+      let flag = formValidation(event.target.name, event.target.value)
+      setValidCRED((prev)=>{return{
+        ...prev,
+        [event.target.name] : {
+          valid : flag,
+          invalid : !flag
+        }
+      }})
+    }
   }
 
   if(props.showAlert){
@@ -37,14 +53,18 @@ const Login = (props)=>{
         <Col>
         <FormGroup>
             <Label for="sid">SID</Label>
-            <Input type="text" name="sid" value={user.sid} onChange={changeHandler} />
+            <Input type="text" name="sid" value={user.sid} onChange={changeHandler} 
+            valid = {validCRED["sid"].valid} invalid = {validCRED["sid"].invalid} />
+
           </FormGroup>
         </Col>
       </Row>
       <Row><Col>
       <FormGroup>
             <Label for="password">Password</Label>
-            <Input type="password" name="password" value={user.password} onChange={changeHandler}/>
+            <Input type="password" name="password" value={user.password} onChange={changeHandler}
+            valid = {validCRED["password"].valid} invalid = {validCRED["password"].invalid}
+            />
           </FormGroup>
       </Col></Row>
 
@@ -71,7 +91,7 @@ const Login = (props)=>{
       <Button onClick={()=>{
         console.log(user)
         props.loginInit(user);
-      }}>Login</Button>
+      }} color="info">Login</Button>
 
     {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}
      </div>;
