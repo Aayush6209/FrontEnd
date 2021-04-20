@@ -30,7 +30,6 @@ const CommentSection = (props) => {
 
   if(!props.loading && typeof props.comments !== "undefined" && props.comments!==null){
       commentsList=props.comments;
-      console.log(commentsList);
   }
   let commentsRender=<ESSpinner />;
 

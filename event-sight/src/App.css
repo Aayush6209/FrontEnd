@@ -538,3 +538,20 @@ font-family: 'Acme', sans-serif;
   font-size: 15px;
   font-weight: 500;
 }
+
+
+.DownloadButton{
+  background-color: #FE5F55;
+  color : white;
+  width: 53px;
+  text-align: center;
+  height: 53px;
+  padding: 5px;
+  border-radius: 53px;
+  box-shadow: 0 0 5px grey;
+}
+
+.DownloadButton:hover{
+  box-shadow: 0 0 6px black;
+  cursor: pointer;
+}
