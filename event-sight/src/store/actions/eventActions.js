@@ -34,6 +34,35 @@ export const createNewEvent = (sid, token, event)=>{
     }
 }
 
+export const updateEvent = (sid, token, event, id)=>{
+    return (dispatch)=>{
+        const requestURL = "update_event/"+id+"/";
+        const data = {
+            "title" : event.eventTitle,
+            "description" : event.eventDescription,
+            "details" : event.eventDetails,
+            "date_time" : event.eventDate + " " + event.eventTime + ":00",
+            "open_to_all" : event.eventType === "MemberSpecific" ? "False" : "True",
+            "image_url" : event.eventImgURL,
+            "student_id" : sid,
+            "token" : token
+        };
+        axios.put(requestURL, data)
+        .then((res)=>{
+            console.log(res)
+            dispatch({
+                type : actionTypes.EVENT_UPDATE_SUCCESS
+            })
+        })
+        .catch((err)=>{
+            console.log(err)
+            dispatch({
+                type : actionTypes.EVENT_UPDATE_FAILED
+            })
+        })
+    }
+}
+
 // EVENT DISPLAY
 export const displayEvents = (sid, token)=>{
     return dispatch =>{

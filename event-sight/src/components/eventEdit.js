@@ -7,16 +7,24 @@ import {connect} from "react-redux";
 import * as actionTypes from "../store/actions/actionTypes";
 import * as eventActions from "../store/actions/eventActions";
 
+import {MdErrorOutline, MdUpdate} from "react-icons/md";
+
 const EventEdit = (props)=>{
     const [event, setEvent] = useState({
-        eventTitle : "",
-        eventDescription : "",
+        eventTitle : props.selectedEvent.title,
+        eventDescription : props.selectedEvent.description,
         eventDate : "",
         eventTime : "",
-        eventDetails : "",
-        eventType : "",
-        eventImgURL : ""
+        eventDetails : props.selectedEvent.details,
+        eventType : "" ,
+        eventImgURL : props.selectedEvent.image_url
       })
+    
+    if(props.showAlert){
+      setTimeout(()=>{
+        props.hideAlert()
+      }, 3500)
+    }
     
       const changeHandler = (changeEvent)=>{
         setEvent((prev)=>{
@@ -41,7 +49,7 @@ const EventEdit = (props)=>{
       <Modal isOpen={modal} toggle={modelToggle}>
           <ModalHeader></ModalHeader>
           <ModalBody>
-          <div >
+          <div>
      <FormGroup>
          <Row>
          <Col>
@@ -96,12 +104,21 @@ const EventEdit = (props)=>{
           </Col>
           </Row>
       </FormGroup>
-      <Button onClick={()=>{
+     <Row>
+       <Col> <Button onClick={()=>{
           console.log(event)
-      }}>Update Event</Button>
+          props.updateEvent(props.sid, props.token, event, props.selectedEvent.id)
+      }}>Update Event</Button></Col>
+      <Col>
+      {(props.showAlert && props.AlertColor === "success") &&  null }<MdUpdate size="35px"/>
+      {(props.showAlert && props.AlertColor === "danger") && null } <MdErrorOutline/> 
+      </Col>
+       </Row>
     </div>
           </ModalBody>
-          <ModalFooter></ModalFooter>
+          <ModalFooter>       
+          </ModalFooter>
+          
       </Modal>
     </>;
 }
@@ -110,12 +127,17 @@ const mapStateToProps = (state)=>{
   return {
     sid : state.user.sid,
     token : state.user.token,
-    selectedEvent : state.event.selectedEvent
+    selectedEvent : state.event.selectedEvent,
+    showAlert : state.event.showAlert,
+    AlertColor : state.event.AlertColor,
   }
 }
 
 const mapDispatchToProps = (dispatch)=>{
-  return {}
+  return {
+    updateEvent : (sid, token, event, id)=>dispatch(eventActions.updateEvent(sid, token, event, id)),
+    hideAlert : ()=>dispatch({type : actionTypes.HIDE_EVENT_ALERT})
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventEdit);

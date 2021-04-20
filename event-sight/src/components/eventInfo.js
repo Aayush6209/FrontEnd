@@ -6,13 +6,14 @@ import Sample from "../assets/sample.jpg";
 import {SampleEvent} from "../assets/sampleEvent";
 import EventEdit from "./eventEdit";
 
+import {connect} from "react-redux";
 
 const createDOMPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
 
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
-import {connect} from "react-redux";
+
 
 const EventInfo = (props)=>{
     
@@ -43,7 +44,8 @@ const EventInfo = (props)=>{
             <span style={{cursor : "pointer"}}>Detailed Info</span>
           </NavLink>
         </NavItem>
-        <NavItem><EventEdit /></NavItem>
+       {/* { props.role === "Admin" && <NavItem><EventEdit /></NavItem> } */}
+       <NavItem><EventEdit /></NavItem>
       </Nav>
 
       <TabContent activeTab={activeTab}>
@@ -84,4 +86,4 @@ const mapStateToProps = (state)=>{
     }
 }
 
-export default EventInfo;
+export default connect(mapStateToProps)(EventInfo);

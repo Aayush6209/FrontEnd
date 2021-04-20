@@ -35,6 +35,18 @@ const EventReducer = (state = initialState, action) => {
         AlertColor : "danger"
       }
 
+    case actionTypes.EVENT_UPDATE_SUCCESS :
+      return {
+        ...state,
+        showAlert : true,
+        AlertColor : "success"
+      }
+    case actionTypes.EVENT_UPDATE_FAILED :
+      return {
+        ...state,
+        showAlert : true,
+        AlertColor : "danger"
+      }
     case actionTypes.EVENT_LOADING:
       return{
         ...state,
