@@ -20,13 +20,14 @@ const EventInfo = (props)=>{
     const toggle = tab => {if(activeTab !== tab) setActiveTab(tab);}
 
     function linkify(text) {
-        var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
+        var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
         return text.replace(urlRegex, function(url) {
             return '<a style="text-decoration:none;" target="_blank" href="' + url + '">' + url + '</a>';
         });
     }
     
     let details = props.event.details.split("\n");
+    console.log(details);
 
     return <div className="EventInfoDiv">
         <Nav tabs>
@@ -59,14 +60,14 @@ const EventInfo = (props)=>{
             {/* Second Tab Content */}
             <h1 className="EventTitle">{props.event.title}</h1>
             <div className="EventInfo">
-            <p  className="EventInfoIntro">{props.event.description}</p>
+            <p  style={{display: 'block'}} className="EventInfoIntro">{props.event.description}</p>
             <Row>
                 <Col lg="12" md="12" sm="12" className="EventInfoDate">Date: <span className="EventDateTime">{props.event.date_time.substring(0, 10)}</span></Col>
                 <Col lg="12" md="12" sm="12" className="EventInfoTime">Time: <span className="EventDateTime">{props.event.date_time.substring(11, 19)}</span></Col>
             </Row>
             {details.map((detail, index)=>{
                 let clean = DOMPurify.sanitize(detail);
-                return <p key={index} className="EventInfoDetail" dangerouslySetInnerHTML={{__html: linkify(clean)}} />
+                return <p style={{display: 'block'}}key={index} className="EventInfoDetail" dangerouslySetInnerHTML={{__html: linkify(clean)}} />
             })}
             </div>
         </TabPane>
