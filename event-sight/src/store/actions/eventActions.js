@@ -292,24 +292,32 @@ export const displayInterestedEventsFailure = error=>{
 }
 
 // POST COMMENT
-export const postComment = (comment)=>{
+export const postComment = (sid, token, comment, id)=>{
     return dispatch =>{
-        dispatch(eventLoading)
+        const requestURL = "create_comment/";
+        const data={
+            "student_id":sid,
+            "token": token,
+            "comment_text": comment,
+            "event_id": id,
+        }
         axios
-        .post("", comment)
+        .post(requestURL, data)
         .then(res => {
+            console.log(res);
             dispatch(postCommentSuccess(res))
         })
         .catch(error => {
+            console.log(error);
             dispatch(postCommentFailure(error))
         })
     }
 }
 
-export const postCommentSuccess = comment=>{
+export const postCommentSuccess = data=>{
     return {
         type: actionTypes.POST_COMMENT_SUCCESS,
-        payload: comment
+        payload: data
     }
 }
 
@@ -321,25 +329,30 @@ export const postCommentFailure = error=>{
 }
 
 //DISPLAY COMMENTS
-export const displayComments = ()=>{
+export const displayComments = (id)=>{
     return dispatch =>{
         dispatch(eventLoading)
+        const requestURL="display_comments/";
+        const data={
+            "event_id": id,
+        }
         axios
-        .get('')
+        .post(requestURL, data)
         .then(res => {
-            const comments = res.data
-            dispatch(displayCommentsSuccess(comments))
+            console.log(res.data.data);
+            dispatch(displayCommentsSuccess(res.data.data))
         })
         .catch(error => {
+            console.log(error);
             dispatch(displayCommentsFailure(error))
         })
     }
 }
 
-export const displayCommentsSuccess = comments=>{
+export const displayCommentsSuccess = data=>{
     return {
         type: actionTypes.DISPLAY_COMMENTS_SUCCESS,
-        payload: comments
+        comments: data,
     }
 }
 

@@ -22,7 +22,7 @@ const Homepage = (props) => {
   } else {
 
     let allEvents = [];
-    if (props.events !== null) {
+    if (props.events !== null && typeof props.events!== "undefined" && typeof props.events.member_club_events!=="undefined" && typeof props.events.followed_club_events!=="undefined") {
 
       let memberEvents = props.events.member_club_events.filter((event) => {
         if (event.open_to_all === false) {

@@ -20,7 +20,7 @@ import {OCLogos} from "../assets/OClogo";
 
 
 const OCPage = (props) => {
-
+  
 useEffect(()=>{
   props.fetchOC(props.match.params.name)
 },[props.showAlert])
@@ -38,6 +38,7 @@ useEffect(()=>{
   }
   console.log(props.OC)
   let MemberButton = null;
+  let eventsrender = <ESSpinner />;
     if(props.OC !== null){
       props.checkMemberRequest(props.sid, props.token, props.OC.name)
       if(props.OC.members.includes(props.sid)){
@@ -59,21 +60,20 @@ useEffect(()=>{
     Request Membership <MdCardMembership size="25px" />
   </Button>
       }
+      let allEvents = [];
+      if (Array.isArray(props.events)) {
+        allEvents = props.events;
+      }
+      eventsrender = (
+        <Row lg="2" md="2" sm="1" xs="1">
+          {allEvents.map((event, index) => (
+            <Col key={index}>
+              <EventCard id={event.id} img={Img.img} event={event} />
+            </Col>
+          ))}
+        </Row>
+      );
   }
-  let eventsrender=<ESSpinner />
-  let allEvents = [];
-  if (props.events !== null) {
-    allEvents = props.events;
-  }
-  eventsrender = (
-    <Row lg="2" md="2" sm="1" xs="1">
-      {allEvents.map((event, index) => (
-        <Col key={index}>
-          <EventCard id={event.id} img={Img.img} event={event} />
-        </Col>
-      ))}
-    </Row>
-  );
 
   return ( <> { props.role === "Admin" && props.AdminOC !== props.match.params.name ? <Redirect to="/"/> : <><div>
      { props.OC && <><div className="OCPageHeader">
