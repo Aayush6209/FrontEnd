@@ -5,14 +5,15 @@ import CommentSection from "../components/commentSection";
 import EventPageButtons from "../components/eventPageButtons";
 
 import {connect} from "react-redux";
-import * as OCActions from "../store/actions/OCActions";
 import * as eventActions from "../store/actions/eventActions";
-import * as actionTypes from "../store/actions/actionTypes";
 
 import ESAlert from "../UI/ESAlert";
-import { Redirect } from "react-router-dom";
 
 const EventPage = (props)=>{
+    
+    useEffect(()=>{
+        props.selectEvent(props.match.params.id)
+      },[props.showAlert])
 
       if(props.showAlert){
         setTimeout(()=>{
@@ -23,7 +24,7 @@ const EventPage = (props)=>{
         width : "100%"
     }}>
         <Row>
-            <Col lg="8"><EventInfo event={props.selectedEvent}/></Col>
+            {props.selectedEvent && <Col lg="8"><EventInfo event={props.selectedEvent}/></Col>}
             <Col lg="4">
                 <Row><EventPageButtons/></Row>
                 <Row><CommentSection/></Row>
@@ -36,6 +37,9 @@ const EventPage = (props)=>{
 const mapStateToProps = (state) => {
     return {
       loading: state.event.loading,
+      showAlert : state.OC.showAlert,
+      AlertText : state.OC.AlertText,
+      AlertColor : state.OC.AlertColor,
       selectedEvent: state.event.selectedEvent,
       sid : state.user.sid,
       token : state.user.token,
@@ -44,7 +48,7 @@ const mapStateToProps = (state) => {
   
   const mapDispatchToProps = (dispatch) => {
     return {
-      
+      selectEvent: (id)=>dispatch(eventActions.selectEvent(id)),
     };
   };
   

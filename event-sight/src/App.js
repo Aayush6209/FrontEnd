@@ -26,7 +26,7 @@ const App = (props)=>{
     routes = <Switch>
       <Route path="/create-event" exact component={EventForm}/>
       <Route path="/oc-page/:name" exact component={OCPage}/>
-      <Route path="/event/:name" exact component={EventPage}/>
+      <Route path="/event/:id/:name" exact component={EventPage}/>
       <Redirect to={"/oc-page/" + props.OCName} />
     </Switch>
   }else{
@@ -36,7 +36,7 @@ const App = (props)=>{
       <Route path="/interested-events" exact component={InterestedEvents} />
       <Route path="/oc-list" exact component={OCList}/>
       <Route path="/oc-page/:name" exact component={OCPage}/>
-      <Route path="/event/:name" exact component={EventPage}/>
+      <Route path="/event/:id/:name" exact component={EventPage}/>
       <Redirect to="/"/>
     </Switch>
   }
