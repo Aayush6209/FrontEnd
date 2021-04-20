@@ -20,7 +20,7 @@ const RegisteredEvents = (props) => {
 
   } else {
     let allEvents = [];
-    if(props.events!==null)
+    if(Array.isArray(props.events))
     allEvents = props.events;
     eventsrender = <Row lg="2" md="2" sm="1" xs="1">{
         allEvents.map((event, index) => (
