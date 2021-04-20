@@ -364,7 +364,8 @@ font-family: 'Acme', sans-serif;
 }
 .EventInfoIntro {
   font-weight: 500;
-  color: rgb(85, 85, 85)
+  color: rgb(85, 85, 85);
+  width: 100%;
 }
 .EventInfoDate {
   font-weight: 500;
@@ -379,6 +380,7 @@ font-family: 'Acme', sans-serif;
 .EventInfoDetail{
     font-weight: 500;
     color: rgb(0, 0, 0);
+    width: 100%;
 }
 
 .eventEditButton{

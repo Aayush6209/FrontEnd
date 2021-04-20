@@ -20,8 +20,9 @@ const InterestedEvents = (props) => {
 
   } else {
     let allEvents = [];
-    if(props.events!==null)
-    allEvents = props.events;
+    if(props.events!==null){
+      allEvents = props.events;
+    }
     eventsrender = <Row lg="2" md="2" sm="1" xs="1">{
         allEvents.map((event, index) => (
           <Col key={index}>
