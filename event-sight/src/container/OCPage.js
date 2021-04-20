@@ -17,12 +17,9 @@ import ESAlert from "../UI/ESAlert";
 import { Redirect } from "react-router-dom";
 import {OCLogos} from "../assets/OClogo";
 
+
+
 const OCPage = (props) => {
-  //for testing only
-  var foo = [];
-  for (var i = 1; i <= 5; i++) {
-    foo.push(i);
-  }
 
 useEffect(()=>{
   props.fetchOC(props.match.params.name)

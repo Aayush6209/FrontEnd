@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {OCnames} from "../assets/OCname";
-import { Col, Row, Button, FormGroup, Label, Input } from 'reactstrap';
+import { Col, Row, Button, FormGroup, Label, Input, FormText } from 'reactstrap';
 
 import * as  userActions from "../store/actions/userActions";
 import * as actionTypes from "../store/actions/actionTypes";
@@ -22,6 +22,8 @@ const Login = (props)=>{
     "sid" : {valid : false, invalid : false},
     "password" : {valid : false, invalid : false}
   })
+
+  const [roleChanged, setRoleChanged] = useState(false);
 
   const changeHandler = (event)=>{
       onUserChange((prevUser)=>{
@@ -54,7 +56,8 @@ const Login = (props)=>{
         <FormGroup>
             <Label for="sid">SID</Label>
             <Input type="text" name="sid" value={user.sid} onChange={changeHandler} 
-            valid = {validCRED["sid"].valid} invalid = {validCRED["sid"].invalid} />
+            valid = {validCRED["sid"].valid} invalid = {validCRED["sid"].invalid}
+             />
 
           </FormGroup>
         </Col>
@@ -65,6 +68,7 @@ const Login = (props)=>{
             <Input type="password" name="password" value={user.password} onChange={changeHandler}
             valid = {validCRED["password"].valid} invalid = {validCRED["password"].invalid}
             />
+            <FormText>Password must be 7-20 Characters long and must contain one numeric and one special character</FormText>
           </FormGroup>
       </Col></Row>
 
@@ -73,8 +77,16 @@ const Login = (props)=>{
       <Row lg="4" md="4" sm="3" xs="1">
             <Col><Label for="role1">Select Role</Label></Col>
             
-            <Col><Input type="radio" name="role" value="Student" onChange={changeHandler}/>{"Student"}</Col>
-            <Col><Input type="radio"  name="role" value="Admin" onChange={changeHandler}/>{"Admin"}</Col>
+            <Col><Input type="radio" name="role" value="Student" onChange={(event)=>{
+              changeHandler(event)
+              setRoleChanged(true);
+            }
+          }/>{"Student"}</Col>
+            <Col><Input type="radio"  name="role" value="Admin" onChange={(event)=>{
+              changeHandler(event)
+              setRoleChanged(true);
+            }
+          }/>{"Admin"}</Col>
             </Row>
           </FormGroup>
       </Col></Row>
@@ -91,7 +103,9 @@ const Login = (props)=>{
       <Button onClick={()=>{
         console.log(user)
         props.loginInit(user);
-      }} color="info">Login</Button>
+      }} color="info"
+      disabled = {!(roleChanged && validCRED["sid"].valid && validCRED["password"].valid)}
+      >Login</Button>
 
     {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}
      </div>;
