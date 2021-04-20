@@ -1,44 +1,104 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import {AiOutlineSend} from "react-icons/ai";
 import {FaUser} from "react-icons/fa"
 import { InputGroup, InputGroupAddon, Button, Input ,Tooltip} from 'reactstrap';
 
-const CommentSection = ()=>{
-    //just for testing
-    var foo = [];
-    for (var i = 1; i <= 13; i++) {foo.push(i);}
+import {connect} from "react-redux";
+import ESSpinner from "../UI/ESSpinner";
+import * as eventActions from "../store/actions/eventActions";
 
-    //for tooltip
-    const [tooltipOpen, setTooltipOpen] = useState(false);
+const CommentSection = (props) => {
+  useEffect(() => {
+    props.displayComments(props.event.id);
+  }, [props.showAlert]);
+
+  if (props.showAlert) {
+    setTimeout(() => {
+      props.hideAlert();
+    }, 3500);
+  }
+
+  //for tooltip
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
   const toggle = () => setTooltipOpen(!tooltipOpen);
 
   const [comment, setComment] = useState("");
 
+  let commentsList=[];
 
-    return <div className="CommentSectionDiv">
-        <div className="CommentsDiv">
-        {foo.map(f=>(<div key={f} className="Comment">
-            <div className="CommentUser"> <FaUser/> {"Shivam Arora"} </div>
-            <div className="CommentText" >{"This is the Comment."}</div>
-        </div>))}
-        </div>
-        <div className="CommentAdd">
-    <InputGroup>
-       <Input placeholder="Type your comment" name="comment" value={comment} onChange = {(event)=>{
-           setComment(event.target.value)
-       }} />
-        <InputGroupAddon addonType="append">
-            <Button color="danger" id="postButton" onClick={()=>{
-                console.log(comment)
-            }}><AiOutlineSend size="20px"/></Button>
-            <Tooltip placement="bottom" isOpen={tooltipOpen} target="postButton" toggle={toggle}>Post Comment</Tooltip>
-        </InputGroupAddon>
-        </InputGroup>
-</div>
+  if(!props.loading && typeof props.comments !== "undefined" && props.comments!==null){
+      commentsList=props.comments;
+      console.log(commentsList);
+  }
+  let commentsRender=<ESSpinner />;
+
+  commentsRender=<div className="CommentsDiv">
+  {commentsList.map((comment, index) => (
+    <div key={index} className="Comment">
+      <div className="CommentUser">
+        {" "}
+        <FaUser /> {comment.split(',')[1]+" "+ comment.split(',')[2]}{" "}
+      </div>
+      <div className="CommentText">{comment.split(',')[3]}</div>
     </div>
-    
-}
+  ))}
+</div>
 
+  return (
+    <div className="CommentSectionDiv">
+      {commentsRender}
+      <div className="CommentAdd">
+        <InputGroup>
+          <Input
+            placeholder="Type your comment"
+            name="comment"
+            value={comment}
+            onChange={(event) => {
+              setComment(event.target.value);
+            }}
+          />
+          <InputGroupAddon addonType="append">
+            <Button
+              color="danger"
+              id="postButton"
+              onClick={() => {
+                console.log(comment);
+              }}
+            >
+              <AiOutlineSend size="20px" />
+            </Button>
+            <Tooltip
+              placement="bottom"
+              isOpen={tooltipOpen}
+              target="postButton"
+              toggle={toggle}
+            >
+              Post Comment
+            </Tooltip>
+          </InputGroupAddon>
+        </InputGroup>
+      </div>
+    </div>
+  );
+};
 
-export default CommentSection;
+const mapStateToProps = (state) => {
+    return {
+      showAlert : state.event.showAlert,
+      AlertText : state.event.AlertText,
+      AlertColor : state.event.AlertColor,
+      sid : state.user.sid,
+      token : state.user.token,
+      comments: state.event.comments,
+      loading: state.user.loading,
+    };
+  };
+  
+  const mapDispatchToProps = (dispatch) => {
+    return {
+      displayComments: (id)=>dispatch(eventActions.displayComments(id)),
+    };
+  };
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(CommentSection);

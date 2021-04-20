@@ -4,6 +4,7 @@ const initialState = {
   loading: false,
   events: null,
   selectedEvent: null,
+  comments: null,
   showAlert: false,
   AlertText: null,
   AlertColor: null,
@@ -162,12 +163,16 @@ const EventReducer = (state = initialState, action) => {
     case actionTypes.DISPLAY_COMMENTS_SUCCESS:
       return {
         ...state,
-        showAlert: true,
+        loading: false,
+        comments: action.comments,
       };
     case actionTypes.DISPLAY_COMMENTS_FAILURE:
       return {
         ...state,
+        loading: false,
         showAlert: true,
+        AlertText: "Unable to Load Interested Events",
+        AlertColor: "danger",
       };
 
     default:

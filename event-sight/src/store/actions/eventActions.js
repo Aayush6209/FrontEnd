@@ -321,25 +321,30 @@ export const postCommentFailure = error=>{
 }
 
 //DISPLAY COMMENTS
-export const displayComments = ()=>{
+export const displayComments = (id)=>{
     return dispatch =>{
         dispatch(eventLoading)
+        const requestURL="display_comments/";
+        const data={
+            "event_id": id,
+        }
         axios
-        .get('')
+        .post(requestURL, data)
         .then(res => {
-            const comments = res.data
-            dispatch(displayCommentsSuccess(comments))
+            console.log(res.data.data);
+            dispatch(displayCommentsSuccess(res.data.data))
         })
         .catch(error => {
+            console.log(error);
             dispatch(displayCommentsFailure(error))
         })
     }
 }
 
-export const displayCommentsSuccess = comments=>{
+export const displayCommentsSuccess = data=>{
     return {
         type: actionTypes.DISPLAY_COMMENTS_SUCCESS,
-        payload: comments
+        comments: data,
     }
 }
 

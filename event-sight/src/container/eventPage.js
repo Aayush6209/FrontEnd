@@ -10,7 +10,7 @@ import * as eventActions from "../store/actions/eventActions";
 import ESAlert from "../UI/ESAlert";
 
 const EventPage = (props)=>{
-    
+
     useEffect(()=>{
         props.selectEvent(props.match.params.id)
       },[props.showAlert])
@@ -26,8 +26,8 @@ const EventPage = (props)=>{
         <Row>
             {props.selectedEvent && <Col lg="8"><EventInfo event={props.selectedEvent}/></Col>}
             <Col lg="4">
-                <Row><EventPageButtons/></Row>
-                <Row><CommentSection/></Row>
+            {props.selectedEvent && <Row><EventPageButtons/></Row>}
+            {props.selectedEvent && <Row><CommentSection event={props.selectedEvent} /></Row>}
                 </Col>
         </Row>
     
