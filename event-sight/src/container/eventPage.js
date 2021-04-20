@@ -5,12 +5,10 @@ import CommentSection from "../components/commentSection";
 import EventPageButtons from "../components/eventPageButtons";
 
 import {connect} from "react-redux";
-import * as OCActions from "../store/actions/OCActions";
 import * as eventActions from "../store/actions/eventActions";
 import * as actionTypes from "../store/actions/actionTypes";
 
 import ESAlert from "../UI/ESAlert";
-import { Redirect } from "react-router-dom";
 
 const EventPage = (props)=>{
 

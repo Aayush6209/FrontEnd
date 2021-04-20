@@ -12,6 +12,7 @@ const { JSDOM } = require('jsdom');
 
 const window = new JSDOM('').window;
 const DOMPurify = createDOMPurify(window);
+import {connect} from "react-redux";
 
 const EventInfo = (props)=>{
     
@@ -26,7 +27,7 @@ const EventInfo = (props)=>{
         });
     }
     
-    let details = props.event.details.split("\n");
+    let details = props.event.details.split("↵");
 
     return <div className="EventInfoDiv">
         <Nav tabs>
@@ -74,6 +75,12 @@ const EventInfo = (props)=>{
        </TabContent> 
 
     </div>
+}
+
+const mapStateToProps = (state)=>{
+    return {
+        role : state.user.role
+    }
 }
 
 export default EventInfo;
