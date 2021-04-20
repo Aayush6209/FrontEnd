@@ -40,7 +40,7 @@ const App = (props)=>{
       <Redirect to="/"/>
     </Switch>
   }
-  return <div>
+  return <div className="Body">
   <div><ESNavbar/></div>
   <div className="mainContent">
     {routes}
