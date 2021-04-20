@@ -114,7 +114,7 @@ const ESNavbar = (props) => {
   
     return (
       <div>
-        <Navbar className="ESNavbar" light expand="md">
+        <Navbar className="ESNavbar" dark expand="md">
           <h1 className="logo">Event Sight</h1>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>

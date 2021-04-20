@@ -100,6 +100,7 @@ font-family: 'Acme', sans-serif;
   border-radius: 100px;
   margin-left: 15%;
   margin-top: 12%;
+  box-shadow: 0 0 5px grey;
 }
 
 .OCCardText {
@@ -107,19 +108,20 @@ font-family: 'Acme', sans-serif;
   margin: 1%;
   margin-top: 3%;
   margin-right: 5%;
-  font-size: 2.2rem;
+  font-size: 2rem;
 }
 
 /* sidebar */
 
 .Sidebar {
-  background-color: rgba(255, 255, 255, 0.384);
+  background-color: rgba(170, 170, 170, 0.384);
   transition: background-color 0.2s;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
   height: 100px;
   margin-bottom: 3%;
+  border-radius: 100px;
 }
 
 /* To hide scroll bar */
@@ -135,7 +137,7 @@ font-family: 'Acme', sans-serif;
 }
 
 .Sidebar:hover {
-  background-color: rgba(230, 230, 230, 0.384);
+  background-color: rgba(126, 126, 126, 0.384);
 }
 
 .SidebarCard {
@@ -145,6 +147,7 @@ font-family: 'Acme', sans-serif;
 
 .SidebarCardImg {
   width: 75px;
+  padding: 2px;
   border-radius: 75px;
   height: 75px;
   margin: 7px;
@@ -180,6 +183,7 @@ font-family: 'Acme', sans-serif;
   border-radius: 150px;
   margin-top: 10%;
   margin-left: 20%;
+  box-shadow: 0 0 5px grey;
 }
 
 .OCPageHeaderR1 {

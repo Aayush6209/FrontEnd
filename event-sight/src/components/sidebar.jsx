@@ -2,8 +2,7 @@ import React, {useEffect} from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import * as OCActions from "../store/actions/OCActions";
-
-const imgURL = "https://images.jdmagicbox.com/comp/chandigarh/c4/0172p1762.1762.110201201416.l1c4/catalogue/punjab-engineering-college-sector-12-chandigarh-placement-services-candidate--3er9sw3.jpg?clr=#006600";
+import {OCLogos} from "../assets/OClogo";
 
 
 const Sidebar = (props)=>{
@@ -25,10 +24,7 @@ const Sidebar = (props)=>{
     return <div className="Sidebar">
         {logos.map((OC, index)=>{
            return <div key={index} className="SidebarCard" >
-            <Link to={"/oc-page/"+OC.name}><img className="SidebarCardImg" src = {imgURL} alt="pec"/>
-            </Link>
-            {/* temporary */}
-            {OC.name}
+            <Link to={"/oc-page/"+OC.name}><img className="SidebarCardImg" src = {OCLogos[OC.name]} alt={OC.name}/> </Link>
             </div>
         })} 
     </div>

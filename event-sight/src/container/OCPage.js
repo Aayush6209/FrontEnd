@@ -13,10 +13,9 @@ import * as actionTypes from "../store/actions/actionTypes";
 
 import ESAlert from "../UI/ESAlert";
 import { Redirect } from "react-router-dom";
+import {OCLogos} from "../assets/OClogo";
 
 const OCPage = (props) => {
-  const imgURL =
-    "https://images.jdmagicbox.com/comp/chandigarh/c4/0172p1762.1762.110201201416.l1c4/catalogue/punjab-engineering-college-sector-12-chandigarh-placement-services-candidate--3er9sw3.jpg?clr=#006600";
   //for testing only
   var foo = [];
   for (var i = 1; i <= 5; i++) {
@@ -62,7 +61,7 @@ useEffect(()=>{
      { props.OC && <><div className="OCPageHeader">
         <Row>
           <Col lg="3" md="3" sm="3">
-            <img src={imgURL} alt="pec" className="OCPageHeaderImg" />
+            <img src={OCLogos[props.OC.name]} alt={props.OC.name} className="OCPageHeaderImg" />
           </Col>
           <Col lg="6" md="6" sm="6">
             <Row className="OCPageHeaderR1">
