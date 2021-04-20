@@ -12,6 +12,9 @@ import EventPage from "./container/eventPage";
 import RegisteredEvents from "./components/RegisteredEvents";
 import InterestedEvents from "./components/InterestedEvents";
 
+//test
+import RegisteredStudents from "./components/registeredStudents";
+
 import {connect} from "react-redux";
 
 const App = (props)=>{
@@ -37,6 +40,9 @@ const App = (props)=>{
       <Route path="/oc-list" exact component={OCList}/>
       <Route path="/oc-page/:name" exact component={OCPage}/>
       <Route path="/event/:id/:name" exact component={EventPage}/>
+
+      {/* Only for test purpose */}
+      <Route path = "/rs" exact component = {RegisteredStudents} />
       <Redirect to="/"/>
     </Switch>
   }
