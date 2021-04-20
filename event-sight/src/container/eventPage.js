@@ -15,11 +15,11 @@ const EventPage = (props)=>{
         props.selectEvent(props.match.params.id)
       },[props.showAlert])
 
-      if(props.showAlert){
-        setTimeout(()=>{
-          props.hideAlert()
-        }, 3500)
-      }
+      // if(props.showAlert){
+      //   setTimeout(()=>{
+      //     props.hideAlert()
+      //   }, 3500)
+      // }
     return <div style={{
         width : "100%"
     }}>
@@ -37,9 +37,9 @@ const EventPage = (props)=>{
 const mapStateToProps = (state) => {
     return {
       loading: state.event.loading,
-      showAlert : state.OC.showAlert,
-      AlertText : state.OC.AlertText,
-      AlertColor : state.OC.AlertColor,
+      showAlert : state.event.showAlert,
+      AlertText : state.event.AlertText,
+      AlertColor : state.event.AlertColor,
       selectedEvent: state.event.selectedEvent,
       sid : state.user.sid,
       token : state.user.token,

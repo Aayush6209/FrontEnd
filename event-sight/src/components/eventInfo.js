@@ -43,8 +43,7 @@ const EventInfo = (props)=>{
             <span style={{cursor : "pointer"}}>Detailed Info</span>
           </NavLink>
         </NavItem>
-       {/* { props.role === "Admin" && <NavItem><EventEdit /></NavItem> } */}
-       <NavItem><EventEdit /></NavItem>
+       { props.role === "Admin" && <NavItem><EventEdit /></NavItem> }
       </Nav>
 
       <TabContent activeTab={activeTab}>

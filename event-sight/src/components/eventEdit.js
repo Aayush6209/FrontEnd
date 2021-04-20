@@ -110,8 +110,8 @@ const EventEdit = (props)=>{
           props.updateEvent(props.sid, props.token, event, props.selectedEvent.id)
       }}>Update Event</Button></Col>
       <Col>
-      {(props.showAlert && props.AlertColor === "success") &&  null }<MdUpdate size="35px"/>
-      {(props.showAlert && props.AlertColor === "danger") && null } <MdErrorOutline/> 
+      {(props.showAlert && props.AlertColor === "success") &&  <><MdUpdate size="35px" color="green"/> Event Updated </>}
+      {(props.showAlert && props.AlertColor === "danger") && <> <MdErrorOutline size="35px" color="red"/> Can't Be Updated </>} 
       </Col>
        </Row>
     </div>
