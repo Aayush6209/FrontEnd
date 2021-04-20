@@ -1,13 +1,15 @@
 import React, {useEffect} from "react";
 import { Row, Col, Button } from "reactstrap";
-// import EventCard from "../components/EventCard";
+import EventCard from "../components/EventCard";
 import { MdCardMembership } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import {Img} from "../assets/URLImages";
 import {RiUserUnfollowLine} from "react-icons/ri";
 import {IoBan} from "react-icons/io5";
+import ESSpinner from "../UI/ESSpinner";
 
 import {connect} from "react-redux";
+import * as eventActions from "../store/actions/eventActions";
 import * as OCActions from "../store/actions/OCActions";
 import * as actionTypes from "../store/actions/actionTypes";
 
@@ -25,6 +27,12 @@ const OCPage = (props) => {
 useEffect(()=>{
   props.fetchOC(props.match.params.name)
 },[props.showAlert])
+
+console.log(props.match.params.name);
+
+useEffect(()=>{
+  props.clubEvents(props.sid, props.token, props.match.params.name)
+}, [props.showAlert])
 
   if(props.showAlert){
     setTimeout(()=>{
@@ -55,7 +63,20 @@ useEffect(()=>{
   </Button>
       }
   }
-  
+  let eventsrender=<ESSpinner />
+  let allEvents = [];
+  if (props.events !== null) {
+    allEvents = props.events;
+  }
+  eventsrender = (
+    <Row lg="2" md="2" sm="1" xs="1">
+      {allEvents.map((event, index) => (
+        <Col key={index}>
+          <EventCard id={event.id} img={Img.img} event={event} />
+        </Col>
+      ))}
+    </Row>
+  );
 
   return ( <> { props.role === "Admin" && props.AdminOC !== props.match.params.name ? <Redirect to="/"/> : <><div>
      { props.OC && <><div className="OCPageHeader">
@@ -100,13 +121,7 @@ useEffect(()=>{
         </Row>
       </div>
       <div className="OCPageBody">
-        {/* <Row lg="2" md="2" sm="1" xs="1">
-          {foo.map((k) => (
-            <Col key={k}>
-              <EventCard img={Img.img} />
-            </Col>
-          ))}
-        </Row> */}
+        {eventsrender}
       </div> </> }
       {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
     </div>
@@ -116,6 +131,7 @@ useEffect(()=>{
 const mapStateToProps = (state)=>{
   return {
     OC : state.OC.selectedOC,
+    events: state.event.events,
     showAlert : state.OC.showAlert,
     AlertText : state.OC.AlertText,
     AlertColor : state.OC.AlertColor,
@@ -129,6 +145,7 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch)=>{
   return {
+    clubEvents : (sid, token, clubID)=>dispatch(eventActions.clubEvents(sid, token, clubID)),
     followRequestInit : (sid, token, OCName)=>dispatch(OCActions.followRequestInit(sid, token, OCName)),
     unfollowRequestInit : (sid, token ,OCName)=>dispatch(OCActions.unfollowRequestInit(sid, token, OCName)),
     hideAlert : ()=>dispatch({type : actionTypes.HIDE_OC_ALERT}),

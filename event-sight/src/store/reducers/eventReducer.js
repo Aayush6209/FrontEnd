@@ -5,53 +5,53 @@ const initialState = {
   events: null,
   selectedEvent: null,
   showAlert: false,
-  AlertText : null,
-  AlertColor : null
+  AlertText: null,
+  AlertColor: null,
 };
 
 const EventReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.HIDE_EVENT_ALERT : 
+    case actionTypes.HIDE_EVENT_ALERT:
       return {
         ...state,
-        showAlert : false,
-        AlertText : null,
-        AlertColor : null
-      }
+        showAlert: false,
+        AlertText: null,
+        AlertColor: null,
+      };
 
-    case actionTypes.EVENT_CREATE_SUCCESS : 
+    case actionTypes.EVENT_CREATE_SUCCESS:
       return {
         ...state,
-        showAlert : true,
-        AlertText : "Event Created Successfully",
-        AlertColor : "success"
-      }
+        showAlert: true,
+        AlertText: "Event Created Successfully",
+        AlertColor: "success",
+      };
 
-    case actionTypes.EVENT_CREATE_FAILED : 
+    case actionTypes.EVENT_CREATE_FAILED:
       return {
         ...state,
-        showAlert : true,
-        AlertText : "Event Creation Failed",
-        AlertColor : "danger"
-      }
+        showAlert: true,
+        AlertText: "Event Creation Failed",
+        AlertColor: "danger",
+      };
 
-    case actionTypes.EVENT_UPDATE_SUCCESS :
+    case actionTypes.EVENT_UPDATE_SUCCESS:
       return {
         ...state,
-        showAlert : true,
-        AlertColor : "success"
-      }
-    case actionTypes.EVENT_UPDATE_FAILED :
+        showAlert: true,
+        AlertColor: "success",
+      };
+    case actionTypes.EVENT_UPDATE_FAILED:
       return {
         ...state,
-        showAlert : true,
-        AlertColor : "danger"
-      }
+        showAlert: true,
+        AlertColor: "danger",
+      };
     case actionTypes.EVENT_LOADING:
-      return{
+      return {
         ...state,
         loading: true,
-      }
+      };
 
     //EVENTS DISPLAY
     case actionTypes.EVENTS_DISPLAY_SUCCESS:
@@ -70,10 +70,25 @@ const EventReducer = (state = initialState, action) => {
       };
 
     case actionTypes.SELECT_EVENT:
-      return{
+      return {
         ...state,
         selectedEvent: action.selectedEvent,
-      }
+      };
+
+    case actionTypes.CLUB_EVENTS_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        events: action.events,
+      };
+    case actionTypes.CLUB_EVENTS_FAILURE:
+      return {
+        ...state,
+        loading: false,
+        showAlert: true,
+        AlertText: "Unable to Load Events",
+        AlertColor: "danger",
+      };
 
     //EVENT REGISTRATION
     case actionTypes.EVENT_REGISTRATION_SUCCESS:

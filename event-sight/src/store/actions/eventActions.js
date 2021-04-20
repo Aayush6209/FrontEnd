@@ -117,6 +117,42 @@ export const selectEvent=(id)=>{
     }
 }
 
+export const clubEvents = (sid, token, clubID)=>{
+    return dispatch =>{
+        dispatch(eventLoading)
+        const requestURL = "get_events_via_club/";
+        const data = {
+            "student_id" : sid,
+            "token" : token,
+            "club_id": clubID,
+        };
+        axios
+        .post(requestURL, data)
+        .then((res)=>{
+            console.log(res.data);
+            dispatch(clubEventsSuccess(res.data));
+        })
+        .catch((err)=>{
+            console.log(err);
+            dispatch(clubEventsFailure(err));
+        })
+    }
+}
+
+export const clubEventsSuccess = data=>{
+    return {
+        type: actionTypes.CLUB_EVENTS_SUCCESS,
+        events: data,
+    }
+}
+
+export const clubEventsFailure = error=>{
+    return {
+        type: actionTypes.CLUB_EVENTS_FAILURE,
+        payload: error
+    }
+}
+
 export const selectEventSuccess=data=>{
     return {
         type: actionTypes.SELECT_EVENT,
