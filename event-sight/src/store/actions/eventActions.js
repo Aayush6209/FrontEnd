@@ -161,24 +161,31 @@ export const selectEventSuccess=data=>{
 }
 
 // EVENT REGISTRATION
-export const registerEvent = (event)=>{
+export const registerEvent = (id, sid, token)=>{
     return dispatch =>{
-        dispatch(eventLoading)
+        const requestURL="event_register/";
+        const data={
+            "id": id,
+            "student_id": sid,
+            "token": token,
+        }
         axios
-        .post("", event)
+        .post(requestURL, data)
         .then(res => {
+            console.log(res);
             dispatch(registerEventSuccess(res))
         })
         .catch(error => {
+            console.log(error)
             dispatch(registerEventFailure(error))
         })
     }
 }
 
-export const registerEventSuccess = events=>{
+export const registerEventSuccess = data=>{
     return {
         type: actionTypes.EVENT_REGISTRATION_SUCCESS,
-        payload: events
+        payload: data
     }
 }
 

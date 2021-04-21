@@ -96,11 +96,15 @@ const EventReducer = (state = initialState, action) => {
       return {
         ...state,
         showAlert: true,
+        AlertText: "Successfully Registered",
+        AlertColor: "success",
       };
     case actionTypes.EVENT_REGISTRATION_FAILURE:
       return {
         ...state,
         showAlert: true,
+        AlertText: "Event Registration Failed",
+        AlertColor: "danger",
       };
 
     //DISPLAY REGISTERED EVENTS
@@ -124,11 +128,15 @@ const EventReducer = (state = initialState, action) => {
       return {
         ...state,
         showAlert: true,
+        AlertText: "Marked Event as Interested",
+        AlertColor: "success",
       };
     case actionTypes.EVENT_INTERESTED_FAILURE:
       return {
         ...state,
         showAlert: true,
+        AlertText: "Marking Event as Interested Failed",
+        AlertColor: "danger",
       };
 
     //DISPLAY INTERESTED EVENTS

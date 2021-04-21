@@ -26,7 +26,7 @@ const EventPage = (props)=>{
         <Row>
             {props.selectedEvent && <Col lg="8"><EventInfo event={props.selectedEvent}/></Col>}
             <Col lg="4">
-            {props.selectedEvent && <Row><EventPageButtons/></Row>}
+            {props.selectedEvent && <Row><EventPageButtons event={props.selectedEvent} /></Row>}
             {props.selectedEvent && <Row><CommentSection event={props.selectedEvent} /></Row>}
                 </Col>
         </Row>

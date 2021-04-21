@@ -30,7 +30,6 @@ const CommentSection = (props) => {
 
   if(!props.loading && typeof props.comments !== "undefined" && props.comments!==null){
       commentsList=props.comments;
-      console.log(commentsList);
   }
   let commentsRender=<ESSpinner />;
 
@@ -64,7 +63,7 @@ const CommentSection = (props) => {
               color="danger"
               id="postButton"
               onClick={() => {
-                props.postComment(props.sid, props.token, comment, props.event.id);
+                comment.length()>0 && props.postComment(props.sid, props.token, comment, props.event.id);
                 setComment("");
               }}
             >
