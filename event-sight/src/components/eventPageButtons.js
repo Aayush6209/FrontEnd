@@ -18,7 +18,7 @@ const EventPageButtons = (props)=>{
     return <div className="EventPageButtonsDiv">
         <Row>{props.event.participants.includes(props.sid)?<Button className="EventPageButtonsUpper" color="success" onClick={()=>{props.cancelRegistration(props.sid, props.token, props.event.id)}}><MdEvent size="23px"/> Registered</Button> : <Button className="EventPageButtonsUpper" outline color="success" onClick={()=>{props.registerEvent(props.event.id, props.sid, props.token)}}><MdEvent size="23px"/> Register</Button>}</Row>
         <Row> 
-            <Col><Button className="EventPageButtonsLower" outline color="primary"><HiSaveAs size="23px"/> Interested</Button></Col>
+            <Col>{props.event.interested.includes(props.sid)?<Button className="EventPageButtonsLower" color="primary"><HiSaveAs size="23px"/> Interested</Button>: <Button className="EventPageButtonsLower" outline color="primary" onClick={()=>{props.interested(props.event.id, props.sid, props.token)}}><HiSaveAs size="23px"/> Interested</Button>}</Col>
             <Col><Button className="EventPageButtonsLower" outline color="danger"><MdTimer size="23px"/> Remind Me</Button></Col>
         </Row>
         {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
@@ -39,6 +39,7 @@ const mapStateToProps = (state)=>{
     return {
       registerEvent : (id, sid, token)=>dispatch(eventActions.registerEvent(id, sid, token)),
       cancelRegistration : (sid, token, id)=>dispatch(eventActions.cancelRegistration(sid, token, id)),
+      interested : (id, sid, token)=>dispatch(eventActions.interested(id, sid, token)),
       hideAlert : ()=>dispatch({type : actionTypes.HIDE_EVENT_ALERT}),
     }
   }

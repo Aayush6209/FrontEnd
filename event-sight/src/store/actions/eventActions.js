@@ -24,11 +24,9 @@ export const createNewEvent = (sid, token, event)=>{
         console.log(data)
         axios.post(requestURL, data)
         .then((res)=>{
-            console.log(res)
             dispatch({type : actionTypes.EVENT_CREATE_SUCCESS})
         })
         .catch((err)=>{
-            console.log(err)
             dispatch({type : actionTypes.EVENT_CREATE_FAILED})
         })
     }
@@ -49,13 +47,11 @@ export const updateEvent = (sid, token, event, id)=>{
         };
         axios.put(requestURL, data)
         .then((res)=>{
-            console.log(res)
             dispatch({
                 type : actionTypes.EVENT_UPDATE_SUCCESS
             })
         })
         .catch((err)=>{
-            console.log(err)
             dispatch({
                 type : actionTypes.EVENT_UPDATE_FAILED
             })
@@ -75,11 +71,9 @@ export const displayEvents = (sid, token)=>{
         axios
         .post(requestURL, data)
         .then((res)=>{
-            console.log(res.data);
             dispatch(displayEventsSuccess(res.data));
         })
         .catch((err)=>{
-            console.log(err);
             dispatch(displayEventsFailure(err));
         })
     }
@@ -108,11 +102,9 @@ export const selectEvent=(id)=>{
         axios
         .post(requestURL, data)
         .then((res)=>{
-            console.log(res.data);
             dispatch(selectEventSuccess(res.data));
         })
         .catch((err)=>{
-            console.log(err);
         })
     }
 }
@@ -129,11 +121,9 @@ export const clubEvents = (sid, token, clubID)=>{
         axios
         .post(requestURL, data)
         .then((res)=>{
-            console.log(res.data);
             dispatch(clubEventsSuccess(res.data));
         })
         .catch((err)=>{
-            console.log(err);
             dispatch(clubEventsFailure(err));
         })
     }
@@ -172,11 +162,9 @@ export const registerEvent = (id, sid, token)=>{
         axios
         .post(requestURL, data)
         .then(res => {
-            console.log(res);
             dispatch(registerEventSuccess(res))
         })
         .catch(error => {
-            console.log(error)
             dispatch(registerEventFailure(error))
         })
     }
@@ -207,11 +195,9 @@ export const cancelRegistration = (sid, token, id)=>{
         axios
         .post(requestURL, data)
         .then(res => {
-            console.log(res);
             dispatch(cancelRegistrationSuccess(res))
         })
         .catch(error => {
-            console.log(error)
             dispatch(cancelRegistrationFailure(error))
         })
     }
@@ -244,7 +230,6 @@ export const displayRegisteredEvents = (sid, token)=>{
         axios
         .post(requestURL, data)
         .then(res => {
-            console.log(res.data);
             dispatch(displayRegisteredEventsSuccess(res.data));
         })
         .catch(error => {
@@ -268,11 +253,16 @@ export const displayRegisteredEventsFailure = error=>{
 }
 
 // ADD EVENT TO INTERESTED
-export const interested = (event)=>{
+export const interested = (id, sid, token)=>{
     return dispatch =>{
-        dispatch(eventLoading)
+        const requestURL="event_interested/"
+        const data={
+            "id": id,
+            "student_id": sid,
+            "token": token,
+        }
         axios
-        .post("", event)
+        .post(requestURL, data)
         .then(res => {
             dispatch(interestedSuccess(res))
         })
@@ -282,10 +272,10 @@ export const interested = (event)=>{
     }
 }
 
-export const interestedSuccess = events=>{
+export const interestedSuccess = data=>{
     return {
         type: actionTypes.EVENT_INTERESTED_SUCCESS,
-        payload: events
+        payload: data,
     }
 }
 
@@ -309,7 +299,6 @@ export const displayInterestedEvents = (sid, token)=>{
         axios
         .post(requestURL, data)
         .then(res => {
-            console.log(res.data);
             dispatch(displayInterestedEventsSuccess(res.data));
         })
         .catch(error => {
@@ -345,11 +334,9 @@ export const postComment = (sid, token, comment, id)=>{
         axios
         .post(requestURL, data)
         .then(res => {
-            console.log(res);
             dispatch(postCommentSuccess(res))
         })
         .catch(error => {
-            console.log(error);
             dispatch(postCommentFailure(error))
         })
     }
@@ -380,11 +367,9 @@ export const displayComments = (id)=>{
         axios
         .post(requestURL, data)
         .then(res => {
-            console.log(res.data.data);
             dispatch(displayCommentsSuccess(res.data.data))
         })
         .catch(error => {
-            console.log(error);
             dispatch(displayCommentsFailure(error))
         })
     }
