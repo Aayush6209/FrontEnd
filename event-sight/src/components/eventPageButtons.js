@@ -16,7 +16,7 @@ const EventPageButtons = (props)=>{
       }
 
     return <div className="EventPageButtonsDiv">
-        <Row>{props.event.participants.includes(props.sid)?<Button className="EventPageButtonsUpper" color="success"><MdEvent size="23px"/> Registered</Button> : <Button className="EventPageButtonsUpper" outline color="success" onClick={()=>{props.registerEvent(props.event.id, props.sid, props.token)}}><MdEvent size="23px"/> Register</Button>}</Row>
+        <Row>{props.event.participants.includes(props.sid)?<Button className="EventPageButtonsUpper" color="success" onClick={()=>{props.cancelRegistration(props.sid, props.token, props.event.id)}}><MdEvent size="23px"/> Registered</Button> : <Button className="EventPageButtonsUpper" outline color="success" onClick={()=>{props.registerEvent(props.event.id, props.sid, props.token)}}><MdEvent size="23px"/> Register</Button>}</Row>
         <Row> 
             <Col><Button className="EventPageButtonsLower" outline color="primary"><HiSaveAs size="23px"/> Interested</Button></Col>
             <Col><Button className="EventPageButtonsLower" outline color="danger"><MdTimer size="23px"/> Remind Me</Button></Col>
@@ -38,7 +38,8 @@ const mapStateToProps = (state)=>{
   const mapDispatchToProps = (dispatch)=>{
     return {
       registerEvent : (id, sid, token)=>dispatch(eventActions.registerEvent(id, sid, token)),
-      hideAlert : ()=>dispatch({type : actionTypes.HIDE_EVENT_ALERT})
+      cancelRegistration : (sid, token, id)=>dispatch(eventActions.cancelRegistration(sid, token, id)),
+      hideAlert : ()=>dispatch({type : actionTypes.HIDE_EVENT_ALERT}),
     }
   }
   

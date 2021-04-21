@@ -106,6 +106,20 @@ const EventReducer = (state = initialState, action) => {
         AlertText: "Event Registration Failed",
         AlertColor: "danger",
       };
+      case actionTypes.CANCEL_REGISTRATION_SUCCESS:
+        return {
+          ...state,
+          showAlert: true,
+          AlertText: "Successfully Unregistered",
+          AlertColor: "success",
+        };
+      case actionTypes.CANCEL_REGISTRATION_FAILURE:
+        return {
+          ...state,
+          showAlert: true,
+          AlertText: "Event Unregistration Failed",
+          AlertColor: "danger",
+        };
 
     //DISPLAY REGISTERED EVENTS
     case actionTypes.DISPLAY_REGISTERED_EVENTS_SUCCESS:

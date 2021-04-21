@@ -195,7 +195,41 @@ export const registerEventFailure = error=>{
         payload: error
     }
 }
+export const cancelRegistration = (sid, token, id)=>{
+    return dispatch =>{
+        const requestURL="remove_interest_participation/";
+        const data={
+            "student_id": sid,
+            "token": token,
+            "event_id": id,
+            "interested": false,
+        }
+        axios
+        .post(requestURL, data)
+        .then(res => {
+            console.log(res);
+            dispatch(cancelRegistrationSuccess(res))
+        })
+        .catch(error => {
+            console.log(error)
+            dispatch(cancelRegistrationFailure(error))
+        })
+    }
+}
 
+export const cancelRegistrationSuccess = data=>{
+    return {
+        type: actionTypes.CANCEL_REGISTRATION_SUCCESS,
+        payload: data
+    }
+}
+
+export const cancelRegistrationFailure = error=>{
+    return {
+        type: actionTypes.CANCEL_REGISTRATION_FAILURE,
+        payload: error
+    }
+}
 
 // DISPLAY REGISTERED EVENTS
 export const displayRegisteredEvents = (sid, token)=>{
