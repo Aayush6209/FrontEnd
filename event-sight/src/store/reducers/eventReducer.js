@@ -153,6 +153,21 @@ const EventReducer = (state = initialState, action) => {
         AlertColor: "danger",
       };
 
+      case actionTypes.CANCEL_INTERESTED_SUCCESS:
+        return {
+          ...state,
+          showAlert: true,
+          AlertText: "Removed from Interested",
+          AlertColor: "success",
+        };
+      case actionTypes.CANCEL_INTERESTED_FAILURE:
+        return {
+          ...state,
+          showAlert: true,
+          AlertText: "Unable to Remove from Interested",
+          AlertColor: "danger",
+        };
+
     //DISPLAY INTERESTED EVENTS
     case actionTypes.DISPLAY_INTERESTED_EVENTS_SUCCESS:
       return {

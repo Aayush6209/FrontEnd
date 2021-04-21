@@ -286,6 +286,40 @@ export const interestedFailure = error=>{
     }
 }
 
+export const cancelInterested = (sid, token, id)=>{
+    return dispatch =>{
+        const requestURL="remove_interest_participation/";
+        const data={
+            "student_id": sid,
+            "token": token,
+            "event_id": id,
+            "interested": true,
+        }
+        axios
+        .post(requestURL, data)
+        .then(res => {
+            dispatch(cancelInterestedSuccess(res))
+        })
+        .catch(error => {
+            dispatch(cancelInterestedFailure(error))
+        })
+    }
+}
+
+export const cancelInterestedSuccess = data=>{
+    return {
+        type: actionTypes.CANCEL_INTERESTED_SUCCESS,
+        payload: data
+    }
+}
+
+export const cancelInterestedFailure = error=>{
+    return {
+        type: actionTypes.CANCEL_INTERESTED_FAILURE,
+        payload: error
+    }
+}
+
 //DISPLAY INTERESTED EVENTS
 export const displayInterestedEvents = (sid, token)=>{
     return dispatch =>{
