@@ -3,7 +3,6 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col} from 'reactstrap'
 import classnames from 'classnames';
 
 import Sample from "../assets/sample.jpg";
-import {SampleEvent} from "../assets/sampleEvent";
 import EventEdit from "./eventEdit";
 
 import {connect} from "react-redux";
@@ -22,7 +21,7 @@ const EventInfo = (props)=>{
     const toggle = tab => {if(activeTab !== tab) setActiveTab(tab);}
 
     function linkify(text) {
-        var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|])/ig;
+        var urlRegex =/(\b(https?|ftp|file):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
         return text.replace(urlRegex, function(url) {
             return '<a style="text-decoration:none;" target="_blank" href="' + url + '">' + url + '</a>';
         });

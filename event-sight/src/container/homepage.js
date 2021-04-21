@@ -11,7 +11,8 @@ const Homepage = (props) => {
 
   useEffect(() => {
     props.displayEvents(props.sid, props.token);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.showAlert]);
 
   let eventsrender = null;
 
@@ -24,15 +25,17 @@ const Homepage = (props) => {
     let allEvents = [];
     if (props.events !== null && typeof props.events!== "undefined" && typeof props.events.member_club_events!=="undefined" && typeof props.events.followed_club_events!=="undefined") {
 
-      let memberEvents = props.events.member_club_events.filter((event) => {
-        if (event.open_to_all === false) {
-          return event;
+      let memberEvents=[];
+      props.events.member_club_events.forEach(event=>{
+        if(event.open_to_all === false){
+          memberEvents.push(event);
         }
       });
 
-      let followedEvents = props.events.followed_club_events.filter((event) => {
-        if (event.open_to_all === true) {
-          return event;
+      let followedEvents=[];
+      props.events.followed_club_events.forEach(event=>{
+        if(event.open_to_all === true){
+          followedEvents.push(event);
         }
       });
 
@@ -61,6 +64,7 @@ const mapStateToProps = (state) => {
     events: state.event.events,
     sid : state.user.sid,
     token : state.user.token,
+    showAlert : state.event.showAlert,
   };
 };
 

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import {Link} from "react-router-dom";
 import {
   Card,CardText, CardBody,
@@ -10,8 +10,14 @@ import * as actionTypes from "../store/actions/actionTypes";
 import {MdEvent} from "react-icons/md";
 import {HiSaveAs} from "react-icons/hi";
 import {BsInfoCircle} from "react-icons/bs";
+import ESAlert from "../UI/ESAlert";
 
 const EventCard = (props) => {
+  if(props.showAlert){
+    setTimeout(()=>{
+      props.hideAlert()
+    }, 1000)
+  }
   return (
     <div className="ESEventCard">
       <Card>
@@ -25,14 +31,15 @@ const EventCard = (props) => {
           <div className="CardIconsDiv">
           <Container>
             <Row>
-              <Col><div style={{display:"inline-block"}}><HiSaveAs size="36px" className="CardIcon"/></div></Col>
-              <Col><div style={{display:"inline-block"}}><MdEvent size="36px" className="CardIcon"/></div></Col>
+              <Col>{props.event.interested.includes(props.sid) ? <div style={{display:"inline-block"}} onClick={()=>{props.cancelInterested(props.sid, props.token, props.event.id)}}><HiSaveAs size="36px" className="CardIconInterested"/></div> : <div style={{display:"inline-block"}} onClick={()=>{props.interested(props.event.id, props.sid, props.token)}}><HiSaveAs size="36px" className="CardIconInterest"/></div>}</Col>
+              <Col>{props.event.participants.includes(props.sid) ? <div style={{display:"inline-block"}} onClick={()=>{props.cancelRegistration(props.sid, props.token, props.event.id)}}><MdEvent size="36px" className="CardIconRegistered"/></div> : <div style={{display:"inline-block"}} onClick={()=>{props.registerEvent(props.event.id, props.sid, props.token)}}><MdEvent size="36px" className="CardIconRegister"/></div>}</Col>
               <Col><div style={{display:"inline-block"}}><Link to={"/event/" + props.event.id +"/"+ props.event.title.replace(/ /g, '-')} onClick={()=>{props.selectEvent(props.event)}}><BsInfoCircle size="32px" className="CardIcon"/></Link></div></Col>
             </Row>
           </Container>
           </div>
         </CardBody>
       </Card>
+      {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
     </div>
   );
 };
@@ -41,15 +48,28 @@ const mapStateToProps = (state) => {
   return {
     sid : state.user.sid,
     token : state.user.token,
+    showAlert : state.event.showAlert,
+    AlertText : state.event.AlertText,
+    AlertColor : state.event.AlertColor,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    selectEvent : (event)=>dispatch({
-      type : actionTypes.SELECT_EVENT,
-      selectedEvent : event
-  }),
+    selectEvent: (event) =>
+      dispatch({
+        type: actionTypes.SELECT_EVENT,
+        selectedEvent: event,
+      }),
+    registerEvent: (id, sid, token) =>
+      dispatch(eventActions.registerEvent(id, sid, token)),
+    cancelRegistration: (sid, token, id) =>
+      dispatch(eventActions.cancelRegistration(sid, token, id)),
+    interested: (id, sid, token) =>
+      dispatch(eventActions.interested(id, sid, token)),
+    cancelInterested: (sid, token, id) =>
+      dispatch(eventActions.cancelInterested(sid, token, id)),
+    hideAlert: () => dispatch({ type: actionTypes.HIDE_EVENT_ALERT }),
   };
 };
 

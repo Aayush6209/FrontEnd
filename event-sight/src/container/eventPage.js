@@ -7,12 +7,11 @@ import EventPageButtons from "../components/eventPageButtons";
 import {connect} from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
 
-import ESAlert from "../UI/ESAlert";
-
 const EventPage = (props)=>{
 
     useEffect(()=>{
         props.selectEvent(props.match.params.id)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       },[props.showAlert])
 
       // if(props.showAlert){

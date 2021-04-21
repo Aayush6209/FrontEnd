@@ -16,6 +16,7 @@ const MemberRequests = (props)=>{
 
     useEffect(()=>{
         props.fetchMemberRequests(props.sid, props.token)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[props.showAlert])
 
 

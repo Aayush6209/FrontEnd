@@ -23,12 +23,14 @@ const OCPage = (props) => {
   
 useEffect(()=>{
   props.fetchOC(props.match.params.name)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 },[props.showAlert])
 
 console.log(props.match.params.name);
 
 useEffect(()=>{
   props.clubEvents(props.sid, props.token, props.match.params.name)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 }, [props.showAlert])
 
   if(props.showAlert){

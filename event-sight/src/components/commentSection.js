@@ -11,6 +11,7 @@ import * as actionTypes from "../store/actions/actionTypes";
 const CommentSection = (props) => {
   useEffect(() => {
     props.displayComments(props.event.id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.showAlert]);
 
   if (props.showAlert) {
@@ -63,7 +64,7 @@ const CommentSection = (props) => {
               color="danger"
               id="postButton"
               onClick={() => {
-                comment.length()>0 && props.postComment(props.sid, props.token, comment, props.event.id);
+                comment.length>0 && props.postComment(props.sid, props.token, comment, props.event.id);
                 setComment("");
               }}
             >

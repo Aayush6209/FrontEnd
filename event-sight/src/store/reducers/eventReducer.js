@@ -189,14 +189,12 @@ const EventReducer = (state = initialState, action) => {
       return {
         ...state,
         showAlert: true,
-        AlertText: "Comment Posted",
-        AlertColor: "success",
       };
     case actionTypes.POST_COMMENT_FAILURE:
       return {
         ...state,
         showAlert: true,
-        AlertText: "Unable to Load Interested Events",
+        AlertText: "Unable to Post Comment",
         AlertColor: "danger",
       };
 
@@ -212,7 +210,7 @@ const EventReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         showAlert: true,
-        AlertText: "Unable to Load Interested Events",
+        AlertText: "Unable to Load Comments",
         AlertColor: "danger",
       };
 

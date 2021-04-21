@@ -5,12 +5,20 @@ import { Img } from "../assets/URLImages";
 import ESSpinner from "../UI/ESSpinner";
 import { connect } from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
+import * as actionTypes from "../store/actions/actionTypes";
+import ESAlert from "../UI/ESAlert";
 
 const RegisteredEvents = (props) => {
+  if(props.showAlert){
+    setTimeout(()=>{
+      props.hideAlert()
+    }, 3500)
+  }
 
   useEffect(() => {
     props.displayRegisteredEvents(props.sid, props.token);
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.showAlert]);
 
   let eventsrender = null;
 
@@ -38,6 +46,7 @@ const RegisteredEvents = (props) => {
         </Container>
       </Jumbotron>
       {eventsrender}
+      {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
     </div>
   );
 };
@@ -48,12 +57,16 @@ const mapStateToProps = (state) => {
     events: state.event.events,
     sid : state.user.sid,
     token : state.user.token,
+    showAlert : state.event.showAlert,
+    AlertText : state.event.AlertText,
+    AlertColor : state.event.AlertColor,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     displayRegisteredEvents: (sid, token) => dispatch(eventActions.displayRegisteredEvents(sid, token)),
+    hideAlert: () => dispatch({ type: actionTypes.HIDE_EVENT_ALERT }),
   };
 };
 

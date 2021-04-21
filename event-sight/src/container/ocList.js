@@ -12,6 +12,7 @@ const OCList = (props)=>{
 
     useEffect(()=>{
         props.fetchAllOC()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     let OCrender = null;

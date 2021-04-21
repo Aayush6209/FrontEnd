@@ -99,6 +99,51 @@ font-family: 'Acme', sans-serif;
   color: #ff0000;
   transform: scale(1.15);
 }
+
+.CardIconInterest {
+  color: #000000;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.CardIconInterest:hover {
+  color: #003cff;
+  transform: scale(1.15);
+}
+
+.CardIconInterested {
+  color: #003cff;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.CardIconInterested:hover {
+  color: #000000;
+  transform: scale(1.15);
+}
+
+.CardIconRegister {
+  color: #000000;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.CardIconRegister:hover {
+  color: #ff0015;
+  transform: scale(1.15);
+}
+
+.CardIconRegistered {
+  color: #ff0015;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.CardIconRegistered:hover {
+  color: #000000;
+  transform: scale(1.15);
+}
+
 .CardTitle{
   font-family: "Acme", sans-serif;
   font-size: 2rem;

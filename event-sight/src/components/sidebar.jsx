@@ -9,6 +9,7 @@ const Sidebar = (props)=>{
 
     useEffect(()=>{
         props.fetchAllOC()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     let logos = [];

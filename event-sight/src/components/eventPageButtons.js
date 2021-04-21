@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
 import * as actionTypes from "../store/actions/actionTypes";
