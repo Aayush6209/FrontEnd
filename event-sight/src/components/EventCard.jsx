@@ -16,7 +16,7 @@ const EventCard = (props) => {
   if(props.showAlert){
     setTimeout(()=>{
       props.hideAlert()
-    }, 1000)
+    }, 3000)
   }
   return (
     <div className="ESEventCard">

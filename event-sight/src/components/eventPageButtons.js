@@ -12,11 +12,11 @@ const EventPageButtons = (props)=>{
     if(props.showAlert){
         setTimeout(()=>{
           props.hideAlert()
-        }, 3500)
+        }, 2000)
       }
 
     return <div className="EventPageButtonsDiv">
-        <Row>{props.event.participants.includes(props.sid)?<Button className="EventPageButtonsUpper" color="success" onClick={()=>{props.cancelRegistration(props.sid, props.token, props.event.id)}}><MdEvent size="23px"/> Registered</Button> : <Button className="EventPageButtonsUpper" outline color="success" onClick={()=>{props.registerEvent(props.event.id, props.sid, props.token)}}><MdEvent size="23px"/> Register</Button>}</Row>
+        <Row>{props.event.participants.includes(props.sid)?<Button className="EventPageButtonsUpper" color="success" onClick={()=>{props.cancelRegistration(props.sid, props.token, props.event.id)}}><MdEvent size="23px"/> Unregister</Button> : <Button className="EventPageButtonsUpper" outline color="success" onClick={()=>{props.registerEvent(props.event.id, props.sid, props.token)}}><MdEvent size="23px"/> Register</Button>}</Row>
         <Row> 
             <Col>{props.event.interested.includes(props.sid)?<Button className="EventPageButtonsLower" color="primary" onClick={()=>{props.cancelInterested(props.sid, props.token, props.event.id)}}><HiSaveAs size="23px"/> Interested</Button>: <Button className="EventPageButtonsLower" outline color="primary" onClick={()=>{props.interested(props.event.id, props.sid, props.token)}}><HiSaveAs size="23px"/> Interested</Button>}</Col>
             <Col><a href={"https://calendar.google.com/calendar/u/0/r/eventedit?text="+props.event.title.replace(/ /g, '+')+"&dates="+props.event.date_time.replace(/-/g, '').replace(/:/g, '').slice(0, -1)+"/"+props.event.date_time.replace(/-/g, '').replace(/:/g, '').slice(0, -1)+"&details="+props.event.description.replace(/ /g, '+')+" "+props.event.details.replace(/ /g, '+')+"&sf=true&output=xml&pli=1"} target="_blank" rel="noopener noreferrer"><Button className="EventPageButtonsLower" outline color="danger"><MdTimer size="23px"/> Remind Me</Button></a></Col>

@@ -401,7 +401,7 @@ export const displayComments = (id)=>{
         axios
         .post(requestURL, data)
         .then(res => {
-            dispatch(displayCommentsSuccess(res.data.data))
+            dispatch(displayCommentsSuccess(res.data))
         })
         .catch(error => {
             dispatch(displayCommentsFailure(error))

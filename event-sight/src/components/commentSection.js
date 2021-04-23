@@ -17,7 +17,7 @@ const CommentSection = (props) => {
   if (props.showAlert) {
     setTimeout(() => {
       props.hideAlert();
-    }, 3500);
+    }, 2000);
   }
 
   //for tooltip
@@ -39,9 +39,9 @@ const CommentSection = (props) => {
     <div key={index} className="Comment">
       <div className="CommentUser">
         {" "}
-        <FaUser /> {comment.split(',')[1]+" "+ comment.split(',')[2]}{" "}
+        <FaUser /> {comment.student.first_name+" "+ comment.student.last_name}{" "}
       </div>
-      <div className="CommentText">{comment.split(',')[3]}</div>
+      <div className="CommentText">{comment.comment_text}</div>
     </div>
   ))}
 </div>
@@ -54,6 +54,7 @@ const CommentSection = (props) => {
           <Input
             placeholder="Type your comment"
             name="comment"
+            autoComplete="off"
             value={comment}
             onChange={(event) => {
               setComment(event.target.value);

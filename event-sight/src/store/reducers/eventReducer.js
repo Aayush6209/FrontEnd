@@ -111,7 +111,7 @@ const EventReducer = (state = initialState, action) => {
           ...state,
           showAlert: true,
           AlertText: "Successfully Unregistered",
-          AlertColor: "success",
+          AlertColor: "danger",
         };
       case actionTypes.CANCEL_REGISTRATION_FAILURE:
         return {
@@ -158,7 +158,7 @@ const EventReducer = (state = initialState, action) => {
           ...state,
           showAlert: true,
           AlertText: "Removed from Interested",
-          AlertColor: "success",
+          AlertColor: "danger",
         };
       case actionTypes.CANCEL_INTERESTED_FAILURE:
         return {

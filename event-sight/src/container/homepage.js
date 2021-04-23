@@ -6,6 +6,8 @@ import { Img } from "../assets/URLImages";
 import ESSpinner from "../UI/ESSpinner";
 import { connect } from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
+import * as actionTypes from "../store/actions/actionTypes";
+import ESAlert from "../UI/ESAlert";
 
 const Homepage = (props) => {
 
@@ -13,6 +15,12 @@ const Homepage = (props) => {
     props.displayEvents(props.sid, props.token);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.showAlert]);
+
+  if(props.showAlert){
+    setTimeout(()=>{
+      props.hideAlert()
+    }, 3500)
+  }
 
   let eventsrender = null;
 
@@ -54,6 +62,7 @@ const Homepage = (props) => {
     <>
       <Sidebar />
       {eventsrender}
+      {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
     </>
   );
 };
@@ -65,12 +74,15 @@ const mapStateToProps = (state) => {
     sid : state.user.sid,
     token : state.user.token,
     showAlert : state.event.showAlert,
+    AlertText : state.event.AlertText,
+    AlertColor : state.event.AlertColor,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     displayEvents: (sid, token) => dispatch(eventActions.displayEvents(sid, token)),
+    hideAlert : ()=>dispatch({type : actionTypes.HIDE_EVENT_ALERT}),
   };
 };
 
