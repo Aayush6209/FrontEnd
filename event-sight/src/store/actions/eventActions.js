@@ -8,25 +8,37 @@ export const eventLoading = ()=>{
     }
 }
 
-export const createNewEvent = (sid, token, event)=>{
+export const createNewEvent = (sid, token, event, image)=>{
     return (dispatch) =>{
         const requestURL = "create_event/";
-        const data = {
-            "title" : event.eventTitle,
-            "description" : event.eventDescription,
-            "details" : event.eventDetails,
-            "date_time" : event.eventDate + " " + event.eventTime + ":00",
-            "open_to_all" : event.eventType === "MemberSpecific" ? "False" : "True",
-            "image_url" : event.eventImgURL,
-            "student_id" : sid,
-            "token" : token
-        };
-        console.log(data)
+        const data = new FormData();
+        // const data = {
+        //     "title" : event.eventTitle,
+        //     "description" : event.eventDescription,
+        //     "details" : event.eventDetails,
+        //     "date_time" : event.eventDate + " " + event.eventTime + ":00",
+        //     "open_to_all" : event.eventType === "MemberSpecific" ? "False" : "True",
+        //     "image_url" : event.eventImgURL,
+        //     "student_id" : sid,
+        //     "token" : token
+        // };
+        data.append("title", event.eventTitle);
+        data.append("description", event.eventDescription);
+        data.append("details", event.eventDetails);
+        data.append("date_time", event.eventDate + " " + event.eventTime + ":00");
+        data.append("open_to_all", event.eventType === "MemberSpecific" ? "False" : "True");
+        data.append("image_url", event.eventImgURL);
+        data.append("image", image, image.name);
+        data.append("student_id", sid);
+        data.append("token", token);
+        console.log(data);
         axios.post(requestURL, data)
         .then((res)=>{
+            console.log(res);
             dispatch({type : actionTypes.EVENT_CREATE_SUCCESS})
         })
         .catch((err)=>{
+            console.log(err);
             dispatch({type : actionTypes.EVENT_CREATE_FAILED})
         })
     }
@@ -71,6 +83,7 @@ export const displayEvents = (sid, token)=>{
         axios
         .post(requestURL, data)
         .then((res)=>{
+            console.log(res);
             dispatch(displayEventsSuccess(res.data));
         })
         .catch((err)=>{
