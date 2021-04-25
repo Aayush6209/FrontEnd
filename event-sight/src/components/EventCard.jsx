@@ -21,7 +21,7 @@ const EventCard = (props) => {
   return (
     <div className="ESEventCard">
       <Card>
-        <div className="overflow"><img className="CardImage" src={props.img} alt="Card cap" /></div>
+        <div className="overflow"><img className="CardImage" src={"http://127.0.0.1:8000"+props.event.photo} alt="Card cap" /></div>
         <CardBody>
           <CardTitle tag="h5"><span className="CardTitle">{props.event.title}</span></CardTitle>
           <div className="CardContent">
