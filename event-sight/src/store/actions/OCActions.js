@@ -169,6 +169,7 @@ export const fetchMemberRequests = (sid, token)=>{
             "student_id" : sid,
             "token" : token
         }
+        console.log(data)
         axios.post(requestURL, data)
         .then((res)=>{
             console.log(res.data)

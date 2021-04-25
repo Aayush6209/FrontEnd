@@ -2,6 +2,7 @@ import React , {useState} from "react"
 import {useJsonToCsv} from "react-json-csv";
 import {FiDownload} from "react-icons/fi";
 import { Tooltip } from 'reactstrap';
+import {connect} from "react-redux";
 
 const RegisteredStudents = (props)=>{
 

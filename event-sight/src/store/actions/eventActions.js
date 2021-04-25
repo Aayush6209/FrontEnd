@@ -422,3 +422,6 @@ export const displayCommentsFailure = error=>{
         payload: error
     }
 }
+
+
+export const fetchRegisteredStudents = ()=>{}
