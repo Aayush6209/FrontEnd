@@ -17,6 +17,9 @@ const EventForm = (props)=>{
     eventImgURL : ""
   })
 
+  const [image, setImage]=useState();
+  const [label, setLabel]=useState("");
+
   if(props.showAlert){
     setTimeout(()=>{
       props.hideAlert()
@@ -31,6 +34,21 @@ const EventForm = (props)=>{
         [changeEvent.target.name] : changeEvent.target.value
       }
     })
+  }
+
+  const imageHandler = (event)=>{
+    const file = event.target.files[0];
+    const fileType = file['type'];
+    const validImageTypes = ['image/gif', 'image/jpeg', 'image/png'];
+    if (!validImageTypes.includes(fileType)) {
+      setLabel("( Valid Image types are jpeg, png, gif )");
+    }else{
+      if(file.size > 1572864){
+        setLabel("( Image size is too Large " + (file.size/1048576).toFixed(2) + "  MB )");
+      }else{
+        setImage(file);
+      }
+    }
   }
 
     return <div><h1 >Event Form</h1>
@@ -88,11 +106,22 @@ const EventForm = (props)=>{
           <Input type="url" name="eventImgURL" placeholder="Paste Event Poster URL (OPTIONAL)" value={event.eventImgURL} onChange={changeHandler}/>
           </Col>
           </Row>
+          <br />
+          <Row>
+            <Col>
+              <Input type="file" name="image" id="image" onChange={imageHandler} className="inputfile"/>
+              <Label for="image">{typeof image=="undefined" ? "Upload Image" : image.name}</Label>
+              <br />
+              <Label>Less than 1.5 MB {label}</Label>
+            </Col>
+          </Row>
       </FormGroup>
       <Button onClick={()=>{
-        console.log(event)
-        props.createNewEvent(props.sid, props.token, event)
-      }}>Add Event</Button>
+        console.log(event);
+        props.createNewEvent(props.sid, props.token, event, image)
+      }}
+      disabled={!(event.eventTitle.length > 0 && event.eventDate.length > 0 && event.eventTime.length > 0 && typeof image != "undefined")}
+      >Add Event</Button>
     </div>
     {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}
     </div>
@@ -110,7 +139,7 @@ const mapStateToProps = (state)=>{
 
 const mapDispatchToProps = (dispatch)=>{
   return {
-    createNewEvent : (sid, token, event)=>dispatch(eventActions.createNewEvent(sid, token, event)),
+    createNewEvent : (sid, token, event, image)=>dispatch(eventActions.createNewEvent(sid, token, event, image)),
     hideAlert : ()=>dispatch({type : actionTypes.HIDE_EVENT_ALERT})
   }
 }
