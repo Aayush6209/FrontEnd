@@ -437,4 +437,30 @@ export const displayCommentsFailure = error=>{
 }
 
 
-export const fetchRegisteredStudents = ()=>{}
+export const fetchRegisteredStudents = (sid, eventID, token)=>{
+    return (dispatch)=>{
+        const requestURL = "all_interested_participants/";
+        const data = {
+            "student_id" : sid,
+            "admin_id" : sid,
+            "event_id" : eventID,
+            "token" : token,
+            "interested" : false
+        }
+        console.log(data)
+        axios.post(requestURL, data)
+        .then((res)=>{
+            console.log(res)
+            dispatch({
+                type : actionTypes.REGISTERED_STUDENTS_FETCHED,
+                registeredStudents : res.data
+            })
+        })
+        .catch((err)=>{
+            console.log(err)
+            dispatch({
+                type : actionTypes.REGISTERED_STUDENTS_FETCH_FAILED
+            })
+        })
+    }
+}

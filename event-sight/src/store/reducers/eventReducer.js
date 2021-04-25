@@ -8,6 +8,7 @@ const initialState = {
   showAlert: false,
   AlertText: null,
   AlertColor: null,
+  registeredStudents : null
 };
 
 const EventReducer = (state = initialState, action) => {
@@ -213,6 +214,12 @@ const EventReducer = (state = initialState, action) => {
         AlertText: "Unable to Load Comments",
         AlertColor: "danger",
       };
+
+    case actionTypes.REGISTERED_STUDENTS_FETCHED : 
+      return{
+        ...state,
+        registeredStudents : action.registeredStudents
+      }
 
     default:
       return state;

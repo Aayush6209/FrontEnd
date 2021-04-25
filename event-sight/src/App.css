@@ -617,7 +617,7 @@ font-family: 'Acme', sans-serif;
 
 
 .DownloadButton{
-  background-color: #FE5F55;
+  background-color: black;
   color : white;
   width: 53px;
   text-align: center;
@@ -625,6 +625,9 @@ font-family: 'Acme', sans-serif;
   padding: 5px;
   border-radius: 53px;
   box-shadow: 0 0 5px grey;
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
 }
 
 .DownloadButton:hover{
