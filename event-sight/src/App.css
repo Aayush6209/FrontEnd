@@ -335,11 +335,15 @@ font-family: 'Acme', sans-serif;
 
 /* Auth Page */
 
+.AuthPageTitleDiv{
+  padding-top: 15%;
+  text-align: center;
+}
+
 .AuthPageTitle {
   font-family: "Niconne", cursive;
   font-weight: 500;
   font-size: 7rem;
-  text-align: center;
 }
 
 .AuthLoginDiv {
@@ -358,6 +362,7 @@ font-family: 'Acme', sans-serif;
   padding: 5%;
   width: 100%;
   margin-top: 5% ;
+  text-align: center;
 }
 
 .SignupDiv {
@@ -365,12 +370,24 @@ font-family: 'Acme', sans-serif;
   margin-top: 3%;
   margin-left: 20%;
   box-shadow: 0 0 3px black;
+  border-radius: 5px;
 }
 .Signupheader {
   padding: 6% 6% 0 6%;
 }
 .SignupForm {
   padding: 6%;
+}
+
+.LoginOptionDiv{
+  width: 60%;
+  margin-top: 3%;
+  margin-left: 20%;
+  box-shadow: 0 0 3px black;
+  text-align: center;
+  border-radius: 5px;
+  padding: 2%;
+  margin-top: 2%;
 }
 /* ---------------------------EVENT PAGE-------------------------------- */
 

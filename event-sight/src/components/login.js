@@ -77,12 +77,12 @@ const Login = (props)=>{
       <Row lg="4" md="4" sm="3" xs="1">
             <Col><Label for="role1">Select Role</Label></Col>
             
-            <Col><Input type="radio" name="role" value="Student" onChange={(event)=>{
+            <Col className="roleLabels" ><Input type="radio" name="role" value="Student" onChange={(event)=>{
               changeHandler(event)
               setRoleChanged(true);
             }
           }/>{"Student"}</Col>
-            <Col><Input type="radio"  name="role" value="Admin" onChange={(event)=>{
+            <Col className="roleLabels"><Input type="radio"  name="role" value="Admin" onChange={(event)=>{
               changeHandler(event)
               setRoleChanged(true);
             }

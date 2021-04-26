@@ -2,9 +2,15 @@
     position: fixed;
     bottom: 30px;
     right : 60px;
-    width: 550px;
+    width: 50%;
     text-align: center;
     z-index: 5000;
+}
+
+@media(max-width : 550px){
+  .ESAlert{
+      width: 60%;
+  }
 }
 
 .loader {
