@@ -24,24 +24,23 @@ const RegisteredStudents = (props)=>{
     data = [];
 
     if(props.selectedEvent && props.registeredStudents){
-        console.log(props.selectedEvent)
         filename = props.selectedEvent.title;
     fields = {
     "sid": "SID",
     "name": "Name",
-    "branch" : "Branch"
+    "branch" : "Branch",
+    "email" : "Email"
     }
     data = props.registeredStudents.map((student)=>{
         return {
             "sid" : student["student_id"],
             "name" : student["first_name"] + " " + student["last_name"],
-            "branch" : student["branch"]
+            "branch" : student["branch"],
+            "email" : student["email"]
         }
     })
     }
     
-
-    console.log(props.registeredStudents)
 
     const { saveAsCsv } = useJsonToCsv();
    
@@ -67,7 +66,8 @@ const mapStateToProps = (state)=>{
         selectedEvent : state.event.selectedEvent,
         registeredStudents : state.event.registeredStudents,
         sid : state.user.sid,
-        token : state.user.token
+        token : state.user.token,
+        showAlert : state.event.showAlert
     }
 }
 

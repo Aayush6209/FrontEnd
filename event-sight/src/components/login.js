@@ -101,7 +101,6 @@ const Login = (props)=>{
           </FormGroup>
       </Col></Row>}
       <Button onClick={()=>{
-        console.log(user)
         props.loginInit(user);
       }} color="info"
       disabled = {!(roleChanged && validCRED["sid"].valid && validCRED["password"].valid)}

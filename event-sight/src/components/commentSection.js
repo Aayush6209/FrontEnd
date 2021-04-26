@@ -34,7 +34,7 @@ const CommentSection = (props) => {
   }
   let commentsRender=<ESSpinner />;
 
-  commentsRender=<div className="CommentsDiv">
+  commentsRender=<div className={ props.role !== "Admin" ? "CommentsDiv" : "CommentsDivAdmin"}>
   {commentsList.map((comment, index) => (
     <div key={index} className="Comment">
       <div className="CommentUser">
@@ -47,7 +47,7 @@ const CommentSection = (props) => {
 </div>
 
   return (
-    <div className="CommentSectionDiv">
+    <div className= { props.role !== "Admin" ? "CommentSectionDiv" : "CommentSectionDivAdmin" }>
       {commentsRender}
       <div className="CommentAdd">
         <InputGroup>
@@ -95,6 +95,7 @@ const mapStateToProps = (state) => {
       token : state.user.token,
       comments: state.event.comments,
       loading: state.user.loading,
+      role : state.user.role
     };
   };
   

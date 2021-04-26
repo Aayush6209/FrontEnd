@@ -117,7 +117,6 @@ const EventForm = (props)=>{
           </Row>
       </FormGroup>
       <Button onClick={()=>{
-        console.log(event);
         props.createNewEvent(props.sid, props.token, event, image)
       }}
       disabled={!(event.eventTitle.length > 0 && event.eventDate.length > 0 && event.eventTime.length > 0 && typeof image != "undefined")}

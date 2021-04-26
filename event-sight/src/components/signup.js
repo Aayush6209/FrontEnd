@@ -135,7 +135,6 @@ const SignUp = (props)=>{
           </FormGroup>
       </Col></Row>
       <Button onClick={()=>{
-        console.log(user);
         props.signupInit(user);
         }}
         color="info"
