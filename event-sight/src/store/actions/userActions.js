@@ -13,12 +13,10 @@ export const signupInit = (user)=>{
           "branch": user.branch
         };
         axios.post(requestURl, data).then((res)=>{
-          console.log(res)
         localStorage.setItem("firstName", user.firstName)
         localStorage.setItem("lastName", user.lastName)
         localStorage.setItem("sid", user.sid)
         localStorage.setItem("branch", user.branch)
-        localStorage.setItem("password", user.password)
         localStorage.setItem("email", user.email)
         localStorage.setItem("token", res.data.token)
         localStorage.setItem("role", "Student")
@@ -32,7 +30,6 @@ export const signupInit = (user)=>{
               }
           })
         }).catch((err)=>{
-          console.log(err)
           dispatch({
               type : actionTypes.SIGNUP_FAILED
           })
@@ -49,26 +46,23 @@ export const loginInit = (user)=>{
             "role" : user.role,
             "club" : user.OC
         }
-        console.log(data)
         axios.post(requestURL, data)
         .then((res)=>{
             localStorage.setItem("firstName", res.data.credentials.first_name)
             localStorage.setItem("lastName", res.data.credentials.last_name)
             localStorage.setItem("sid", res.data.credentials.student_id)
             localStorage.setItem("branch", res.data.credentials.branch)
-            localStorage.setItem("password", res.data.credentials.password)
             localStorage.setItem("email", res.data.credentials.email)
             localStorage.setItem("token", res.data.token)
             localStorage.setItem("role", user.role)
             localStorage.setItem("OCName", user.OC)
-            console.log(res)
             const userData = {
                 firstName :  res.data.credentials.first_name,
                 lastName :  res.data.credentials.last_name,
                 sid :  res.data.credentials.student_id,
                 branch : res.data.credentials.branch,
                 email : res.data.credentials.email,
-                password :  res.data.credentials.password,
+                // password :  res.data.credentials.password,
                 token : res.data.token,
                 role : user.role,
                 OCName : user.OC 
@@ -79,7 +73,6 @@ export const loginInit = (user)=>{
             })
         })
         .catch((err)=>{
-            console.log(err)
             dispatch({
                 type : actionTypes.LOGIN_FAILED
             })
@@ -100,18 +93,15 @@ export const logout = (sid, token)=>{
             localStorage.removeItem("lastName")
             localStorage.removeItem("sid")
             localStorage.removeItem("branch")
-            localStorage.removeItem("password")
             localStorage.removeItem("email")
             localStorage.removeItem("token")
             localStorage.removeItem("role")
             localStorage.removeItem("OCName")
-            console.log(res)
             dispatch({
                 type : actionTypes.LOGOUT
             })
         })
         .catch((err)=>{
-            console.log(err)
         })
     }
 }

@@ -15,11 +15,9 @@ const Sidebar = (props)=>{
     let logos = [];
 
     if(props.OCList !== null){
-        console.log(props.OCList)
         logos = props.OCList.filter((OC)=>{
             return OC.members.includes(props.sid) || OC.followers.includes(props.sid)
         })
-        console.log(logos)
     }
 
     return <div className="Sidebar">

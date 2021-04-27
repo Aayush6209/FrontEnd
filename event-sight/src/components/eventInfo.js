@@ -6,6 +6,7 @@ import EventEdit from "./eventEdit";
 
 import {connect} from "react-redux";
 import {OCLogos} from "../assets/OClogo";
+import RegisteredStudents from "./registeredStudents";
 
 const createDOMPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
@@ -42,6 +43,12 @@ const EventInfo = (props)=>{
             <span style={{cursor : "pointer"}}>Detailed Info</span>
           </NavLink>
         </NavItem>
+        { props.role === "Admin" && <NavItem>
+          <NavLink
+            className={classnames({ active: activeTab === '3' })} onClick={() => { toggle('3'); }}>
+            <span style={{cursor : "pointer"}}>Registered Students</span>
+          </NavLink>
+        </NavItem>}
        { props.role === "Admin" && <NavItem><EventEdit /></NavItem> }
       </Nav>
 
@@ -68,6 +75,10 @@ const EventInfo = (props)=>{
                 return <p style={{display: 'block'}}key={index} className="EventInfoDetail" dangerouslySetInnerHTML={{__html: linkify(clean)}} />
             })}
             </div>
+        </TabPane>
+        <TabPane tabId="3">
+        <h1 className="EventTitle">{props.event.title}</h1>
+        <RegisteredStudents />
         </TabPane>
 
        </TabContent> 

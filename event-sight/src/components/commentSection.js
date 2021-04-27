@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {AiOutlineSend} from "react-icons/ai";
-import {FaUser} from "react-icons/fa"
+import {MdAccountCircle} from "react-icons/md"
 import { InputGroup, InputGroupAddon, Button, Input ,Tooltip} from 'reactstrap';
 
 import {connect} from "react-redux";
@@ -34,12 +34,12 @@ const CommentSection = (props) => {
   }
   let commentsRender=<ESSpinner />;
 
-  commentsRender=<div className="CommentsDiv">
+  commentsRender=<div className={ props.role !== "Admin" ? "CommentsDiv" : "CommentsDivAdmin"}>
   {commentsList.map((comment, index) => (
     <div key={index} className="Comment">
       <div className="CommentUser">
         {" "}
-        <FaUser /> {comment.student.first_name+" "+ comment.student.last_name}{" "}
+        <MdAccountCircle size="25px" /> {comment.student.first_name+" "+ comment.student.last_name}{" "}
       </div>
       <div className="CommentText">{comment.comment_text}</div>
     </div>
@@ -47,7 +47,7 @@ const CommentSection = (props) => {
 </div>
 
   return (
-    <div className="CommentSectionDiv">
+    <div className= { props.role !== "Admin" ? "CommentSectionDiv" : "CommentSectionDivAdmin" }>
       {commentsRender}
       <div className="CommentAdd">
         <InputGroup>
@@ -95,6 +95,7 @@ const mapStateToProps = (state) => {
       token : state.user.token,
       comments: state.event.comments,
       loading: state.user.loading,
+      role : state.user.role
     };
   };
   

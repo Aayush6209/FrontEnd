@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {Row, Col} from "reactstrap";
 import EventInfo from "../components/eventInfo";
 import CommentSection from "../components/commentSection";
-import EventPageButtons from "../components/eventPageButtons";
+import EventPageButtons from "../components/buttons2";
 
 import {connect} from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
@@ -25,7 +25,7 @@ const EventPage = (props)=>{
         <Row>
             {props.selectedEvent && <Col lg="8"><EventInfo event={props.selectedEvent}/></Col>}
             <Col lg="4">
-            {props.selectedEvent && <Row><EventPageButtons event={props.selectedEvent} /></Row>}
+            {props.selectedEvent && props.role !== "Admin" && <Row><EventPageButtons event={props.selectedEvent} /></Row>}
             {props.selectedEvent && <Row><CommentSection event={props.selectedEvent} /></Row>}
                 </Col>
         </Row>
@@ -42,6 +42,7 @@ const mapStateToProps = (state) => {
       selectedEvent: state.event.selectedEvent,
       sid : state.user.sid,
       token : state.user.token,
+      role : state.user.role
     };
   };
   

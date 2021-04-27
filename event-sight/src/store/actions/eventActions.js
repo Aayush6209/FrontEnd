@@ -31,14 +31,11 @@ export const createNewEvent = (sid, token, event, image)=>{
         data.append("image", image);
         data.append("student_id", sid);
         data.append("token", token);
-        console.log(data);
         axios.post(requestURL, data)
         .then((res)=>{
-            console.log(res);
             dispatch({type : actionTypes.EVENT_CREATE_SUCCESS})
         })
         .catch((err)=>{
-            console.log(err);
             dispatch({type : actionTypes.EVENT_CREATE_FAILED})
         })
     }
@@ -83,7 +80,6 @@ export const displayEvents = (sid, token)=>{
         axios
         .post(requestURL, data)
         .then((res)=>{
-            console.log(res);
             dispatch(displayEventsSuccess(res.data));
         })
         .catch((err)=>{
@@ -433,5 +429,31 @@ export const displayCommentsFailure = error=>{
     return {
         type: actionTypes.DISPLAY_COMMENTS_FAILURE,
         payload: error
+    }
+}
+
+
+export const fetchRegisteredStudents = (sid, eventID, token)=>{
+    return (dispatch)=>{
+        const requestURL = "all_interested_participants/";
+        const data = {
+            "student_id" : sid,
+            "admin_id" : sid,
+            "event_id" : eventID,
+            "token" : token,
+            "interested" : false
+        }
+        axios.post(requestURL, data)
+        .then((res)=>{
+            dispatch({
+                type : actionTypes.REGISTERED_STUDENTS_FETCHED,
+                registeredStudents : res.data
+            })
+        })
+        .catch((err)=>{
+            dispatch({
+                type : actionTypes.REGISTERED_STUDENTS_FETCH_FAILED
+            })
+        })
     }
 }

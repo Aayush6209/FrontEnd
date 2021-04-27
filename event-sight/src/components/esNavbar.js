@@ -1,10 +1,11 @@
 
 import {AiFillHome, AiOutlineLogout} from "react-icons/ai"
-import {MdEvent} from "react-icons/md";
-import {HiSaveAs, HiUserAdd} from "react-icons/hi";
+import {RiQuillPenFill} from "react-icons/ri";
+import {HiUserAdd} from "react-icons/hi";
 import {IoMdCreate} from "react-icons/io";
 import {RiBuilding2Line} from "react-icons/ri";
 import MemberRequests from "./MemberRequests";
+import {FaBookmark} from "react-icons/fa"
 
 import React, { useState } from 'react';
 import {
@@ -88,12 +89,12 @@ const ESNavbar = (props) => {
               <Tooltip placement="bottom" isOpen={tooltipOpen1} target="Home" toggle={toggle1}>
         Home</Tooltip>
               <NavItem id="registered">
-                <NavLink href="/registered-events"><MdEvent className="ESNavbarIcon" size="30px"/></NavLink>
+                <NavLink href="/registered-events"><RiQuillPenFill className="ESNavbarIcon" size="30px"/></NavLink>
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen3} target="registered" toggle={toggle3}>
         Registered Events</Tooltip>
               <NavItem id="interestedEvents">
-                <NavLink href="/interested-events"><HiSaveAs className="ESNavbarIcon" size="30px"/></NavLink>
+                <NavLink href="/interested-events"><FaBookmark className="ESNavbarIcon" size="26px"/></NavLink>
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen4} target="interestedEvents" toggle={toggle4}>
         Interested Events</Tooltip>

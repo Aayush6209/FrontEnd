@@ -106,7 +106,6 @@ const EventEdit = (props)=>{
       </FormGroup> */}
      <Row>
        <Col> <Button onClick={()=>{
-          console.log(event)
           props.updateEvent(props.sid, props.token, event, props.selectedEvent.id)
       }}>Update Event</Button></Col>
       <Col>

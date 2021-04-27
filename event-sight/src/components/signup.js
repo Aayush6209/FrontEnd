@@ -10,6 +10,7 @@ import {connect} from "react-redux";
 import ESAlert from "../UI/ESAlert";
 
 import {formValidation} from "../formValidation";
+import {Link} from "react-router-dom";
 
 const SignUp = (props)=>{
 
@@ -68,7 +69,7 @@ const SignUp = (props)=>{
     }, reEnteredPassword.valid)
   }
 
-    return <div className="SignupDiv">
+    return <> <div className="SignupDiv">
       <h1 className="Signupheader">Sign Up</h1>
       <div className="SignupForm">
       <Row form>
@@ -135,14 +136,17 @@ const SignUp = (props)=>{
           </FormGroup>
       </Col></Row>
       <Button onClick={()=>{
-        console.log(user);
         props.signupInit(user);
         }}
         color="info"
         disabled = {!validator()}>Sign Up</Button>
     </div>
     {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}
-    </div>;
+    </div>
+    <div className="LoginOptionDiv">
+        <Link to="/">Login</Link> instead?
+    </div>
+    </>;
 }
 
 const mapStateToProps = (state)=>{

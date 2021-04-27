@@ -6,7 +6,6 @@ const initialState = {
         sid :  null || localStorage.getItem("sid"),
         branch : null || localStorage.getItem("branch"),
         email : null || localStorage.getItem("email"),
-        password :  null || localStorage.getItem("password"),
         token : null || localStorage.getItem("token"),
         showAlert : false,
         AlertColor : null,

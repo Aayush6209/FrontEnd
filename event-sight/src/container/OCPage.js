@@ -26,7 +26,6 @@ useEffect(()=>{
   // eslint-disable-next-line react-hooks/exhaustive-deps
 },[props.showAlert])
 
-console.log(props.match.params.name);
 
 useEffect(()=>{
   props.clubEvents(props.sid, props.token, props.match.params.name)
@@ -38,7 +37,6 @@ useEffect(()=>{
       props.hideAlert()
     }, 3500)
   }
-  console.log(props.OC)
   let MemberButton = null;
   let eventsrender = <ESSpinner />;
     if(props.OC !== null){
@@ -83,7 +81,10 @@ useEffect(()=>{
           <Col lg="3" md="3" sm="3">
             <img src={OCLogos[props.OC.name]} alt={props.OC.name} className="OCPageHeaderImg" />
           </Col>
-          <Col lg="6" md="6" sm="6">
+          <Col lg= {props.role==="Admin" ? "8" : "6" }
+           md= {props.role==="Admin" ? "8" : "6" }
+            sm={props.role==="Admin" ? "8" : "6" }
+           >
             <Row className="OCPageHeaderR1">
               <Col>
                 <h1 className="OCPageHeaderText">{props.OC.name}</h1>

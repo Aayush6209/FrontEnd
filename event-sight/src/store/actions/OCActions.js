@@ -8,14 +8,12 @@ export const fetchAllOC = ()=>{
         const requestURL = "club_display/"
         axios.get(requestURL)
         .then((res)=>{
-            console.log(res)
             dispatch({
                 type : actionTypes.ALL_OC_FETCHED,
                 OCList : res.data
             })
         })
         .catch((err)=>{
-            console.log(err)
         })
     }
 }
@@ -30,14 +28,12 @@ export const followRequestInit = (sid, token, OCName)=>{
         };
         axios.post(requestURL, data)
         .then((res)=>{
-            console.log(res)
             dispatch({
                 type : actionTypes.FOLLOW_REQUEST_ACCEPTED,
                 newOC : res.data
             })
         })
         .catch((err)=>{
-            console.log(err)
             dispatch({
                 type : actionTypes.FOLLOW_REQUEST_DENIED
             })
@@ -55,14 +51,12 @@ export const unfollowRequestInit = (sid, token, OCName)=>{
         };
         axios.post(requestURL, data)
         .then((res)=>{
-            console.log(res)
             dispatch({
                 type : actionTypes.UNFOLLOW_REQUEST_ACCEPTED,
                 newOC : res.data
             })
         })
         .catch((err)=>{
-            console.log(err)
             dispatch({
                 type : actionTypes.UNFOLLOW_REQUEST_DENIED
             })
@@ -78,14 +72,12 @@ export const fetchOC = (OCName)=>{
         }
         axios.post(requestURL, data)
         .then((res)=>{
-            console.log(res)
             dispatch({
                 type : actionTypes.FETCHED_OC,
                 OC : res.data
             })
         })
         .catch((err)=>{
-            console.log(err)
         })
     }
 }
@@ -100,13 +92,11 @@ export const sendMemberRequest = (sid, token, OCName)=>{
         }
         axios.post(requestURL, data)
         .then((res)=>{
-            console.log(res)
             dispatch({
                 type : actionTypes.MEMBER_REQUEST_SENT
             })
         })
         .catch((err)=>{
-            console.log(err)
         })
     }
 }
@@ -121,7 +111,6 @@ export const checkMemberRequest = (sid, token, OCName)=>{
         }
         axios.post(requestURL, data)
         .then((res)=>{
-            console.log(res)
             if(res.statusText === "OK"){
             dispatch({type : actionTypes.MEMBER_REQUEST_EXISTS})}
             else {
@@ -129,7 +118,6 @@ export const checkMemberRequest = (sid, token, OCName)=>{
             }
         })
         .catch((err)=>{
-            console.log(err)
             dispatch({type : actionTypes.MEMBER_REQUEST_NOT_EXISTS})
         })
     }
@@ -144,17 +132,14 @@ export const sendMemberRemoveRequest = (sid, token, OCName)=>{
             "student_id" : sid,
             "token" : token
         };
-        console.log(data)
         axios.post(requestURL, data)
         .then((res)=>{
-            console.log(res)
             dispatch({
                 type : actionTypes.MEMBER_REMOVED,
                 OC : res.data
             })
         })
         .catch((err)=>{
-            console.log(err)
         })
     }
 }
@@ -171,14 +156,12 @@ export const fetchMemberRequests = (sid, token)=>{
         }
         axios.post(requestURL, data)
         .then((res)=>{
-            console.log(res.data)
             dispatch({
                 type : actionTypes.FETCHED_MEMBER_REQUESTS,
                 fetchedMemberRequests : res.data
             })
         })
         .catch((err)=>{
-            console.log(err)
         })
     }   
 }
@@ -195,7 +178,6 @@ export const respondMemberRequests = (sid, token, OCName, response, adminSID)=>{
         };
         axios.post(requestURL, data)
         .then((res)=>{
-            console.log(res)
             if(response){
                 dispatch({type : actionTypes.MEMBER_REQUEST_ACCEPTED})
             }else{
@@ -203,7 +185,6 @@ export const respondMemberRequests = (sid, token, OCName, response, adminSID)=>{
             }
         })
         .catch((err)=>{
-            console.log(err)
         })
     }
 }

@@ -7,11 +7,14 @@ import {
 import { connect } from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
 import * as actionTypes from "../store/actions/actionTypes";
-import {MdEvent} from "react-icons/md";
-import {HiSaveAs} from "react-icons/hi";
-import {BsInfoCircle} from "react-icons/bs";
+// import {MdEvent} from "react-icons/md";
+// import {HiSaveAs} from "react-icons/hi";
+import {RiQuillPenLine, RiQuillPenFill} from "react-icons/ri"
+import {FaRegBookmark, FaBookmark} from "react-icons/fa"
+import {BsInfo} from "react-icons/bs";
 import ESAlert from "../UI/ESAlert";
 import {OCLogos} from "../assets/OClogo";
+
 
 const EventCard = (props) => {
   if(props.showAlert){
@@ -30,13 +33,36 @@ const EventCard = (props) => {
           <CardText>{(props.event.description.length>99)?(props.event.description.substring(0, 100)+"..."):props.event.description}</CardText>
           </div>
           <div className="CardIconsDiv">
+          <center>
           <Container>
             <Row>
-              <Col>{props.event.interested.includes(props.sid) ? <div style={{display:"inline-block"}} onClick={()=>{props.cancelInterested(props.sid, props.token, props.event.id)}}><HiSaveAs size="36px" className="CardIconInterested"/></div> : <div style={{display:"inline-block"}} onClick={()=>{props.interested(props.event.id, props.sid, props.token)}}><HiSaveAs size="36px" className="CardIconInterest"/></div>}</Col>
-              <Col>{props.event.participants.includes(props.sid) ? <div style={{display:"inline-block"}} onClick={()=>{props.cancelRegistration(props.sid, props.token, props.event.id)}}><MdEvent size="36px" className="CardIconRegistered"/></div> : <div style={{display:"inline-block"}} onClick={()=>{props.registerEvent(props.event.id, props.sid, props.token)}}><MdEvent size="36px" className="CardIconRegister"/></div>}</Col>
-              <Col><div style={{display:"inline-block"}}><Link to={"/event/" + props.event.id +"/"+ props.event.title.replace(/ /g, '-')} onClick={()=>{props.selectEvent(props.event)}}><BsInfoCircle size="32px" className="CardIcon"/></Link></div></Col>
+
+          { props.role === "Admin" ? null :  
+           <>  <Col>{props.event.participants.includes(props.sid) ?
+            <div className="Button2Selected" style={{paddingTop : "8px"}}  id="ab" onClick={()=>{
+                props.cancelRegistration(props.sid, props.token, props.event.id)
+            }}><RiQuillPenFill size="30px"/></div>  :
+
+            <div className="Button2" style={{paddingTop : "8px"}}  id="ab"onClick={()=>{
+                props.registerEvent(props.event.id, props.sid, props.token)
+            }}><RiQuillPenLine size="30px"/></div>}
+            </Col>
+
+            <Col>{props.event.interested.includes(props.sid) ?
+             <div className="Button2Selected" style={{paddingTop : "7px"}} id="bc" onClick={()=>{
+                props.cancelInterested(props.sid, props.token, props.event.id)
+            }}><FaBookmark size="27px" /></div> :
+
+            <div className="Button2" style={{paddingTop : "7px"}} id="bc" onClick={()=>{
+                props.interested(props.event.id, props.sid, props.token)
+            }}><FaRegBookmark size="27px" /></div>}
+            </Col>
+               </>}
+              <Col><Link className="timerLink" to={"/event/" + props.event.id +"/"+ props.event.title.replace(/ /g, '-')} onClick={()=>{props.selectEvent(props.event)}}>
+              <div className="Button2" style={{paddingTop : "2px"}}><BsInfo size="40px"/></div></Link></Col>
             </Row>
           </Container>
+          </center>
           </div>
         </CardBody>
       </Card>
@@ -45,6 +71,7 @@ const EventCard = (props) => {
   );
 };
 
+
 const mapStateToProps = (state) => {
   return {
     sid : state.user.sid,
@@ -52,6 +79,7 @@ const mapStateToProps = (state) => {
     showAlert : state.event.showAlert,
     AlertText : state.event.AlertText,
     AlertColor : state.event.AlertColor,
+    role : state.user.role
   };
 };
 

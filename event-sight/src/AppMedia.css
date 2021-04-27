@@ -1,0 +1,43 @@
+@media (max-width : 550px){
+    .mainContent{
+        padding-top: 20%;
+    }
+
+    .AuthPageTitleDiv{
+        padding-top: 0;
+    }
+
+    .AuthPageTitle{
+        font-weight: 500;
+        font-size: 5rem;
+    }
+
+    .SignupDiv{
+        width: 100%;
+        margin: 3% 0% 0 0%;
+    }
+
+    .LoginOptionDiv{
+        width: 100%;
+        margin: 3% 0% 0 0%;
+        padding: 5%;
+      }
+
+    .roleLabels{
+        margin-left: 2%;
+    }
+
+    .OCCardImg{
+        height: 100px;
+        width: 100px;
+        border-radius: 100px;
+        margin: 15px 15% 15px 6%;
+    }
+
+    .OCCardText{
+        font-size: 2rem;
+    }
+
+
+
+}
