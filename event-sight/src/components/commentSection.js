@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {AiOutlineSend} from "react-icons/ai";
-import {FaUser} from "react-icons/fa"
+import {MdAccountCircle} from "react-icons/md"
 import { InputGroup, InputGroupAddon, Button, Input ,Tooltip} from 'reactstrap';
 
 import {connect} from "react-redux";
@@ -39,7 +39,7 @@ const CommentSection = (props) => {
     <div key={index} className="Comment">
       <div className="CommentUser">
         {" "}
-        <FaUser /> {comment.student.first_name+" "+ comment.student.last_name}{" "}
+        <MdAccountCircle size="25px" /> {comment.student.first_name+" "+ comment.student.last_name}{" "}
       </div>
       <div className="CommentText">{comment.comment_text}</div>
     </div>

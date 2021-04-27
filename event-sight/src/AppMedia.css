@@ -26,4 +26,18 @@
     .roleLabels{
         margin-left: 2%;
     }
+
+    .OCCardImg{
+        height: 100px;
+        width: 100px;
+        border-radius: 100px;
+        margin: 15px 15% 15px 6%;
+    }
+
+    .OCCardText{
+        font-size: 2rem;
+    }
+
+
+
 }

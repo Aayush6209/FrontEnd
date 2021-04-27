@@ -38,6 +38,7 @@ font-family: 'Acme', sans-serif;
   margin: 0;
   font-weight: 500;
   color: white;
+  text-shadow: 0 0 3px grey;
 }
 
 /* Create Event */
@@ -199,7 +200,7 @@ font-family: 'Acme', sans-serif;
   width: 100px;
   border-radius: 100px;
   margin-left: 15%;
-  margin-top: 12%;
+  margin-top: 15px;
   box-shadow: 0 0 5px grey;
 }
 
@@ -344,6 +345,7 @@ font-family: 'Acme', sans-serif;
   font-family: "Niconne", cursive;
   font-weight: 500;
   font-size: 7rem;
+  text-shadow: 0 0 5px grey;
 }
 
 .AuthLoginDiv {

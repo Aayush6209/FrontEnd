@@ -34,11 +34,11 @@ const MemberRequests = (props)=>{
                 { props.fetchedMemberRequests && props.fetchedMemberRequests.map((request, index)=>{
                     return <div key={index} className="MemberRequest">
                         <Row>
-                            <Col lg="8">
+                            <Col lg="8" md="8" sm="8" xs="8">
                                 <Col><div className="MRUpperText"><FaUser size="15px"/> {request.student_id}</div></Col>
                                 <Col><div className="MRLowerText">{request.first_name} {request.last_name}</div></Col>
                                 </Col>
-                            <Col lg="4">
+                            <Col lg="4" md="4" sm="4" xs="4">
                                 <Button color="success" outline className="MemberRequestButton Left" onClick={()=>{
                                     props.respondMemberRequests(request.student_id, props.token, props.OCName , true, props.sid)
                                 }}><FiCheck size="18px"/></Button>

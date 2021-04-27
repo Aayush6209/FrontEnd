@@ -14,6 +14,7 @@ import {FaRegBookmark, FaBookmark} from "react-icons/fa"
 import {BsInfo} from "react-icons/bs";
 import ESAlert from "../UI/ESAlert";
 
+
 const EventCard = (props) => {
   if(props.showAlert){
     setTimeout(()=>{
@@ -31,8 +32,10 @@ const EventCard = (props) => {
           <CardText>{(props.event.description.length>99)?(props.event.description.substring(0, 100)+"..."):props.event.description}</CardText>
           </div>
           <div className="CardIconsDiv">
+          <center>
           <Container>
             <Row>
+
           { props.role === "Admin" ? null :  
            <>  <Col>{props.event.participants.includes(props.sid) ?
             <div className="Button2Selected" style={{paddingTop : "8px"}}  id="ab" onClick={()=>{
@@ -58,6 +61,7 @@ const EventCard = (props) => {
               <div className="Button2" style={{paddingTop : "2px"}}><BsInfo size="40px"/></div></Link></Col>
             </Row>
           </Container>
+          </center>
           </div>
         </CardBody>
       </Card>
@@ -65,6 +69,7 @@ const EventCard = (props) => {
     </div>
   );
 };
+
 
 const mapStateToProps = (state) => {
   return {
