@@ -11,6 +11,7 @@ import {MdEvent} from "react-icons/md";
 import {HiSaveAs} from "react-icons/hi";
 import {BsInfoCircle} from "react-icons/bs";
 import ESAlert from "../UI/ESAlert";
+import {OCLogos} from "../assets/OClogo";
 
 const EventCard = (props) => {
   if(props.showAlert){
@@ -19,11 +20,11 @@ const EventCard = (props) => {
     }, 3000)
   }
   return (
-    <div className="ESEventCard">
-      <Card>
+    <div>
+      <Card className="ESEventCard">
         <div className="overflow"><img className="CardImage" src={"http://127.0.0.1:8000"+props.event.photo} alt="Card cap" /></div>
         <CardBody>
-          <CardTitle tag="h5"><span className="CardTitle">{props.event.title}</span></CardTitle>
+          <CardTitle tag="h5"><img src={OCLogos[props.event.organizer]} alt={props.event.organizer} className="ESOCImg" /><span className="CardTitle">{props.event.title}</span></CardTitle>
           <div className="CardContent">
           <CardSubtitle tag="h6" className="mb-2 text-muted"><strong>Date: </strong>{props.event.date_time.substring(0, 10)}<br /><strong>Time: </strong>{props.event.date_time.substring(11, 19)}</CardSubtitle>
           <CardText>{(props.event.description.length>99)?(props.event.description.substring(0, 100)+"..."):props.event.description}</CardText>

@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col} from 'reactstrap';
 import classnames from 'classnames';
 
-import Sample from "../assets/sample.jpg";
 import EventEdit from "./eventEdit";
 
 import {connect} from "react-redux";
+import {OCLogos} from "../assets/OClogo";
 
 const createDOMPurify = require('dompurify');
 const { JSDOM } = require('jsdom');
@@ -49,10 +49,8 @@ const EventInfo = (props)=>{
           {/* First Tab Content */}
         <TabPane tabId="1">
             {/* First Tab Content */}
-            <h1 className="EventTitle">{props.event.title}</h1>
-            <div style={{
-                backgroundImage : `url(${Sample})`,
-            }} className="EventPoster"></div>
+            <h1 className="EventTitle"><img src={OCLogos[props.event.organizer]} alt={props.event.organizer} />{props.event.title}</h1>
+            <img className="EventPoster" src={"http://127.0.0.1:8000"+props.event.photo} alt={props.event.organizer}/>
         </TabPane>
 
 

@@ -96,14 +96,14 @@ const EventEdit = (props)=>{
             </Row>
           </FormGroup>
       </Col></Row>
-      <FormGroup>
+      {/* <FormGroup>
          <Row>
          <Col>
         <Label>Event Poster URL</Label>
           <Input type="url" name="eventImgURL" placeholder="Paste Event Poster URL (OPTIONAL)" value={event.eventImgURL} onChange={changeHandler}/>
           </Col>
           </Row>
-      </FormGroup>
+      </FormGroup> */}
      <Row>
        <Col> <Button onClick={()=>{
           console.log(event)

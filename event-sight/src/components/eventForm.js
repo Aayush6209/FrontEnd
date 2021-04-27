@@ -29,10 +29,17 @@ const EventForm = (props)=>{
 
   const changeHandler = (changeEvent)=>{
     setEvent((prev)=>{
+      console.log(changeEvent.target.name);
+      if(changeEvent.target.name === "eventTitle" && changeEvent.target.value.length>40){
+        return{
+          ...prev,
+        }
+      }else{
       return {
         ...prev,
-        [changeEvent.target.name] : changeEvent.target.value
+        [changeEvent.target.name] : changeEvent.target.value,
       }
+    }
     })
   }
 
@@ -43,7 +50,7 @@ const EventForm = (props)=>{
     if (!validImageTypes.includes(fileType)) {
       setLabel("( Valid Image types are jpeg, png, gif )");
     }else{
-      if(file.size > 1572864){
+      if(file.size > 1048576*4){
         setLabel("( Image size is too Large " + (file.size/1048576).toFixed(2) + "  MB )");
       }else{
         setImage(file);
@@ -57,7 +64,7 @@ const EventForm = (props)=>{
          <Row>
          <Col>
         <Label>Event Title</Label>
-          <Input type="text" name="eventTitle" placeholder="Event Title" value={event.eventTitle} onChange={changeHandler}/>
+          <Input type="text" name="eventTitle" placeholder="Event Title" value={event.eventTitle} autoComplete="off" onChange={changeHandler}/>
           </Col>
           </Row>
       </FormGroup>
@@ -100,19 +107,19 @@ const EventForm = (props)=>{
           </FormGroup>
       </Col></Row>
       <FormGroup>
-         <Row>
+         {/* <Row>
          <Col>
         <Label>Event Poster URL</Label>
           <Input type="url" name="eventImgURL" placeholder="Paste Event Poster URL (OPTIONAL)" value={event.eventImgURL} onChange={changeHandler}/>
           </Col>
           </Row>
-          <br />
+          <br /> */}
           <Row>
             <Col>
               <Input type="file" name="image" id="image" onChange={imageHandler} className="inputfile"/>
               <Label for="image">{typeof image=="undefined" ? "Upload Image" : image.name}</Label>
               <br />
-              <Label>Less than 1.5 MB {label}</Label>
+              <Label>Less than 4 MB {label}</Label>
             </Col>
           </Row>
       </FormGroup>
@@ -120,7 +127,7 @@ const EventForm = (props)=>{
         console.log(event);
         props.createNewEvent(props.sid, props.token, event, image)
       }}
-      disabled={!(event.eventTitle.length > 0 && event.eventDate.length > 0 && event.eventTime.length > 0 && typeof image != "undefined")}
+      disabled={!(event.eventTitle.length > 0 && event.eventDate.length > 0 && event.eventTime.length > 0 && event.eventType.length > 0 && typeof image != "undefined")}
       >Add Event</Button>
     </div>
     {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}

@@ -28,7 +28,7 @@ export const createNewEvent = (sid, token, event, image)=>{
         data.append("date_time", event.eventDate + " " + event.eventTime + ":00");
         data.append("open_to_all", event.eventType === "MemberSpecific" ? "False" : "True");
         data.append("image_url", event.eventImgURL);
-        data.append("image", image, image.name);
+        data.append("image", image);
         data.append("student_id", sid);
         data.append("token", token);
         console.log(data);
