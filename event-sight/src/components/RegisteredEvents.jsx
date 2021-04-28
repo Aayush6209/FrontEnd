@@ -39,11 +39,9 @@ const RegisteredEvents = (props) => {
   }
   return (
     <div>
-      <Jumbotron fluid>
-        <Container fluid>
-          <h1 className="display-4">Registered Events</h1>
-        </Container>
-      </Jumbotron>
+       <div className="headers2">
+      Registered Events
+      </div>
       {eventsrender}
       {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
     </div>

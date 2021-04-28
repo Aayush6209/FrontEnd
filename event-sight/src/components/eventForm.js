@@ -52,13 +52,19 @@ const EventForm = (props)=>{
     }
   }
 
-    return <div><h1 >Event Form</h1>
-     <div >
+    return <div style={{
+      backgroundImage: `url("https://www.transparenttextures.com/patterns/45-degree-fabric-light.png")`,
+      padding : "3%",
+      borderRadius : "10px",
+      boxShadow : "0 0 5px grey"
+    }}>
+      <h1 >Create Event</h1>
+     <div>
      <FormGroup>
          <Row>
          <Col>
         <Label>Event Title</Label>
-          <Input type="text" name="eventTitle" placeholder="Event Title" value={event.eventTitle} autoComplete="off" onChange={changeHandler} maxLength={40}/>
+          <Input type="text" name="eventTitle" placeholder="Event Title" value={event.eventTitle} autoComplete="off" onChange={changeHandler} maxLength={35}/>
           </Col>
           </Row>
       </FormGroup>
