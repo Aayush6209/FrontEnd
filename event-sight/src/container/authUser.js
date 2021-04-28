@@ -3,8 +3,16 @@ import {Row, Col} from "reactstrap";
 import Login from "../components/login";
 import {Link} from "react-router-dom";
 
+import BgImg from "../assets/BGImage/login1.jpg";
+
+
 const AuthUser = ()=>{
-    return <div>
+    return <div style={{
+        backgroundImage : `url(${BgImg})`,
+        height : "100vh",
+        backgroundSize : "cover",
+        backgroundRepeat: "no-repeat"
+    }} className="landingPage">
         <Row>
             <Col lg="6"><div className="AuthPageTitleDiv"><h1 className="AuthPageTitle">Event Sight</h1></div></Col>
             <Col lg="6" md="12">

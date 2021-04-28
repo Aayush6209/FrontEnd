@@ -3,6 +3,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col} from 'reactstrap'
 import classnames from 'classnames';
 
 import EventEdit from "./eventEdit";
+import DeleteEvent from "./deleteEvent";
 
 import {connect} from "react-redux";
 import {OCLogos} from "../assets/OClogo";
@@ -50,21 +51,21 @@ const EventInfo = (props)=>{
           </NavLink>
         </NavItem>}
        { props.role === "Admin" && <NavItem><EventEdit /></NavItem> }
+       { props.role === "Admin" && <NavItem><DeleteEvent /></NavItem> }
       </Nav>
 
       <TabContent activeTab={activeTab}>
           {/* First Tab Content */}
         <TabPane tabId="1">
             {/* First Tab Content */}
-            <h1 className="EventTitle"><img src={OCLogos[props.event.organizer]} alt={props.event.organizer} />{props.event.title}</h1>
+            <h1 className="EventTitle"><img src={OCLogos[props.event.organizer]} alt={props.event.organizer} />  {props.event.title}</h1>
             <img className="EventPoster" src={"http://127.0.0.1:8000"+props.event.photo} alt={props.event.organizer}/>
         </TabPane>
 
 
         <TabPane tabId="2">
             {/* Second Tab Content */}
-            <h1 className="EventTitle">{props.event.title}</h1>
-            <div className="EventInfo">
+            <h1 className="EventTitle"><img src={OCLogos[props.event.organizer]} alt={props.event.organizer} />  {props.event.title}</h1>            <div className="EventInfo">
             <p  style={{display: 'block'}} className="EventInfoIntro">{props.event.description}</p>
             <Row>
                 <Col lg="12" md="12" sm="12" className="EventInfoDate">Date: <span className="EventDateTime">{props.event.date_time.substring(0, 10)}</span></Col>
@@ -77,8 +78,7 @@ const EventInfo = (props)=>{
             </div>
         </TabPane>
         <TabPane tabId="3">
-        <h1 className="EventTitle">{props.event.title}</h1>
-        <RegisteredStudents />
+        <h1 className="EventTitle"><img src={OCLogos[props.event.organizer]} alt={props.event.organizer} />  {props.event.title}</h1>        <RegisteredStudents />
         </TabPane>
 
        </TabContent> 

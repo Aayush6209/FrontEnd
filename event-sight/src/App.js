@@ -45,7 +45,7 @@ const App = (props)=>{
   }
   return <div className="Body">
   <div><ESNavbar/></div>
-  <div className="mainContent">
+<div className={props.sid!== null ? "mainContent" : null } >
     {routes}
   </div>
   </div>;

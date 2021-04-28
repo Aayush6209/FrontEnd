@@ -62,8 +62,8 @@ const EventPageButtons2 = (props)=>{
       </Tooltip>
 
             <Col>
-            <a className="timerLink" href={reminderURL} target="_blank" rel="noopener noreferrer">
-                <div className="Button2" style={{paddingTop : "5px"}} id="cd">
+            <a className="timerLink" href= {dateTime>dateString? reminderURL : null} target="_blank" rel="noopener noreferrer">
+                <div className={dateTime>dateString? "Button2" : "Button2Disabled"} style={{paddingTop : "5px"}} id="cd">
                     <IoTimer size="34px" id="c" /></div></a></Col>
                     <Tooltip placement="bottom" isOpen={tooltipOpen3} target="cd" toggle={toggle3}>
         Set Reminder

@@ -103,10 +103,13 @@ font-family: 'Acme', sans-serif;
 }
 
 .ESOCImg{
-  height: 2rem;
-  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
   position: relative;
   bottom: 5px;
+  box-shadow: 0 0 3px grey;
+  margin-right: 10px;
 }
 
 .CardImage {
@@ -133,60 +136,6 @@ font-family: 'Acme', sans-serif;
   margin-bottom: 0px;
 }
 
-.CardIcon {
-  color: #000000;
-  display: inline-block;
-  transition: transform 0.2s;
-}
-
-.CardIcon:hover {
-  color: #ff0000;
-  transform: scale(1.15);
-}
-
-.CardIconInterest {
-  color: #000000;
-  display: inline-block;
-  transition: transform 0.2s;
-}
-
-.CardIconInterest:hover {
-  color: #003cff;
-  transform: scale(1.15);
-}
-
-.CardIconInterested {
-  color: #003cff;
-  display: inline-block;
-  transition: transform 0.2s;
-}
-
-.CardIconInterested:hover {
-  color: #000000;
-  transform: scale(1.15);
-}
-
-.CardIconRegister {
-  color: #000000;
-  display: inline-block;
-  transition: transform 0.2s;
-}
-
-.CardIconRegister:hover {
-  color: #ff0015;
-  transform: scale(1.15);
-}
-
-.CardIconRegistered {
-  color: #ff0015;
-  display: inline-block;
-  transition: transform 0.2s;
-}
-
-.CardIconRegistered:hover {
-  color: #000000;
-  transform: scale(1.15);
-}
 
 .CardTitle{
   font-family: "Acme", sans-serif;
@@ -350,15 +299,16 @@ font-family: 'Acme', sans-serif;
 /* Auth Page */
 
 .AuthPageTitleDiv{
-  padding-top: 15%;
+  padding-top: 20%;
   text-align: center;
 }
 
 .AuthPageTitle {
   font-family: "Niconne", cursive;
   font-weight: 500;
-  font-size: 7rem;
-  text-shadow: 0 0 5px grey;
+  font-size: 7.5rem;
+  text-shadow: 0 2px 10px grey;
+  color:black;
 }
 
 .AuthLoginDiv {
@@ -367,8 +317,9 @@ font-family: 'Acme', sans-serif;
   padding: 5%;
   width: 100%;
   margin-top: 5% ;
-  /* background-color: ; */
-  /* opacity: 0.85; */
+  background-color: black; 
+  opacity: 0.85;
+  color: white;
 }
 
 .AuthSignUpOption {
@@ -378,6 +329,9 @@ font-family: 'Acme', sans-serif;
   width: 100%;
   margin-top: 5% ;
   text-align: center;
+  background-color: black; 
+  opacity: 0.85;
+  color: white;
 }
 
 .SignupDiv {
@@ -435,6 +389,7 @@ font-family: 'Acme', sans-serif;
   margin : 7.5px 30% 7.5px 30%;
   text-align: center;
   color: grey;
+  cursor:not-allowed;
 }
 
 .Button2:hover{
@@ -463,6 +418,7 @@ font-family: 'Acme', sans-serif;
   margin : 7.5px 30% 7.5px 30%;
   text-align: center;
   color: black;
+  cursor:not-allowed;
 }
 
 .Button2Selected:hover{
@@ -658,21 +614,40 @@ font-family: 'Acme', sans-serif;
 }
 
 .eventEditButton{
-  background-color: #FE5F55;
+  background-color: white;
   height: 45px;
   width: 45px;
   text-align: center;
-  color: white;
+  color: black;
   border-radius: 45px;
   padding-top: 5px;
-  box-shadow: 0 0 3px #FE5F55;
+  box-shadow: 0 0 3px grey;
+  cursor: pointer;
+  right: 100px;
+  position: absolute;
+  top : 10px;
+}
+.eventEditButton:hover{
+  box-shadow: 0 0 5px black;
+}
+
+.eventDeleteButton{
+  background-color: white;
+  height: 45px;
+  width: 45px;
+  text-align: center;
+  color: black;
+  border-radius: 45px;
+  padding-top: 7px;
+  box-shadow: 0 0 3px grey;
   cursor: pointer;
   right: 40px;
   position: absolute;
   top : 10px;
 }
-.eventEditButton:hover{
-  box-shadow: 0 0 3px black;
+
+.eventDeleteButton:hover{
+  box-shadow: 0 0 5px black;
 }
 
 
@@ -747,4 +722,8 @@ font-family: 'Acme', sans-serif;
 .DownloadButton:hover{
   box-shadow: 0 0 6px black;
   cursor: pointer;
+}
+
+.landingPage{
+  padding: 10%;
 }

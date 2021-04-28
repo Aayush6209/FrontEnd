@@ -29,18 +29,12 @@ const EventForm = (props)=>{
 
   const changeHandler = (changeEvent)=>{
     setEvent((prev)=>{
-      console.log(changeEvent.target.name);
-      if(changeEvent.target.name === "eventTitle" && changeEvent.target.value.length>40){
-        return{
-          ...prev,
-        }
-      }else{
       return {
         ...prev,
         [changeEvent.target.name] : changeEvent.target.value,
       }
     }
-    })
+    )
   }
 
   const imageHandler = (event)=>{
@@ -64,7 +58,7 @@ const EventForm = (props)=>{
          <Row>
          <Col>
         <Label>Event Title</Label>
-          <Input type="text" name="eventTitle" placeholder="Event Title" value={event.eventTitle} autoComplete="off" onChange={changeHandler}/>
+          <Input type="text" name="eventTitle" placeholder="Event Title" value={event.eventTitle} autoComplete="off" onChange={changeHandler} maxLength={40}/>
           </Col>
           </Row>
       </FormGroup>
@@ -72,7 +66,7 @@ const EventForm = (props)=>{
          <Row>
          <Col>
         <Label>Event Description</Label>
-          <Input type="textarea" rows="5" name="eventDescription" placeholder="Desribe Your Event" value={event.eventDescription} onChange={changeHandler}/>
+          <Input type="textarea" rows="5" name="eventDescription" placeholder="Desribe Your Event" value={event.eventDescription} onChange={changeHandler} />
           </Col>
           </Row>
       </FormGroup>
@@ -107,13 +101,6 @@ const EventForm = (props)=>{
           </FormGroup>
       </Col></Row>
       <FormGroup>
-         {/* <Row>
-         <Col>
-        <Label>Event Poster URL</Label>
-          <Input type="url" name="eventImgURL" placeholder="Paste Event Poster URL (OPTIONAL)" value={event.eventImgURL} onChange={changeHandler}/>
-          </Col>
-          </Row>
-          <br /> */}
           <Row>
             <Col>
               <Input type="file" name="image" id="image" onChange={imageHandler} className="inputfile"/>

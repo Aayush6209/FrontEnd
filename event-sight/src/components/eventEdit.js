@@ -54,7 +54,7 @@ const EventEdit = (props)=>{
          <Row>
          <Col>
         <Label>Event Title</Label>
-          <Input type="text" name="eventTitle" placeholder="Event Title" value={event.eventTitle} onChange={changeHandler}/>
+          <Input type="text" name="eventTitle" placeholder="Event Title" value={event.eventTitle} onChange={changeHandler} autoComplete="off" maxLength={40}/>
           </Col>
           </Row>
       </FormGroup>

@@ -457,3 +457,22 @@ export const fetchRegisteredStudents = (sid, eventID, token)=>{
         })
     }
 }
+
+
+export const deleteEvent = (sid, token, eventID)=>{
+    return (dispatch)=>{
+        const requestURL = "delete_event/";
+        const data = {
+            "student_id" : sid,
+            "token" : token,
+            "event_id" : eventID
+        }
+        axios.post(requestURL, data)
+        .then((res)=>{
+            dispatch({
+                type : actionTypes.DELETE_EVENT
+            })
+        })
+        .catch((err)=>{})
+    }
+}

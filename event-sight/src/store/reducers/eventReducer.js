@@ -8,7 +8,7 @@ const initialState = {
   showAlert: false,
   AlertText: null,
   AlertColor: null,
-  registeredStudents : null
+  registeredStudents : null,
 };
 
 const EventReducer = (state = initialState, action) => {
@@ -221,9 +221,18 @@ const EventReducer = (state = initialState, action) => {
         registeredStudents : action.registeredStudents
       }
 
+    case actionTypes.DELETE_EVENT :
+      return {
+        ...state,
+        selectedEvent : null,
+        events : null,
+      }
+
     default:
       return state;
   }
 };
+
+
 
 export default EventReducer;
