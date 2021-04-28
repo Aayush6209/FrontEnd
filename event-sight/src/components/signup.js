@@ -69,7 +69,7 @@ const SignUp = (props)=>{
     }, reEnteredPassword.valid)
   }
 
-    return <> <div className="SignupDiv">
+    return <div className="landingPage"> <div className="SignupDiv">
       <h1 className="Signupheader">Sign Up</h1>
       <div className="SignupForm">
       <Row form>
@@ -136,7 +136,7 @@ const SignUp = (props)=>{
           </FormGroup>
       </Col></Row>
       <Button onClick={()=>{
-        props.signupInit(user);
+        props.signupInit(user)
         }}
         color="primary"
         disabled = {!validator()}>Sign Up</Button>
@@ -145,15 +145,14 @@ const SignUp = (props)=>{
     </div>
     <div className="LoginOptionDiv">
         <Link to="/">Login</Link> instead?
-    </div>
-    </>;
+    </div></div>;
 }
 
 const mapStateToProps = (state)=>{
   return{
     showAlert : state.user.showAlert,
     AlertText : state.user.AlertText,
-    AlertColor : state.user.AlertColor
+    AlertColor : state.user.AlertColor,
   }
 }
 

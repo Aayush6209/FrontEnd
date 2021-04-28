@@ -3,7 +3,7 @@ import {Row, Col} from "reactstrap";
 import Login from "../components/login";
 import {Link} from "react-router-dom";
 
-import BgImg from "../assets/BGImage/login1.jpg";
+import BgImg from "../assets/BGImage/signup.jpg";
 
 
 const AuthUser = ()=>{

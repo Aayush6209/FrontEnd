@@ -3,7 +3,6 @@ import { Row, Col, Button } from "reactstrap";
 import EventCard from "../components/EventCard";
 import { MdCardMembership } from "react-icons/md";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import {Img} from "../assets/URLImages";
 import {RiUserUnfollowLine} from "react-icons/ri";
 import {IoBan} from "react-icons/io5";
 import ESSpinner from "../UI/ESSpinner";
@@ -68,7 +67,7 @@ useEffect(()=>{
         <Row lg="2" md="2" sm="1" xs="1">
           {allEvents.map((event, index) => (
             <Col key={index}>
-              <EventCard id={event.id} img={Img.img} event={event} />
+              <EventCard id={event.id} event={event} />
             </Col>
           ))}
         </Row>
@@ -81,27 +80,27 @@ useEffect(()=>{
           <Col lg="3" md="3" sm="3">
             <img src={OCLogos[props.OC.name]} alt={props.OC.name} className="OCPageHeaderImg" />
           </Col>
-          <Col lg= {props.role==="Admin" ? "8" : "6" }
-           md= {props.role==="Admin" ? "8" : "6" }
-            sm={props.role==="Admin" ? "8" : "6" }
+          <Col lg= {props.role==="Admin" || props.OC.name==="General Organising Committee" ? "8" : "6" }
+           md= {props.role==="Admin" || props.OC.name==="General Organising Committee" ? "8" : "6" }
+            sm={props.role==="Admin" || props.OC.name==="General Organising Committee" ? "8" : "6" }
            >
             <Row className="OCPageHeaderR1">
               <Col>
                 <h1 className="OCPageHeaderText">{props.OC.name}</h1>
               </Col>
             </Row>
-            <Row className="OCPageHeaderR2">
+          { props.OC.name!=="General Organising Committee" &&  <Row className="OCPageHeaderR2">
               <Col lg="6" md="6" sm="6">
                 <div className="Followers"><strong>{props.OC.followers.length} Followers</strong></div>
               </Col>
               <Col lg="6" md="6" sm="6">
                 <div className="Members"><strong>{props.OC.members.length} Members</strong></div>
               </Col>
-            </Row>
+            </Row>}
             <Row className="OCPageHeaderR3">
               <h5>{props.OC.description}</h5>
             </Row></Col>
-        { props.role !== "Admin" &&  
+        { props.role !== "Admin" && props.OC.name!=="General Organising Committee" &&  
           <Col lg="3" md="3" sm="3">
             <div className="Follow">
               {/* Not rendering the follow button if the student is the member */}

@@ -13,7 +13,7 @@ const EventForm = (props)=>{
     eventDate : "",
     eventTime : "",
     eventDetails : "",
-    eventType : "",
+    eventType : props.OCName === "General Organising Committee" ? "General" :"",
     eventImgURL : ""
   })
 
@@ -91,14 +91,14 @@ const EventForm = (props)=>{
           </Row>
       </FormGroup>
       <Row ><Col>
-      <FormGroup>
-      <Row lg="4" md="4" sm="3" xs="1">
+      {props.OCName !== "General Organising Committee" && <> <FormGroup>
+     <Row lg="4" md="4" sm="3" xs="1">
             <Col><Label for="eventType">Select Event Type</Label></Col>
             
             <Col><Input type="radio" name="eventType" value="MemberSpecific"  onChange={changeHandler}/>{"Member Specific"}</Col>
             <Col><Input type="radio"  name="eventType" value="General"  onChange={changeHandler} />{"General"}</Col>
             </Row>
-          </FormGroup>
+          </FormGroup></>}
       </Col></Row>
       <FormGroup>
           <Row>
@@ -126,7 +126,8 @@ const mapStateToProps = (state)=>{
     token : state.user.token,
     showAlert : state.event.showAlert,
     AlertText : state.event.AlertText,
-    AlertColor : state.event.AlertColor
+    AlertColor : state.event.AlertColor,
+    OCName : state.user.OCName
   }
 }
 

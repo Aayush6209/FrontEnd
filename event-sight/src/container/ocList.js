@@ -21,13 +21,19 @@ const OCList = (props)=>{
     }
     else{
         if(props.OCList !== null){
-        OCrender = <Row lg="2" md="1" sm="1" xs="1">
+        OCrender = <><Row>
         {
-        props.OCList.map((OC, index)=><Col key={index}><Link to={"/oc-page/" + OC.name} className="OCListLink" onClick={()=>{
+        props.OCList.filter((OC)=>OC.name==="General Organising Committee").map((OC, index)=><Col lg="12" md="12" sm="12" xs="12" key={index}><Link to={"/oc-page/" + OC.name} className="OCListLink" onClick={()=>{
             props.selectOC(OC)
         }}><OCCard OCName={OC.name}/></Link></Col>)
         }
-        </Row>}
+        
+        {
+        props.OCList.filter((OC)=>OC.name!=="General Organising Committee").map((OC, index)=><Col lg="6" md="12" sm="12" xs="12" key={index}><Link to={"/oc-page/" + OC.name} className="OCListLink" onClick={()=>{
+            props.selectOC(OC)
+        }}><OCCard OCName={OC.name}/></Link></Col>)
+        }
+        </Row></>}
     }
     
     return <>

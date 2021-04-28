@@ -21,7 +21,12 @@ const Sidebar = (props)=>{
     }
 
     return <div className="Sidebar">
-        {logos.map((OC, index)=>{
+        {logos.filter((OC)=>OC.name==="General Organising Committee").map((OC, index)=>{
+           return <div key={index} className="SidebarCard" >
+            <Link to={"/oc-page/"+OC.name}><img className="SidebarCardImg" src = {OCLogos[OC.name]} alt={OC.name}/> </Link>
+            </div>
+        })} 
+        {logos.filter((OC)=>OC.name!=="General Organising Committee").map((OC, index)=>{
            return <div key={index} className="SidebarCard" >
             <Link to={"/oc-page/"+OC.name}><img className="SidebarCardImg" src = {OCLogos[OC.name]} alt={OC.name}/> </Link>
             </div>

@@ -24,5 +24,6 @@ export const OCnames = ["Aerospace Technical Society" ,
 ,"Les Amis"
 ,"Voyagers"
 ,"Images"
-,"Daniels"];
+,"Daniels",
+"General Organising Committee"];
 

@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { Jumbotron, Container, Row, Col } from "reactstrap";
 import EventCard from "./EventCard";
-import { Img } from "../assets/URLImages";
 import ESSpinner from "../UI/ESSpinner";
 import { connect } from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
@@ -33,7 +32,7 @@ const RegisteredEvents = (props) => {
     eventsrender = <Row lg="2" md="2" sm="1" xs="1">{
         allEvents.map((event, index) => (
           <Col key={index}>
-            <EventCard id={event.id} img={Img.img} event={event}/>
+            <EventCard id={event.id} event={event}/>
           </Col>
         ))}
       </Row>;

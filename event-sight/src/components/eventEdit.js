@@ -16,7 +16,7 @@ const EventEdit = (props)=>{
         eventDate : "",
         eventTime : "",
         eventDetails : props.selectedEvent.details,
-        eventType : "" ,
+        eventType : props.OCName === "General Organising Committee" ? "General" :"",
         eventImgURL : props.selectedEvent.image_url
       })
     
@@ -87,14 +87,15 @@ const EventEdit = (props)=>{
           </Row>
       </FormGroup>
       <Row ><Col>
-      <FormGroup>
-      <Row lg="4" md="4" sm="3" xs="1">
+
+      {props.OCName !== "General Organising Committee" && <> <FormGroup>
+     <Row lg="4" md="4" sm="3" xs="1">
             <Col><Label for="eventType">Select Event Type</Label></Col>
             
             <Col><Input type="radio" name="eventType" value="MemberSpecific"  onChange={changeHandler}/>{"Member Specific"}</Col>
             <Col><Input type="radio"  name="eventType" value="General"  onChange={changeHandler} />{"General"}</Col>
             </Row>
-          </FormGroup>
+          </FormGroup></>}
       </Col></Row>
       {/* <FormGroup>
          <Row>
@@ -129,6 +130,7 @@ const mapStateToProps = (state)=>{
     selectedEvent : state.event.selectedEvent,
     showAlert : state.event.showAlert,
     AlertColor : state.event.AlertColor,
+    OCName : state.user.OCName
   }
 }
 

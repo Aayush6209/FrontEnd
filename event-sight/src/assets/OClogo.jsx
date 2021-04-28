@@ -52,4 +52,5 @@ export const OCLogos = {"Aerospace Technical Society": ATS,
 ,"Les Amis": LA
 ,"Voyagers": V
 ,"Images": I
-,"Daniels": D};
+,"Daniels": D,
+"General Organising Committee" : "https://images.jdmagicbox.com/comp/chandigarh/c4/0172p1762.1762.110201201416.l1c4/catalogue/punjab-engineering-college-sector-12-chandigarh-placement-services-candidate--3er9sw3.jpg?clr=#006600"};

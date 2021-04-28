@@ -307,8 +307,9 @@ font-family: 'Acme', sans-serif;
   font-family: "Niconne", cursive;
   font-weight: 500;
   font-size: 7.5rem;
-  text-shadow: 0 2px 10px grey;
-  color:black;
+  text-shadow: 8px 5px 10px black;
+  color: white;
+  cursor: default;
 }
 
 .AuthLoginDiv {
@@ -317,9 +318,8 @@ font-family: 'Acme', sans-serif;
   padding: 5%;
   width: 100%;
   margin-top: 5% ;
-  background-color: black; 
-  opacity: 0.85;
-  color: white;
+  background-color: white; 
+  opacity: 0.9;
 }
 
 .AuthSignUpOption {
@@ -329,14 +329,12 @@ font-family: 'Acme', sans-serif;
   width: 100%;
   margin-top: 5% ;
   text-align: center;
-  background-color: black; 
-  opacity: 0.85;
-  color: white;
+  background-color: white; 
+  opacity: 0.9;
 }
 
 .SignupDiv {
   width: 60%;
-  margin-top: 3%;
   margin-left: 20%;
   box-shadow: 0 0 3px black;
   border-radius: 5px;
