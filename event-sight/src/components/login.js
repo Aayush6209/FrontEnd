@@ -102,7 +102,7 @@ const Login = (props)=>{
       </Col></Row>}
       <Button onClick={()=>{
         props.loginInit(user);
-      }} color="info"
+      }} color="primary"
       disabled = {!(roleChanged && validCRED["sid"].valid && validCRED["password"].valid)}
       >Login</Button>
 

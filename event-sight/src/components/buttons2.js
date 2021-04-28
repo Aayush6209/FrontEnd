@@ -18,6 +18,10 @@ const EventPageButtons2 = (props)=>{
         }, 3500)
       }
 
+      const date = new Date();
+      const dateString=new Date(date.getTime() - (date.getTimezoneOffset() * 60000 )).toISOString().substring(0, 19) + "Z";
+      const dateTime=props.event.date_time;
+
     const reminderURL = "https://calendar.google.com/calendar/u/0/r/eventedit?text="+props.event.title.replace(/ /g, '+')+"&dates="+props.event.date_time.replace(/-/g, '').replace(/:/g, '').slice(0, -1)+"/"+props.event.date_time.replace(/-/g, '').replace(/:/g, '').slice(0, -1)+"&details="+props.event.description.replace(/ /g, '+')+" "+props.event.details.replace(/ /g, '+')+"&sf=true&output=xml&pli=1";
     
     const [tooltipOpen1, setTooltipOpen1] = useState(false);
@@ -32,12 +36,12 @@ const EventPageButtons2 = (props)=>{
     return <div className="EventPageButtonsDiv">
         <Row>
             <Col>{props.event.participants.includes(props.sid) ?
-            <div className="Button2Selected" style={{paddingTop : "8px"}}  id="ab" onClick={()=>{
-                props.cancelRegistration(props.sid, props.token, props.event.id)
+            <div className={dateTime>dateString? "Button2Selected" : "Button2SelectedDisabled"} style={{paddingTop : "8px"}}  id="ab" onClick={()=>{
+                dateTime>dateString && props.cancelRegistration(props.sid, props.token, props.event.id)
             }}><RiQuillPenFill size="30px"/></div>  :
 
-            <div className="Button2" style={{paddingTop : "8px"}}  id="ab"onClick={()=>{
-                props.registerEvent(props.event.id, props.sid, props.token)
+            <div className={dateTime>dateString? "Button2" : "Button2Disabled"} style={{paddingTop : "8px"}}  id="ab"onClick={()=>{
+                dateTime>dateString && props.registerEvent(props.event.id, props.sid, props.token)
             }}><RiQuillPenLine size="30px"/></div>}
             </Col>
             <Tooltip placement="bottom" isOpen={tooltipOpen1} target="ab" toggle={toggle1}>
@@ -45,12 +49,12 @@ const EventPageButtons2 = (props)=>{
       </Tooltip>
 
             <Col>{props.event.interested.includes(props.sid) ?
-             <div className="Button2Selected" style={{paddingTop : "7px"}} id="bc" onClick={()=>{
-                props.cancelInterested(props.sid, props.token, props.event.id)
+             <div className={dateTime>dateString? "Button2Selected" : "Button2SelectedDisabled"} style={{paddingTop : "7px"}} id="bc" onClick={()=>{
+                dateTime>dateString && props.cancelInterested(props.sid, props.token, props.event.id)
             }}><FaBookmark size="27px" /></div> :
 
-            <div className="Button2" style={{paddingTop : "7px"}} id="bc" onClick={()=>{
-                props.interested(props.event.id, props.sid, props.token)
+            <div className={dateTime>dateString? "Button2" : "Button2Disabled"} style={{paddingTop : "7px"}} id="bc" onClick={()=>{
+                dateTime>dateString && props.interested(props.event.id, props.sid, props.token)
             }}><FaRegBookmark size="27px" /></div>}
             </Col>
             <Tooltip placement="bottom" isOpen={tooltipOpen2} target="bc" toggle={toggle2}>

@@ -7,6 +7,9 @@ font-family: 'Ubuntu', sans-serif;
 font-family: 'Acme', sans-serif;
  */
 
+*{
+  font-family: 'Ubuntu', sans-serif;
+}
 *::-webkit-scrollbar {
   width: 6px;
 }
@@ -417,14 +420,25 @@ font-family: 'Acme', sans-serif;
   height: 45px;
   border-radius: 45px;
   background-color: white;
-  box-shadow: 0 0 3px grey;
+  box-shadow: 0 0 1px grey;
+  margin : 7.5px 30% 7.5px 30%;
+  text-align: center;
+  color: grey;
+}
+
+.Button2Disabled{
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  background-color: white;
+  box-shadow: 0 0 1px grey;
   margin : 7.5px 30% 7.5px 30%;
   text-align: center;
   color: grey;
 }
 
 .Button2:hover{
-  box-shadow: 0 0 5px black;
+  box-shadow: 0 0 3px black;
   cursor: pointer;
   color: black;
 }
@@ -434,14 +448,25 @@ font-family: 'Acme', sans-serif;
   height: 45px;
   border-radius: 45px;
   background-color: white;
-  box-shadow: 0 0 5px black;
+  box-shadow: 0 0 3px black;
+  margin : 7.5px 30% 7.5px 30%;
+  text-align: center;
+  color: black;
+}
+
+.Button2SelectedDisabled{
+  width: 45px;
+  height: 45px;
+  border-radius: 45px;
+  background-color: white;
+  box-shadow: 0 0 3px black;
   margin : 7.5px 30% 7.5px 30%;
   text-align: center;
   color: black;
 }
 
 .Button2Selected:hover{
-  box-shadow: 0 0 3px black;
+  box-shadow: 0 0 1px black;
   cursor: pointer;
   color: black;
 }
@@ -525,13 +550,15 @@ font-family: 'Acme', sans-serif;
 } */
 
 .CommentUser {
-  font-size: 20px;
+  font-size: 1.2rem;
   color: rgba(0, 37, 201, 0.726);
   font-weight: 500;
 }
 
 .CommentText {
-  margin-left: 2.7%;
+  margin-left: 9%;
+  font-size: 1rem;
+  color: #666666;
 }
 
 .CommentAdd {

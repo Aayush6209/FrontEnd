@@ -22,10 +22,15 @@ const EventCard = (props) => {
       props.hideAlert()
     }, 3000)
   }
+
+  const date = new Date();
+  const dateString=new Date(date.getTime() - (date.getTimezoneOffset() * 60000 )).toISOString().substring(0, 19) + "Z";
+  const dateTime=props.event.date_time;
   return (
     <div>
       <Card className="ESEventCard">
-        <div className="overflow"><img className="CardImage" src={"http://127.0.0.1:8000"+props.event.photo} alt="Card cap" /></div>
+      <Link className="timerLink" to={"/event/" + props.event.id +"/"+ props.event.title.replace(/ /g, '-')} onClick={()=>{props.selectEvent(props.event)}}>
+        <div className="overflow"><img className="CardImage" src={"http://127.0.0.1:8000"+props.event.photo} alt="Card cap" /></div></Link>
         <CardBody>
           <CardTitle tag="h5"><img src={OCLogos[props.event.organizer]} alt={props.event.organizer} className="ESOCImg" /><span className="CardTitle">{props.event.title}</span></CardTitle>
           <div className="CardContent">
@@ -39,27 +44,27 @@ const EventCard = (props) => {
 
           { props.role === "Admin" ? null :  
            <>  <Col>{props.event.participants.includes(props.sid) ?
-            <div className="Button2Selected" style={{paddingTop : "8px"}}  id="ab" onClick={()=>{
-                props.cancelRegistration(props.sid, props.token, props.event.id)
+            <div className={dateTime>dateString? "Button2Selected" : "Button2SelectedDisabled"} style={{paddingTop : "8px"}}  id="ab" onClick={()=>{
+                dateTime>dateString && props.cancelRegistration(props.sid, props.token, props.event.id)
             }}><RiQuillPenFill size="30px"/></div>  :
 
-            <div className="Button2" style={{paddingTop : "8px"}}  id="ab"onClick={()=>{
-                props.registerEvent(props.event.id, props.sid, props.token)
+            <div className={dateTime>dateString? "Button2" : "Button2Disabled"} style={{paddingTop : "8px"}}  id="ab"onClick={()=>{
+                dateTime>dateString && props.registerEvent(props.event.id, props.sid, props.token)
             }}><RiQuillPenLine size="30px"/></div>}
             </Col>
 
             <Col>{props.event.interested.includes(props.sid) ?
-             <div className="Button2Selected" style={{paddingTop : "7px"}} id="bc" onClick={()=>{
-                props.cancelInterested(props.sid, props.token, props.event.id)
+             <div className={dateTime>dateString? "Button2Selected" : "Button2SelectedDisabled"} style={{paddingTop : "7px"}} id="bc" onClick={()=>{
+                dateTime>dateString && props.cancelInterested(props.sid, props.token, props.event.id)
             }}><FaBookmark size="27px" /></div> :
 
-            <div className="Button2" style={{paddingTop : "7px"}} id="bc" onClick={()=>{
-                props.interested(props.event.id, props.sid, props.token)
+            <div className={dateTime>dateString? "Button2" : "Button2Disabled"} style={{paddingTop : "7px"}} id="bc" onClick={()=>{
+                dateTime>dateString && props.interested(props.event.id, props.sid, props.token)
             }}><FaRegBookmark size="27px" /></div>}
             </Col>
-               </>}
-              <Col><Link className="timerLink" to={"/event/" + props.event.id +"/"+ props.event.title.replace(/ /g, '-')} onClick={()=>{props.selectEvent(props.event)}}>
+            <Col><Link className="timerLink" to={"/event/" + props.event.id +"/"+ props.event.title.replace(/ /g, '-')} onClick={()=>{props.selectEvent(props.event)}}>
               <div className="Button2" style={{paddingTop : "2px"}}><BsInfo size="40px"/></div></Link></Col>
+               </>}
             </Row>
           </Container>
           </center>

@@ -138,7 +138,7 @@ const SignUp = (props)=>{
       <Button onClick={()=>{
         props.signupInit(user);
         }}
-        color="info"
+        color="primary"
         disabled = {!validator()}>Sign Up</Button>
     </div>
     {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}
