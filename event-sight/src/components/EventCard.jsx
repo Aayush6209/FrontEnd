@@ -35,13 +35,14 @@ const EventCard = (props) => {
           <CardTitle tag="h5" style={{
             paddingTop : "10px",
             height : "80px",
-            marginBottom : "40px"
+            marginBottom : "40px",
+            wordBreak : "break-all"
           }}><img src={OCLogos[props.event.organizer]} alt={props.event.organizer} className="ESOCImg" /><span className="CardTitle">{props.event.title}</span></CardTitle>
           <div className="CardContent">
           <CardSubtitle tag="h6" className="mb-2 text-muted"><strong>Date: </strong>{props.event.date_time.substring(0, 10)}<br /><strong>Time: </strong>{props.event.date_time.substring(11, 19)}</CardSubtitle>
           <CardText style={{
-            height : "80px"
-          }}>{(props.event.description.length>99)?(props.event.description.substring(0, 100)+"..."):props.event.description}</CardText>
+            height : "45px",
+          }}>{(props.event.description.length>49)?(props.event.description.substring(0, 50)+"..."):props.event.description}</CardText>
           </div>
           <div className="CardIconsDiv">
           <center>

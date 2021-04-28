@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Jumbotron, Container, Row, Col } from "reactstrap";
+import {Row, Col } from "reactstrap";
 import EventCard from "./EventCard";
 import ESSpinner from "../UI/ESSpinner";
 import { connect } from "react-redux";
@@ -40,11 +40,10 @@ const InterestedEvents = (props) => {
   }
   return (
     <div>
-      <Jumbotron fluid>
-        <Container fluid>
-          <h1 className="display-4">Interested Events</h1>
-        </Container>
-      </Jumbotron>
+      <div className="headers2">
+      Interested Events
+      </div>
+          
       {eventsrender}
       {props.showAlert && <ESAlert AlertText = {props.AlertText} AlertColor = {props.AlertColor} />}
     </div>

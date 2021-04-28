@@ -54,7 +54,7 @@ const EventEdit = (props)=>{
          <Row>
          <Col>
         <Label>Event Title</Label>
-          <Input type="text" name="eventTitle" placeholder="Event Title" value={event.eventTitle} onChange={changeHandler} autoComplete="off" maxLength={40}/>
+          <Input type="text" name="eventTitle" placeholder="Event Title" value={event.eventTitle} onChange={changeHandler} autoComplete="off" maxLength={35}/>
           </Col>
           </Row>
       </FormGroup>
@@ -108,7 +108,9 @@ const EventEdit = (props)=>{
      <Row>
        <Col> <Button onClick={()=>{
           props.updateEvent(props.sid, props.token, event, props.selectedEvent.id)
-      }}>Update Event</Button></Col>
+      }}
+      disabled={!(event.eventTitle.length > 0 && event.eventDate.length > 0 && event.eventTime.length > 0 && event.eventType.length > 0 )}
+      >Update Event</Button></Col>
       <Col>
       {(props.showAlert && props.AlertColor === "success") &&  <><MdUpdate size="35px" color="green"/> Event Updated </>}
       {(props.showAlert && props.AlertColor === "danger") && <> <MdErrorOutline size="35px" color="red"/> Can't Be Updated </>} 

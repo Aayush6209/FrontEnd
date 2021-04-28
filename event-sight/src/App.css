@@ -338,6 +338,8 @@ font-family: 'Acme', sans-serif;
   margin-left: 20%;
   box-shadow: 0 0 3px black;
   border-radius: 5px;
+  background-color: white; 
+  opacity: 0.9;
 }
 .Signupheader {
   padding: 6% 6% 0 6%;
@@ -355,6 +357,8 @@ font-family: 'Acme', sans-serif;
   border-radius: 5px;
   padding: 2%;
   margin-top: 2%;
+  background-color: white; 
+  opacity: 0.9;
 }
 /* ---------------------------EVENT PAGE-------------------------------- */
 
@@ -564,6 +568,7 @@ font-family: 'Acme', sans-serif;
   font-family: "Acme", sans-serif;
   font-weight: 500;
   text-align: center;
+  word-break: break-all;
 }
 
 .EventTitle > img {
@@ -724,4 +729,18 @@ font-family: 'Acme', sans-serif;
 
 .landingPage{
   padding: 10%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.headers2{
+  background-color: white;
+  background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+  font-size: 3rem;
+  height: fit-content;
+  padding: 1%;
+  margin: 1% 0 3% 0;
+  font-family: 'Ubuntu', sans-serif;
+  box-shadow: 0 0 5px grey;
+  border-radius: 10px;
 }

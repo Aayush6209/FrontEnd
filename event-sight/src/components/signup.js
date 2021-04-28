@@ -12,6 +12,8 @@ import ESAlert from "../UI/ESAlert";
 import {formValidation} from "../formValidation";
 import {Link} from "react-router-dom";
 
+import BgImg from "../assets/BGImage/login.jpg";
+
 const SignUp = (props)=>{
 
   const [user, onUserChange] = useState({
@@ -69,7 +71,12 @@ const SignUp = (props)=>{
     }, reEnteredPassword.valid)
   }
 
-    return <div className="landingPage"> <div className="SignupDiv">
+    return <div className="landingPage" style={{
+      backgroundImage : `url(${BgImg})`,
+      height : "100vh",
+      backgroundSize : "cover",
+      backgroundRepeat: "no-repeat"
+  }} > <div className="SignupDiv">
       <h1 className="Signupheader">Sign Up</h1>
       <div className="SignupForm">
       <Row form>
@@ -77,14 +84,14 @@ const SignUp = (props)=>{
           <FormGroup>
             <Label for="firstName">First Name</Label>
             <Input name="firstName" id="firstName" type="text" value = {user.firstName} onChange={changeHandler}
-            valid = {validCRED["firstName"].valid} invalid = {validCRED["firstName"].invalid}/>
+            valid = {validCRED["firstName"].valid} invalid = {validCRED["firstName"].invalid} autoComplete="off"/>
           </FormGroup>
         </Col>
         <Col md={6}>
           <FormGroup>
             <Label for="lastName">Last Name</Label>
             <Input type="text" id="lastName" name="lastName" value = {user.lastName} onChange={changeHandler}
-            valid = {validCRED["lastName"].valid} invalid = {validCRED["lastName"].invalid}/>
+            valid = {validCRED["lastName"].valid} invalid = {validCRED["lastName"].invalid} autoComplete="off"/>
           </FormGroup>
         </Col>
       </Row>
@@ -93,7 +100,7 @@ const SignUp = (props)=>{
           <FormGroup>
             <Label for="sid">SID</Label>
             <Input type="text" id="sid" name="sid" value = {user.sid} onChange={changeHandler}
-            valid = {validCRED["sid"].valid} invalid = {validCRED["sid"].invalid}/>
+            valid = {validCRED["sid"].valid} invalid = {validCRED["sid"].invalid} autoComplete="off"/>
           </FormGroup>
         </Col>
         <Col md={6}>
@@ -109,7 +116,7 @@ const SignUp = (props)=>{
       <Row><Col>
       <FormGroup>
             <Label for="email">Email Address</Label>
-            <Input type="email" id="email" name="email" value = {user.email} onChange={changeHandler}
+            <Input type="email" id="email" name="email" value = {user.email} onChange={changeHandler} autoComplete="off"
             valid = {validCRED["email"].valid} invalid = {validCRED["email"].invalid}/>
           </FormGroup>
       </Col></Row>
