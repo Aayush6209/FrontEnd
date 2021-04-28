@@ -6,8 +6,12 @@ import * as  userActions from "../store/actions/userActions";
 import * as actionTypes from "../store/actions/actionTypes";
 import {connect} from "react-redux";
 import {formValidation} from "../formValidation";
+import key from "../.env/recaptchakey";
 
 import ESAlert from "../UI/ESAlert";
+
+
+import Recaptcha from 'react-recaptcha';
 
 const Login = (props)=>{
 
@@ -17,6 +21,8 @@ const Login = (props)=>{
     role : "Student",
     OC : "Aerospace Technical Society",
   });
+
+  const [verified, setVerified] = useState(false);
 
   const [validCRED, setValidCRED] = useState({
     "sid" : {valid : false, invalid : false},
@@ -49,6 +55,13 @@ const Login = (props)=>{
       props.hideAlert();
     },3500)
   }
+
+  var callback=()=>{
+    setVerified(false);
+  }
+  var verifyCallback = response=>{
+    setVerified(true);
+  };
 
     return  <div>
     <Row>
@@ -100,10 +113,16 @@ const Login = (props)=>{
           })}</Input>
           </FormGroup>
       </Col></Row>}
+      <Recaptcha
+        sitekey={key}
+        render="explicit"
+        onloadCallback={callback}
+        verifyCallback={verifyCallback}
+      />
       <Button onClick={()=>{
         props.loginInit(user);
       }} color="primary"
-      disabled = {!(roleChanged && validCRED["sid"].valid && validCRED["password"].valid)}
+      disabled = {!(verified && roleChanged && validCRED["sid"].valid && validCRED["password"].valid)}
       >Login</Button>
 
     {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}

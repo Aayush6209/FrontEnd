@@ -12,7 +12,12 @@ import ESAlert from "../UI/ESAlert";
 import {formValidation} from "../formValidation";
 import {Link} from "react-router-dom";
 
+import Recaptcha from 'react-recaptcha';
+import key from "../.env/recaptchakey";
+
 const SignUp = (props)=>{
+
+  const [verified, setVerified] = useState(false);
 
   const [user, onUserChange] = useState({
     firstName : "",
@@ -61,6 +66,13 @@ const SignUp = (props)=>{
       props.hideAlert();
     }, 3500);
   }
+
+  var callback=()=>{
+    setVerified(false);
+  }
+  var verifyCallback = response=>{
+    setVerified(true);
+  };
 
   const validator = ()=>{
     let arr = Object.values(validCRED)
@@ -135,11 +147,17 @@ const SignUp = (props)=>{
             disabled = {!validCRED["password"].valid}/>
           </FormGroup>
       </Col></Row>
+      <Recaptcha
+        sitekey={key}
+        render="explicit"
+        onloadCallback={callback}
+        verifyCallback={verifyCallback}
+      />
       <Button onClick={()=>{
         props.signupInit(user)
         }}
         color="primary"
-        disabled = {!validator()}>Sign Up</Button>
+        disabled = {!(validator() && verified)}>Sign Up</Button>
     </div>
     {props.showAlert && <ESAlert AlertColor = {props.AlertColor} AlertText = {props.AlertText} />}
     </div>
