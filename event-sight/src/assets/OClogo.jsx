@@ -26,6 +26,7 @@ import I from "../assets/clubLogos/Images.jpg";
 import D from "../assets/clubLogos/Daniels.jpg"
 import DRAM from "../assets/clubLogos/Dramatics-Club.jpg"
 import GOC from "../assets/clubLogos/General-Organising-Committee.png"
+import ACM from "../assets/clubLogos/acm.jpeg";
 
 export const OCLogos = {"Aerospace Technical Society": ATS,
 "American Society of Civil Engineers": ASCE,
@@ -54,4 +55,5 @@ export const OCLogos = {"Aerospace Technical Society": ATS,
 ,"Voyagers": V
 ,"Images": I
 ,"Daniels": D,
-"General Organising Committee" : GOC};
+"General Organising Committee" : GOC,
+"ACM-CSS Student Chapter" : ACM};

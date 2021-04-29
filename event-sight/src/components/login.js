@@ -6,12 +6,15 @@ import * as  userActions from "../store/actions/userActions";
 import * as actionTypes from "../store/actions/actionTypes";
 import {connect} from "react-redux";
 import {formValidation} from "../formValidation";
-import key from "../.env/recaptchakey";
+// import key from "../.env/recaptchakey";
+
+
 
 import ESAlert from "../UI/ESAlert";
 
 
 import Recaptcha from 'react-recaptcha';
+const key = process.env.REACT_APP_KEY;
 
 const Login = (props)=>{
 

@@ -13,8 +13,10 @@ import {formValidation} from "../formValidation";
 import {Link} from "react-router-dom";
 
 import Recaptcha from 'react-recaptcha';
-import key from "../.env/recaptchakey";
+// import key from "../.env/recaptchakey";
 import BgImg from "../assets/BGImage/login.jpg";
+
+const key = process.env.REACT_APP_KEY;
 
 const SignUp = (props)=>{
 

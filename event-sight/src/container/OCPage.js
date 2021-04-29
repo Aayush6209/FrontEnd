@@ -23,13 +23,13 @@ const OCPage = (props) => {
 useEffect(()=>{
   props.fetchOC(props.match.params.name)
   // eslint-disable-next-line react-hooks/exhaustive-deps
-},[props.showAlert])
+},[props.showAlert, props.alert2])
 
 
 useEffect(()=>{
   props.clubEvents(props.sid, props.token, props.match.params.name)
   // eslint-disable-next-line react-hooks/exhaustive-deps
-}, [props.showAlert])
+}, [props.showAlert, props.alert2])
 
   if(props.showAlert){
     setTimeout(()=>{
@@ -138,7 +138,8 @@ const mapStateToProps = (state)=>{
     sid : state.user.sid,
     token : state.user.token,
     role : state.user.role,
-    AdminOC : state.user.OCName
+    AdminOC : state.user.OCName,
+    alert2 : state.event.showAlert
   }
 }
 

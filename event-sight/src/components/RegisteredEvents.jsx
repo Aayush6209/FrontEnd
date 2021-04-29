@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Jumbotron, Container, Row, Col } from "reactstrap";
+import {Row, Col } from "reactstrap";
 import EventCard from "./EventCard";
 import ESSpinner from "../UI/ESSpinner";
 import { connect } from "react-redux";

@@ -41,7 +41,7 @@ const EventCard = (props) => {
           <div className="CardContent">
           <CardSubtitle tag="h6" className="mb-2 text-muted"><strong>Date: </strong>{props.event.date_time.substring(0, 10)}<br /><strong>Time: </strong>{props.event.date_time.substring(11, 19)}</CardSubtitle>
           <CardText style={{
-            height : "32px",
+            height : "40px",
           }}>{(props.event.description.length>59)?(props.event.description.substring(0, 60)+"..."):props.event.description}</CardText>
           </div>
           <div className="CardIconsDiv">
