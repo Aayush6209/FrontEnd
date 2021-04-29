@@ -31,18 +31,18 @@ const EventCard = (props) => {
       <Card className="ESEventCard">
       <Link className="timerLink" to={"/event/" + props.event.id +"/"+ props.event.title.replace(/ /g, '-')} onClick={()=>{props.selectEvent(props.event)}}>
         <div className="overflow"><img className="CardImage" src={"http://127.0.0.1:8000"+props.event.photo} alt="Card cap" /></div></Link>
-        <CardBody>
+        <CardBody className="ESCardBody">
           <CardTitle tag="h5" style={{
-            paddingTop : "10px",
+            paddingTop : "0px",
             height : "80px",
-            marginBottom : "40px",
-            wordBreak : "break-all"
+            marginBottom : "9px",
+            wordBreak : "break-word"
           }}><img src={OCLogos[props.event.organizer]} alt={props.event.organizer} className="ESOCImg" /><span className="CardTitle">{props.event.title}</span></CardTitle>
           <div className="CardContent">
           <CardSubtitle tag="h6" className="mb-2 text-muted"><strong>Date: </strong>{props.event.date_time.substring(0, 10)}<br /><strong>Time: </strong>{props.event.date_time.substring(11, 19)}</CardSubtitle>
           <CardText style={{
-            height : "45px",
-          }}>{(props.event.description.length>49)?(props.event.description.substring(0, 50)+"..."):props.event.description}</CardText>
+            height : "32px",
+          }}>{(props.event.description.length>59)?(props.event.description.substring(0, 60)+"..."):props.event.description}</CardText>
           </div>
           <div className="CardIconsDiv">
           <center>

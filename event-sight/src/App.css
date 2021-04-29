@@ -98,13 +98,17 @@ font-family: 'Acme', sans-serif;
   margin-bottom: 50px;
 }
 
+.ESCardBody{
+  padding-top: 15px;
+}
+
 .ESEventCard:hover {
   box-shadow: 1px 1px 1px 0px rgba(0, 0, 0, 0.253) !important;
 }
 
 .ESOCImg{
-  height: 50px;
-  width: 50px;
+  height: 35px;
+  width: 35px;
   border-radius: 50px;
   position: relative;
   bottom: 5px;
@@ -134,6 +138,8 @@ font-family: 'Acme', sans-serif;
 .CardIconsDiv {
   text-align: center;
   margin-bottom: 0px;
+  position: relative;
+  top: 14px;
 }
 
 
@@ -178,7 +184,7 @@ font-family: 'Acme', sans-serif;
 /* sidebar */
 
 .Sidebar {
-  background-color: rgba(170, 170, 170, 0.384);
+  background-color: rgba(216, 216, 216, 0.384);
   transition: background-color 0.2s;
   overflow-x: scroll;
   overflow-y: hidden;
@@ -203,7 +209,7 @@ font-family: 'Acme', sans-serif;
 }
 
 .Sidebar:hover {
-  background-color: rgba(126, 126, 126, 0.384);
+  background-color: rgba(163, 163, 163, 0.384);
 }
 
 .SidebarCard {

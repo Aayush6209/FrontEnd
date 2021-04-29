@@ -25,6 +25,7 @@ import V from "../assets/clubLogos/Voyagers.jpg";
 import I from "../assets/clubLogos/Images.jpg";
 import D from "../assets/clubLogos/Daniels.jpg"
 import DRAM from "../assets/clubLogos/Dramatics-Club.jpg"
+import GOC from "../assets/clubLogos/General-Organising-Committee.png"
 
 export const OCLogos = {"Aerospace Technical Society": ATS,
 "American Society of Civil Engineers": ASCE,
@@ -53,4 +54,4 @@ export const OCLogos = {"Aerospace Technical Society": ATS,
 ,"Voyagers": V
 ,"Images": I
 ,"Daniels": D,
-"General Organising Committee" : "https://images.jdmagicbox.com/comp/chandigarh/c4/0172p1762.1762.110201201416.l1c4/catalogue/punjab-engineering-college-sector-12-chandigarh-placement-services-candidate--3er9sw3.jpg?clr=#006600"};
+"General Organising Committee" : GOC};
