@@ -1,6 +1,7 @@
 
 import {AiFillHome, AiOutlineLogout} from "react-icons/ai"
 import {RiQuillPenFill} from "react-icons/ri";
+import {WiAlien} from "react-icons/wi";
 import {HiUserAdd} from "react-icons/hi";
 import {IoMdCreate} from "react-icons/io";
 import {RiBuilding2Line} from "react-icons/ri";
@@ -26,6 +27,9 @@ const ESNavbar = (props) => {
   
     const toggle = () => setIsOpen(!isOpen);
   
+    const [tooltipOpen0, setTooltipOpen0] = useState(false);
+    const toggle0 = () => setTooltipOpen0(!tooltipOpen0);
+
     const [tooltipOpen1, setTooltipOpen1] = useState(false);
     const toggle1 = () => setTooltipOpen1(!tooltipOpen1);
 
@@ -51,7 +55,14 @@ const ESNavbar = (props) => {
     // const toggle8 = () => setTooltipOpen8(!tooltipOpen8);
 
     let navItems = null;
-    if(props.role===null){navItems = null;}
+    if(props.role===null){
+      navItems = <>
+        <NavItem id="AboutUs" >
+          <NavLink href="/about-us"><WiAlien className="ESNavbarIcon" size="30px" /></NavLink>
+        </NavItem>
+        <Tooltip placement="bottom" isOpen={tooltipOpen0} target="AboutUs" toggle={toggle0}>About Us</Tooltip>
+      </>
+    }
     else if(props.role === "Admin"){
       navItems = <>
       <NavItem id="Home" >

@@ -13,6 +13,7 @@ import SignUp from "./components/signup";
 import EventPage from "./container/eventPage";
 import RegisteredEvents from "./components/RegisteredEvents";
 import InterestedEvents from "./components/InterestedEvents";
+import about from "./components/about"
 
 
 import {connect} from "react-redux";
@@ -23,6 +24,7 @@ const App = (props)=>{
     routes = <Switch>
       <Route path="/auth-user" exact component={AuthUser}/>
       <Route path="/signup" exact component={SignUp}/>
+      <Route path="/about-us" exact component={about}/>
       <Redirect to="/auth-user" />
     </Switch>
   }else if(props.role==="Admin"){
@@ -45,7 +47,7 @@ const App = (props)=>{
   }
   return <div className="Body">
   <div><ESNavbar/></div>
-<div className={props.sid!== null ? "mainContent" : null } >
+  <div className={props.sid!== null ? "mainContent" : null } >
     {routes}
   </div>
   </div>;

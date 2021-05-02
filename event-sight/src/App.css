@@ -748,5 +748,47 @@ font-family: 'Acme', sans-serif;
   margin: 1% 0 3% 0;
   font-family: 'Ubuntu', sans-serif;
   box-shadow: 0 0 5px grey;
-  border-radius: 10px;
+  border-radius: 7px;
+}
+
+/* .aboutPage{
+  background-image: url("");
+} */
+
+.aboutHeader{
+  text-align: center;
+  padding-top: 8%;
+  padding-bottom: 5%;
+  font-size: 4rem;
+  color: white;
+}
+
+.aboutHeader > h1{
+  font-size: 3.5rem;
+}
+
+.aboutCarousel{
+  text-align: center;
+  padding-bottom: 5%;
+  color: white;
+}
+
+.imageCrop{
+  width: 200px;
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: auto;
+}
+
+.aboutImage{
+  display: inline;
+  margin: 0 auto;
+  height: 100%;
+  width: auto;
+}
+
+.carouselHeader{
+  margin-bottom: 30px;
 }
