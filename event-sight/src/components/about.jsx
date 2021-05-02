@@ -110,11 +110,12 @@ function About(props) {
     </div>
 
     return (
-        <div className="aboutPage" style={{
+        <div style={{
         backgroundImage: `url(${BgImg})`,
-        height : "100vh",
+        height : "101vh",
         backgroundSize : "cover",
-        backgroundRepeat: "no-repeat"}}>
+        backgroundRepeat: "no-repeat",
+        }}>
             {header}
             {carousel}
         </div>

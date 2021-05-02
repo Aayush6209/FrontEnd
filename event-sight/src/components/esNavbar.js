@@ -1,7 +1,7 @@
 
 import {AiFillHome, AiOutlineLogout} from "react-icons/ai"
 import {RiQuillPenFill} from "react-icons/ri";
-import {WiAlien} from "react-icons/wi";
+import {FaCode} from "react-icons/fa";
 import {HiUserAdd} from "react-icons/hi";
 import {IoMdCreate} from "react-icons/io";
 import {RiBuilding2Line} from "react-icons/ri";
@@ -58,7 +58,7 @@ const ESNavbar = (props) => {
     if(props.role===null){
       navItems = <>
         <NavItem id="AboutUs" >
-          <NavLink href="/about-us"><WiAlien className="ESNavbarIcon" size="30px" /></NavLink>
+          <NavLink href="/about-us"><FaCode className="ESNavbarIcon" size="30px" /></NavLink>
         </NavItem>
         <Tooltip placement="bottom" isOpen={tooltipOpen0} target="AboutUs" toggle={toggle0}>About Us</Tooltip>
       </>
