@@ -23,7 +23,8 @@ const EventInfo = (props)=>{
     const toggle = tab => {if(activeTab !== tab) setActiveTab(tab);}
 
     function linkify(text) {
-      var urlRegex =/(\b(https?|ftp|file|www):\/\/[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;        return text.replace(urlRegex, function(url) {
+        var urlRegex =/(\b((https?|ftp|file):\/\/|www.)[-A-Z0-9+&@#/%?=~_|!:,.;]*[-A-Z0-9+&@#/%=~_|])/ig;
+        return text.replace(urlRegex, function(url) {
             return '<a style="text-decoration:none;" target="_blank" href="' + url + '">' + url + '</a>';
         });
     }

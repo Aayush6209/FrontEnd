@@ -6,7 +6,6 @@ import * as  userActions from "../store/actions/userActions";
 import * as actionTypes from "../store/actions/actionTypes";
 import {connect} from "react-redux";
 import {formValidation} from "../formValidation";
-// import key from "../.env/recaptchakey";
 
 
 
@@ -123,7 +122,7 @@ const Login = (props)=>{
         verifyCallback={verifyCallback}
       />
       <Button onClick={()=>{
-        props.loginInit(user);
+        verified && props.loginInit(user);
       }} color="primary"
       disabled = {!(verified && roleChanged && validCRED["sid"].valid && validCRED["password"].valid)}
       >Login</Button>
