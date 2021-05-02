@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+
 import Arjun from '../assets/about/arjun.png';
-import Shivam from '../assets/about/shivam.jfif';
+import Shivam from '../assets/about/shivam.png';
 import Aayush from '../assets/about/aayush.jpg';
 import Sarthak from '../assets/about/sarthak.jpg';
 import BgImg from "../assets/BGImage/about.jpg";
@@ -10,7 +12,8 @@ import {
     CarouselItem,
     CarouselControl,
     CarouselIndicators,
-    CarouselCaption
+    CarouselCaption,
+    Row, Col
   } from 'reactstrap';
 
 function About(props) {
@@ -20,25 +23,33 @@ function About(props) {
             header: "Arjun Kathail",
             src: Arjun,
             altText: '',
-            caption: ''
+            caption: '',
+            github: "https://github.com/arjun-kathail",
+            linkedin: "https://www.linkedin.com/in/arjun-kathail/",
         },
         {
             header: "Shivam Arora",
             src: Shivam,
             altText: '',
-            caption: ''
+            caption: '',
+            github: "https://github.com/shivam-arora-13",
+            linkedin: "https://www.linkedin.com/in/shivam-arora-911765191/",
         },
         {
             header: "Aayush Gupta",
             src: Aayush,
             altText: '',
-            caption: ''
+            caption: '',
+            github: "https://github.com/aayush6209",
+            linkedin: "https://www.linkedin.com/in/aayush-gupta-721360192/",
         },
         {
             header: "Sarthak Chauhan",
             src: Sarthak,
             altText: '',
-            caption: ''
+            caption: '',
+            github: "https://github.com/sarthak-chauhan",
+            linkedin: "https://www.linkedin.com/in/sarthak-chauhan-5287b8188/",
         }
     ];
 
@@ -71,7 +82,13 @@ function About(props) {
             >
                 <h2 className="carouselHeader">{item.header}</h2>
                 <div className="imageCrop"><img className="aboutImage" src={item.src} alt={item.altText} /></div>
-                <CarouselCaption captionText={item.caption} captionHeader={item.caption} />
+                <Row style={{ 
+                    width: "150px",
+                    margin: "auto"
+                    }}>
+                  <Col><a href={item.github} rel="noreferrer" target="_blank"><AiFillGithub size="30px" /></a></Col>
+                  <Col><a href={item.linkedin} rel="noreferrer" target="_blank"><AiFillLinkedin size="30px" /></a></Col>
+                </Row>
             </CarouselItem>
         );
     });
@@ -86,7 +103,6 @@ function About(props) {
         previous={previous}
         ride={1000}
     >
-        <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={goToIndex} />
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
         <CarouselControl direction="next" directionText="Next" onClickHandler={next} />

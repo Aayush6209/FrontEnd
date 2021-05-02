@@ -780,6 +780,7 @@ font-family: 'Acme', sans-serif;
   overflow: hidden;
   border-radius: 50%;
   margin: auto;
+  margin-bottom: 20px;
 }
 
 .aboutImage{
