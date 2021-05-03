@@ -4,12 +4,12 @@
     }
 
     .AuthPageTitleDiv{
-        padding-top: 0;
+        padding-top: 50px;
     }
 
     .AuthPageTitle{
         font-weight: 500;
-        font-size: 5rem;
+        font-size: 4rem;
     }
 
     .SignupDiv{

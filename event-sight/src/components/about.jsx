@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
 
-import Arjun from '../assets/about/arjun.png';
+import Arjun from '../assets/about/arjun.jpg';
 import Shivam from '../assets/about/shivam.png';
 import Aayush from '../assets/about/aayush.jpg';
 import Sarthak from '../assets/about/sarthak.jpg';

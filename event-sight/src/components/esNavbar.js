@@ -9,6 +9,7 @@ import MemberRequests from "./MemberRequests";
 import {FaBookmark} from "react-icons/fa"
 
 import React, { useState } from 'react';
+import {Link} from "react-router-dom";
 import {
   Collapse,
   Navbar,
@@ -127,7 +128,7 @@ const ESNavbar = (props) => {
     return (
       <div>
         <Navbar className="ESNavbar" dark expand="md">
-          <h1 className="logo">Event Sight</h1>
+        <Link style={{textDecoration: 'none'}} to={"/"}><h1 className="logo">Event Sight</h1></Link>
           <NavbarToggler onClick={toggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
