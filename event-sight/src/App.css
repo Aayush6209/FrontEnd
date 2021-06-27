@@ -337,6 +337,7 @@ font-family: 'Acme', sans-serif;
   text-align: center;
   background-color: white; 
   opacity: 0.9;
+  z-index: 10;
 }
 
 .SignupDiv {
@@ -734,7 +735,7 @@ font-family: 'Acme', sans-serif;
 }
 
 .landingPage{
-  padding: 10%;
+  padding: 5% 10% 10% 10%;
   height: 100vh;
   overflow-y: scroll;
 }

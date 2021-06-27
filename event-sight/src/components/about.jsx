@@ -11,8 +11,6 @@ import {
     Carousel,
     CarouselItem,
     CarouselControl,
-    CarouselIndicators,
-    CarouselCaption,
     Row, Col
   } from 'reactstrap';
 
@@ -68,10 +66,10 @@ function About(props) {
         setActiveIndex(nextIndex);
     }
 
-    const goToIndex = (newIndex) => {
-        if (animating) return;
-        setActiveIndex(newIndex);
-    }
+    // const goToIndex = (newIndex) => {
+    //     if (animating) return;
+    //     setActiveIndex(newIndex);
+    // }
 
     const slides = items.map((item) => {
         return (
@@ -101,7 +99,7 @@ function About(props) {
         activeIndex={activeIndex}
         next={next}
         previous={previous}
-        ride={1000}
+        // ride={1000}
     >
         {slides}
         <CarouselControl direction="prev" directionText="Previous" onClickHandler={previous} />
@@ -112,7 +110,7 @@ function About(props) {
     return (
         <div style={{
         backgroundImage: `url(${BgImg})`,
-        height : "101vh",
+        height : "100vh",
         backgroundSize : "cover",
         backgroundRepeat: "no-repeat",
         }}>

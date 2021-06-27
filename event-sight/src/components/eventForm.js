@@ -44,7 +44,7 @@ const EventForm = (props)=>{
     if (!validImageTypes.includes(fileType)) {
       setLabel("( Valid Image types are jpeg, png, gif )");
     }else{
-      if(file.size > 1048576*4){
+      if(file.size > 1048576*5){
         setLabel("( Image size is too Large " + (file.size/1048576).toFixed(2) + "  MB )");
       }else{
         setImage(file);
@@ -112,7 +112,7 @@ const EventForm = (props)=>{
               <Input type="file" name="image" id="image" onChange={imageHandler} className="inputfile"/>
               <Label for="image">{typeof image=="undefined" ? "Upload Image" : image.name}</Label>
               <br />
-              <Label>Less than 4 MB {label}</Label>
+              <Label>Less than 5 MB {label}</Label>
             </Col>
           </Row>
       </FormGroup>

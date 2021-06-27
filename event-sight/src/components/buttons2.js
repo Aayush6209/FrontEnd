@@ -22,8 +22,7 @@ const EventPageButtons2 = (props)=>{
       const dateString=new Date(date.getTime() - (date.getTimezoneOffset() * 60000 )).toISOString().substring(0, 19) + "Z";
       const dateTime=props.event.date_time;
 
-    const reminderURL = "https://calendar.google.com/calendar/u/0/r/eventedit?text="+props.event.title.replace(/ /g, '+')+"&dates="+props.event.date_time.replace(/-/g, '').replace(/:/g, '').slice(0, -1)+"/"+props.event.date_time.replace(/-/g, '').replace(/:/g, '').slice(0, -1)+"&details="+props.event.description.replace(/ /g, '+')+" "+props.event.details.replace(/ /g, '+')+"&sf=true&output=xml&pli=1";
-    
+      const reminderURL = "https://calendar.google.com/calendar/u/0/r/eventedit?text="+props.event.title.replace(/ /g, '+')+"&dates="+props.event.date_time.replace(/-/g, '').replace(/:/g, '').slice(0, -1)+"/"+props.event.date_time.replace(/-/g, '').replace(/:/g, '').slice(0, -1)+"&details="+props.event.description.replace(/ /g, '+');    
     const [tooltipOpen1, setTooltipOpen1] = useState(false);
     const toggle1 = () => setTooltipOpen1(!tooltipOpen1);
 
