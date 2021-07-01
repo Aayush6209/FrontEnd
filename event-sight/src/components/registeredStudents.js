@@ -45,11 +45,16 @@ const RegisteredStudents = (props)=>{
     const { saveAsCsv } = useJsonToCsv();
    
     return <div>
+        <Row key={-1}>
+            <Col className="RegisteredHSID">SID</Col>
+            <Col className="RegisteredHName">Name</Col>
+            <Col className="RegisteredHBranch">Branch</Col>
+        </Row>
         { props.registeredStudents && props.registeredStudents.map(student=>{
             return <Row key={student["student_id"]}>
-                <Col>{student["student_id"]}</Col>
-                <Col>{student["first_name"]} {student["last_name"]}</Col>
-                <Col>{student["branch"]}</Col>
+                <Col className="RegisteredSID">{student["student_id"]}</Col>
+                <Col className="RegisteredName">{student["first_name"]} {student["last_name"]}</Col>
+                <Col className="RegisteredBranch">{student["branch"]}</Col>
             </Row>
         })}
      <div id="download" onClick={()=>{saveAsCsv({ data, fields, filename })}} className = "DownloadButton" >
