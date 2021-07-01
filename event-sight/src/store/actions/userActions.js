@@ -4,15 +4,17 @@ import axios from "../../axios";
 export const signupInit = (user)=>{
     return (dispatch)=>{
         const requestURl = "register/";
+        console.log("new code");
         const data = {
           "password": user.password,
-          "student_id": user.sid,
+          "username": user.sid,
           "first_name": user.firstName,
           "last_name": user.lastName,
           "email": user.email,
-          "branch": user.branch
+          //"branch": user.branch
         };
         axios.post(requestURl, data).then((res)=>{
+            console.log(res);
         localStorage.setItem("firstName", user.firstName)
         localStorage.setItem("lastName", user.lastName)
         localStorage.setItem("sid", user.sid)
@@ -21,14 +23,14 @@ export const signupInit = (user)=>{
         localStorage.setItem("token", res.data.token)
         localStorage.setItem("role", "Student")
         localStorage.setItem("OCName", "")
-          dispatch({
-              type : actionTypes.SIGNUP_SUCCESS,
-              userInfo : {
-                  ...user,
-                  token : res.data.token,
-                  role : "Student",
-              }
-          })
+        //   dispatch({
+        //       type : actionTypes.SIGNUP_SUCCESS,
+        //       userInfo : {
+        //           ...user,
+        //           token : res.data.token,
+        //           role : "Student",
+        //       }
+        //   })
         }).catch((err)=>{
           dispatch({
               type : actionTypes.SIGNUP_FAILED
@@ -39,15 +41,18 @@ export const signupInit = (user)=>{
 
 export const loginInit = (user)=>{
     return (dispatch)=>{
-        const requestURL = "login/";
+        const requestURL = "/";
+        console.log(user.sid);
         const data = {
-            "password" : user.password,
-            "student_id" : user.sid,
-            "role" : user.role,
-            "club" : user.OC
+            "password" : String(user.password),
+            "username" : user.sid,
+           // "role" : user.role,
+           // "club" : user.OC
         }
+        console.log("Hello world");
         axios.post(requestURL, data)
         .then((res)=>{
+            console.log(res);
             localStorage.setItem("firstName", res.data.credentials.first_name)
             localStorage.setItem("lastName", res.data.credentials.last_name)
             localStorage.setItem("sid", res.data.credentials.student_id)
@@ -82,13 +87,18 @@ export const loginInit = (user)=>{
 
 export const logout = (sid, token)=>{
     return (dispatch)=>{
-        const requestURL = "logout/";
-        const data = {
-            "student_id" : sid,
-            "token" : token
-        }
-        axios.post(requestURL, data)
-        .then((res)=>{
+        // const requestURL = "logout/";
+        // const data = {
+        //     "student_id" : sid,
+        //     "token" : token
+        // }
+        //axios.post(re)
+       //axios.post(requestURL, data, 
+        //    headers : {
+        //        "Authorization" : "Token "+token
+        //    }
+       //)
+       // .then((res)=>{
             localStorage.removeItem("firstName")
             localStorage.removeItem("lastName")
             localStorage.removeItem("sid")
@@ -100,8 +110,8 @@ export const logout = (sid, token)=>{
             dispatch({
                 type : actionTypes.LOGOUT
             })
-        })
-        .catch((err)=>{
-        })
+        // })
+        // .catch((err)=>{
+        // })
     }
 }

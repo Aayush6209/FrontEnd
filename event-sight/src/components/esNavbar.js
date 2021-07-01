@@ -77,12 +77,12 @@ const ESNavbar = (props) => {
               </NavItem>
               <Tooltip placement="bottom" isOpen={tooltipOpen2} target="CreateEvent" toggle={toggle2}>
         Create Event</Tooltip>
-        <NavItem id="MemberRequests">
+      {props.OCName !== "General Organising Committee" && <>  <NavItem id="MemberRequests">
                 <NavLink id="showMemberRequests"><HiUserAdd className="ESNavbarIcon" size="30px"/></NavLink>
               </NavItem>
               <MemberRequests/>
               <Tooltip placement="bottom" isOpen={tooltipOpen7} target="MemberRequests" toggle={toggle7}>
-        Member Requests</Tooltip>
+        Member Requests</Tooltip></>}
         <NavItem id="logout" onClick={()=>{
                 props.logout(props.sid, props.token);
               }}>
@@ -144,7 +144,8 @@ const ESNavbar = (props) => {
     return {
       sid : state.user.sid,
       token : state.user.token,
-      role : state.user.role
+      role : state.user.role,
+      OCName : state.user.OCName
     }
   }
 
