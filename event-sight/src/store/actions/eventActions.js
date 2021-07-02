@@ -69,18 +69,31 @@ export const updateEvent = (sid, token, event, id)=>{
 }
 
 // EVENT DISPLAY
-export const displayEvents = (sid, token)=>{
+export const displayEvents = ()=>{
     return dispatch =>{
         dispatch(eventLoading)
-        const requestURL = "event_display/";
-        const data = {
-            "student_id" : sid,
-            "token" : token,
-        };
+        const requestURL = "event-display/";
+        // axios.interceptors.request.use(
+
+        //     config => { config.headers.authorization = `Bearer ${accessToken}`; return config;
+            
+        //     },
+            
+        //     error => {
+            
+        //     return Promise.reject(error);
+        //     }
+        // )
         axios
-        .post(requestURL, data)
+        .get(requestURL,
+            {   headers : {
+                "Authorization" : "Bearer " + localStorage.getItem("token")
+                }
+            }
+            )
         .then((res)=>{
-            dispatch(displayEventsSuccess(res.data));
+            // dispatch(displayEventsSuccess(res.data));
+            console.log(res)
         })
         .catch((err)=>{
             dispatch(displayEventsFailure(err));

@@ -53,29 +53,30 @@ export const loginInit = (user)=>{
         axios.post(requestURL, data)
         .then((res)=>{
             console.log(res);
-            localStorage.setItem("firstName", res.data.credentials.first_name)
-            localStorage.setItem("lastName", res.data.credentials.last_name)
-            localStorage.setItem("sid", res.data.credentials.student_id)
-            localStorage.setItem("branch", res.data.credentials.branch)
-            localStorage.setItem("email", res.data.credentials.email)
-            localStorage.setItem("token", res.data.token)
+            // localStorage.setItem("firstName", res.data.credentials.first_name)
+            // localStorage.setItem("lastName", res.data.credentials.last_name)
+            // localStorage.setItem("sid", res.data.credentials.student_id)
+            // localStorage.setItem("branch", res.data.credentials.branch)
+            // localStorage.setItem("email", res.data.credentials.email)
+            localStorage.setItem("token", res.data.access)
             localStorage.setItem("role", user.role)
-            localStorage.setItem("OCName", user.OC)
-            const userData = {
-                firstName :  res.data.credentials.first_name,
-                lastName :  res.data.credentials.last_name,
-                sid :  res.data.credentials.student_id,
-                branch : res.data.credentials.branch,
-                email : res.data.credentials.email,
-                // password :  res.data.credentials.password,
-                token : res.data.token,
-                role : user.role,
-                OCName : user.OC 
-            }
-            dispatch({
-                type : actionTypes.LOGIN_SUCCESS,
-                userInfo : userData
-            })
+            // localStorage.setItem("OCName", user.OC)
+            // const userData = {
+            //     firstName :  res.data.credentials.first_name,
+            //     lastName :  res.data.credentials.last_name,
+            //     sid :  res.data.credentials.student_id,
+            //     branch : res.data.credentials.branch,
+            //     email : res.data.credentials.email,
+            //     // password :  res.data.credentials.password,
+            //     token : res.data.token,
+            //     role : user.role,
+            //     OCName : user.OC 
+            // }
+            // dispatch({
+            //     type : actionTypes.LOGIN_SUCCESS,
+            //     userInfo : userData
+            // })
+            
         })
         .catch((err)=>{
             dispatch({

@@ -20,7 +20,7 @@ import {connect} from "react-redux";
 
 const App = (props)=>{
   let routes = null;
-  if(props.sid===null){
+  if(props.role===null){
     routes = <Switch>
       <Route path="/auth-user" exact component={AuthUser}/>
       <Route path="/signup" exact component={SignUp}/>

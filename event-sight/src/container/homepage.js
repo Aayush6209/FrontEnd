@@ -11,7 +11,7 @@ import ESAlert from "../UI/ESAlert";
 const Homepage = (props) => {
 
   useEffect(() => {
-    props.displayEvents(props.sid, props.token);
+    props.displayEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.showAlert]);
 
@@ -80,7 +80,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    displayEvents: (sid, token) => dispatch(eventActions.displayEvents(sid, token)),
+    displayEvents: () => dispatch(eventActions.displayEvents()),
     hideAlert : ()=>dispatch({type : actionTypes.HIDE_EVENT_ALERT}),
   };
 };
