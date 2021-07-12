@@ -15,7 +15,7 @@ const InterestedEvents = (props) => {
   }
 
   useEffect(() => {
-    props.displayInterestedEvents(props.sid, props.token);
+    props.displayInterestedEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.showAlert]);
 
@@ -64,7 +64,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    displayInterestedEvents: (sid, token) => dispatch(eventActions.displayInterestedEvents(sid, token)),
+    displayInterestedEvents: () => dispatch(eventActions.displayInterestedEvents()),
     hideAlert: () => dispatch({ type: actionTypes.HIDE_EVENT_ALERT }),
   };
 };

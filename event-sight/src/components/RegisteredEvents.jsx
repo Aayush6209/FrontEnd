@@ -15,7 +15,7 @@ const RegisteredEvents = (props) => {
   }
 
   useEffect(() => {
-    props.displayRegisteredEvents(props.sid, props.token);
+    props.displayRegisteredEvents();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.showAlert]);
 
@@ -62,7 +62,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    displayRegisteredEvents: (sid, token) => dispatch(eventActions.displayRegisteredEvents(sid, token)),
+    displayRegisteredEvents: () => dispatch(eventActions.displayRegisteredEvents()),
     hideAlert: () => dispatch({ type: actionTypes.HIDE_EVENT_ALERT }),
   };
 };

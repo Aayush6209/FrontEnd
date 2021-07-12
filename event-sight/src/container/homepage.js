@@ -5,6 +5,7 @@ import Sidebar from "../components/sidebar";
 import ESSpinner from "../UI/ESSpinner";
 import { connect } from "react-redux";
 import * as eventActions from "../store/actions/eventActions";
+import * as userActions from "../store/actions/userActions";
 import * as actionTypes from "../store/actions/actionTypes";
 import ESAlert from "../UI/ESAlert";
 
@@ -20,6 +21,8 @@ const Homepage = (props) => {
       props.hideAlert()
     }, 3500)
   }
+
+  console.log(props.userProfile());
 
   let eventsrender = null;
 
@@ -81,6 +84,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     displayEvents: () => dispatch(eventActions.displayEvents()),
+    userProfile: () => dispatch(userActions.userProfile()),
     hideAlert : ()=>dispatch({type : actionTypes.HIDE_EVENT_ALERT}),
   };
 };

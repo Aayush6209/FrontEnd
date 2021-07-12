@@ -86,6 +86,47 @@ export const loginInit = (user)=>{
     }
 }
 
+export const userProfile = ()=>{
+    return dispatch =>{
+        dispatch(profileLoading)
+        const requestURL = "user-profile/";
+        axios
+        .get(requestURL,
+            {   headers : {
+                "Authorization" : "Bearer " + localStorage.getItem("token")
+                }
+            }
+            )
+        .then((res)=>{
+            dispatch(userProfileSuccess(res.data));
+            console.log(res)
+        })
+        .catch((err)=>{
+            dispatch(userProfileFailure(err));
+        })
+    }
+}
+export const profileLoading = ()=>{
+    return {
+        type: actionTypes.PROFILE_LOADING,
+    }
+}
+
+export const userProfileSuccess = data=>{
+    return {
+        type: actionTypes.USER_PROFILE_SUCCESS,
+        profile: data,
+    }
+}
+
+export const userProfileFailure = error=>{
+    return {
+        type: actionTypes.USER_PROFILE_FAILURE,
+        payload: error
+    }
+}
+
+
 export const logout = (sid, token)=>{
     return (dispatch)=>{
         // const requestURL = "logout/";

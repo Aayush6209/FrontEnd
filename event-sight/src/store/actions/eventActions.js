@@ -72,18 +72,7 @@ export const updateEvent = (sid, token, event, id)=>{
 export const displayEvents = ()=>{
     return dispatch =>{
         dispatch(eventLoading)
-        const requestURL = "event-display/";
-        // axios.interceptors.request.use(
-
-        //     config => { config.headers.authorization = `Bearer ${accessToken}`; return config;
-            
-        //     },
-            
-        //     error => {
-            
-        //     return Promise.reject(error);
-        //     }
-        // )
+        const requestURL = "event-display/?ordering=-date_time";
         axios
         .get(requestURL,
             {   headers : {
@@ -92,7 +81,7 @@ export const displayEvents = ()=>{
             }
             )
         .then((res)=>{
-            // dispatch(displayEventsSuccess(res.data));
+            dispatch(displayEventsSuccess(res.data));
             console.log(res)
         })
         .catch((err)=>{
@@ -240,19 +229,20 @@ export const cancelRegistrationFailure = error=>{
 }
 
 // DISPLAY REGISTERED EVENTS
-export const displayRegisteredEvents = (sid, token)=>{
+export const displayRegisteredEvents = ()=>{
     return dispatch =>{
         dispatch(eventLoading)
-        const requestURL="interested_participated_events/";
-        const data={
-            student_id: sid,
-            interested: false,
-            token: token,
-        }
+        const requestURL="participated-events-display/?ordering=-date_time";
         axios
-        .post(requestURL, data)
+        .get(requestURL,
+            {   headers : {
+                "Authorization" : "Bearer " + localStorage.getItem("token")
+                }
+            }
+            )
         .then(res => {
             dispatch(displayRegisteredEventsSuccess(res.data));
+            console.log(res)
         })
         .catch(error => {
             dispatch(displayRegisteredEventsFailure(error))
@@ -343,19 +333,21 @@ export const cancelInterestedFailure = error=>{
 }
 
 //DISPLAY INTERESTED EVENTS
-export const displayInterestedEvents = (sid, token)=>{
+export const displayInterestedEvents = ()=>{
     return dispatch =>{
         dispatch(eventLoading)
-        const requestURL="interested_participated_events/";
-        const data={
-            student_id: sid,
-            interested: true,
-            token: token,
-        }
+        const requestURL="interested-events-display/?ordering=-date_time";
+        
         axios
-        .post(requestURL, data)
+        .get(requestURL,
+            {   headers : {
+                "Authorization" : "Bearer " + localStorage.getItem("token")
+                }
+            }
+            )
         .then(res => {
             dispatch(displayInterestedEventsSuccess(res.data));
+            console.log(res)
         })
         .catch(error => {
             dispatch(displayInterestedEventsFailure(error))
